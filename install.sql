@@ -12,9 +12,15 @@ PROMPT -- Compiling objects for PL/JSON --;
 PROMPT -----------------------------------;
 @@uninstall.sql
 
-@@src/o_canvas.sql
-@@src/o_canvas_usuarios.sql
-@@src/o_canvas_periodos_academicos.sql
-@@src/o_canvas_cursos.sql
-@@src/o_canvas_secoes.sql
-
+@@src/o_canvas.type.decl.sql
+@@src/o_canvas.type.impl.sql
+@@src/o_canvas_usuario.type.decl.sql
+@@src/o_canvas_usuario.type.impl.sql
+@@src/o_canvas_periodo_academico.type.decl.sql
+@@src/o_canvas_periodo_academico.type.impl.sql
+@@src/o_canvas_curso.type.decl.sql
+@@src/o_canvas_curso.type.impl.sql
+@@src/o_canvas_secao.type.decl.sql
+@@src/o_canvas_secao.type.impl.sql
+@@src/o_canvas_inscricao.type.decl.sql
+@@src/o_canvas_inscricao.type.impl.sql

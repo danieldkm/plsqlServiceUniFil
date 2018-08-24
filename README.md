@@ -1,13 +1,15 @@
-# Integração com Plataforma "EAD" utilizando service REST com PLSQL.
+# PLSQL Service REST
 
+Integração com Plataforma "EAD" utilizando. 
 Projeto desenvolvido para consumir serviço REST, desenvolvido por terceiros, utilizando a linguagem PL/SQL.
 
 ## Instalação
 
 1. Faça o clone deste projeto com `git clone https://github.com/danieldkm/plsqlServiceUniFil.git`.
 2. Instalar o `Oracle Database`.
-3. Copie o arquivo `integracaoCanvas` para um destino padrão e altere o mesmo.
-4. Use o `sql*plus` ou alguma outra ferramenta capaz de rodar scripts, para rodar o `install.sql`.
+3. Instalar o [PLJSON](https://github.com/pljson/pljson).
+4. Copie o arquivo `integracaoCanvas` para um destino padrão e altere o mesmo.
+5. Use o `sql*plus` ou alguma outra ferramenta capaz de rodar scripts, para rodar o `install.sql`.
 
 ### Testando
 

@@ -1,3 +1,4 @@
+set define off
 /*
     Copyright (c) 2018 Daniel Keyti Morita
 
@@ -19,34 +20,126 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 */
-create or replace type body o_canvas_cursos is
+create or replace type body o_canvas_curso is
 
     /* Construtores */
-    constructor function o_canvas_cursos return self as result is
+    constructor function o_canvas_curso return self as result is
     begin
-        self.set_entidade('courses');
-        self.set_metodo('/sis_course_id:');
+        self.set_default_attribute;
         return;
     end;
 
+    /* Gets and sets */
+    member procedure set_default_attribute(SELF IN OUT NOCOPY o_canvas_curso) is
+        tmp pljson;
+    begin
+        self.set_entidade('courses');
+        self.set_metodo('/sis_course_id:');
 
-    member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_cursos, p_json clob, r_msg out clob) return pljson is 
-    begin 
-        self.set_acao('POST'); 
-        return self.call_request(p_json, 'Inserir cursos' , r_msg); 
+        tmp := self.get_variables;
+        if tmp.exist('entidade') then
+            tmp.remove('entidade');
+        end if;
+        tmp.put('entidade', self.get_entidade);
+
+        if tmp.exist('metodo') then
+            tmp.remove('metodo');
+        end if;
+        tmp.put('metodo', self.get_metodo);
     end;
 
-    member function inserir       (SELF IN OUT NOCOPY o_canvas_cursos, p_json varchar2, r_msg out clob) return pljson is begin self.set_acao('POST'); return self.call_request(p_json, 'Inserir curso'  , r_msg); end;
-    member function atualizar     (SELF IN OUT NOCOPY o_canvas_cursos, p_json varchar2, r_msg out clob) return pljson is begin self.set_acao('PUT');  return self.call_request(p_json, 'Atualizar curso', r_msg); end;
+    /*
+        member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_curso, p_json clob, r_msg out clob) return pljson is 
+        begin 
+            self.set_acao('POST'); 
+            return self.call_request(p_json, 'Inserir cursos' , r_msg); 
+        end;
 
+        member function inserir       (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson is begin self.set_acao('POST'); return self.call_request(p_json, 'Inserir curso'  , r_msg); end;
+        member function atualizar     (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson is begin self.set_acao('PUT');  return self.call_request(p_json, 'Atualizar curso', r_msg); end;
+    */
+    /* Requisições */
+    member function concluir(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_action varchar2, r_msg out clob) return pljson is
+        retorno pljson;
+    begin
+        self.set_acao('DELETE');
+
+        if p_sis_course_id is null or p_action is null then
+            r_msg := '{"error" : "p_sis_course_id/p_action não pode ser nulo"}';
+            return null;
+        end if;
+
+        if lower(p_action) not in ('delete', 'conclude') then
+            r_msg := '{"error" : "p_action deve ser delete / conclude"}';
+            return null;
+        end if;
+
+        self.set_metodo(self.get_metodo||p_sis_course_id||'?event='||p_action);
+        retorno := self.call_request(null, 'Concluir um curso', r_msg);
+        self.set_default;
+        return retorno;
+        exception
+            when others then
+                self.set_default;
+                r_msg := 'o_canvas.concluir: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+                return null;
+    end;
+
+    overriding member function deletar  (SELF IN OUT NOCOPY o_canvas_curso, p_id varchar2, r_msg out clob) return pljson is
+    begin
+        r_msg := '{"error" : "método não existe para essa entidade"}';
+        return null;
+    end;
+
+    member function liberar_eliminar(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, r_msg out clob) return pljson is
+        retorno pljson;
+    begin
+        self.set_acao('DELETE');
+        if p_sis_course_id is null then
+            r_msg := '{"error" : "p_sis_course_id não pode ser nulo"}';
+            return null;
+        end if;
+
+        self.set_metodo(self.get_metodo||p_sis_course_id||'/release');
+        retorno := self.call_request(null, 'Liberar e eliminar um curso', r_msg);
+        self.set_default;
+        return retorno;
+        exception
+            when others then
+                self.set_default;
+                r_msg := 'o_canvas.liberar_eliminar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+                return null;
+    end;
+
+    member function atualizar_configuracoes(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_json varchar2, r_msg out clob) return pljson is
+        retorno pljson;
+    begin
+        self.set_acao('PUT');
+        if p_sis_course_id is null or p_json is null then
+            r_msg := '{"error" : "p_sis_course_id/p_json não pode ser nulo"}';
+            return null;
+        end if;
+        retorno := pljson(p_json);
+        self.set_metodo(self.get_metodo||p_sis_course_id||'/settings');
+        retorno := self.call_request(null, 'Atualizar as configurações do Curso', r_msg);
+        self.set_default;
+        return retorno;
+        exception
+            when others then
+                self.set_default;
+                r_msg := 'o_canvas.atualizar_configuracoes: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+                return null;
+    end;
+    
     /* Buscas */
-    member function find_all(SELF IN OUT NOCOPY o_canvas_cursos, p_account_id number default null, p_state varchar2 default null, p_search_term varchar2 default null, p_include varchar2 default null, p_sis_term_id varchar2 default null, r_log out clob) return pljson_list is
+    member function find_all(SELF IN OUT NOCOPY o_canvas_curso, p_account_id number default null, p_state varchar2 default null, p_search_term varchar2 default null, p_include varchar2 default null, p_sis_term_id varchar2 default null, r_log out clob) return pljson_list is
         w_parametros  varchar2(1000);
         w_param_1     varchar2(100) := 'account_id=';
         w_param_2     varchar2(100) := 'state=';
         w_param_3     varchar2(100) := 'search_term=';
         w_param_4     varchar2(100) := 'include=';
         w_param_5     varchar2(100) := 'sis_term_id=';
+        retorno       pljson_list;
 
         procedure set_parametros(p_parametro varchar2, p_param varchar2) is
         begin
@@ -59,7 +152,7 @@ create or replace type body o_canvas_cursos is
             end if;
         end;
     begin
-
+        self.set_acao('GET');
         if p_account_id is not null then
             w_parametros   := '?' || w_param_1 || p_account_id;
         end if;
@@ -71,22 +164,25 @@ create or replace type body o_canvas_cursos is
 
         if w_parametros is not null then
             self.set_metodo(w_parametros);
-            return self.find_all(r_log);
+            retorno := self.find_all(r_log);
+            self.set_default;
+            return retorno;
         else   
             self.set_metodo(null);
-            return self.find_by_method(self.get_metodo, 'Find all cursos', false, r_log);
+            retorno := self.find_by_method(self.get_metodo, 'Find all cursos', false, r_log);
+            self.set_default;
+            return retorno;
         end if;
-        
     end;
 
-    member function find_sections_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_include varchar2 default null, r_msg out clob) return pljson_list is
+    member function find_sections_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_include varchar2 default null, r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
 
         w_metodo_listar_secoes  varchar2(100) := '/sections';
         w_param_1               varchar2(100)  := 'include=<include>';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_secoes;
@@ -96,9 +192,12 @@ create or replace type body o_canvas_cursos is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_section_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_section_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -107,7 +206,7 @@ create or replace type body o_canvas_cursos is
     end;
     
     /* Inscrições */
-    member function find_enrollments_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_role varchar2 default null, p_state varchar2 default null, r_msg out clob) return pljson_list is
+    member function find_enrollments_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_role varchar2 default null, p_state varchar2 default null, r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
@@ -115,7 +214,7 @@ create or replace type body o_canvas_cursos is
         w_metodo_listar_inscricoes  varchar2(100) := '/enrollments';
         w_param_1                   varchar2(100) := 'role=<role>';
         w_param_2                   varchar2(100) := 'state=<state>';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_inscricoes;
@@ -133,7 +232,9 @@ create or replace type body o_canvas_cursos is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_enrollments_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'Listar inscrições em um Curso', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
                 w_log := w_log || chr(10) || util.get_erro;
@@ -144,7 +245,7 @@ create or replace type body o_canvas_cursos is
     end;
 
     /* Atividades - Assignments */
-    member function find_assignments_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_search_term varchar2 default null, p_only_gradable_assignments boolean default false, r_msg out clob) return pljson_list is
+    member function find_assignments_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_search_term varchar2 default null, p_only_gradable_assignments boolean default false, r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
@@ -152,7 +253,7 @@ create or replace type body o_canvas_cursos is
         w_metodo_listar_atividades  varchar2(100) := '/assignments';
         w_param_1                   varchar2(100)  := 'search_term=<search_term>';
         w_param_2                   varchar2(100)  := 'only_gradable_assignments=<only_gradable_assignments>';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_atividades;
@@ -168,9 +269,12 @@ create or replace type body o_canvas_cursos is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_assignments_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_assignments_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -179,14 +283,14 @@ create or replace type body o_canvas_cursos is
     end;
     
     /* Cursos Modelo (BluePrint Courses) */
-    member function find_blueprint_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list is
+    member function find_blueprint_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
 
         w_metodo_listar_atividades  varchar2(100) := '/blueprint';
         w_param_1                   varchar2(100)  := 'template_id:';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_atividades;
@@ -196,9 +300,12 @@ create or replace type body o_canvas_cursos is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_blueprint_by_id', r_msg => r_msg);
+        retorno :=self.find_by_method(w_metodo, 'find_blueprint_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -206,13 +313,14 @@ create or replace type body o_canvas_cursos is
                 return null;
     end;
 
-    member function find_blueprint_associate_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list is
+    member function find_blueprint_associate_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
 
         w_metodo_listar_atividades  varchar2(100) := '/blueprint';
         w_param_1                   varchar2(100)  := 'template_id:';
+        retorno pljson_list;
 
     begin
         self.set_acao('GET');
@@ -223,9 +331,12 @@ create or replace type body o_canvas_cursos is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_blueprint_associate_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_blueprint_associate_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -233,14 +344,14 @@ create or replace type body o_canvas_cursos is
                 return null;
     end;
 
-    member function find_blueprint_migrate_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list is
+    member function find_blueprint_migrate_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
 
         w_metodo_listar_atividades  varchar2(100) := '/blueprint';
         w_param_1                   varchar2(100)  := 'template_id:';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_atividades;
@@ -250,9 +361,12 @@ create or replace type body o_canvas_cursos is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_blueprint_migrate_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_blueprint_migrate_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -260,7 +374,7 @@ create or replace type body o_canvas_cursos is
                 return null;
     end;
   
-    member function find_bp_migration_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list is
+    member function find_bp_migration_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
@@ -268,7 +382,7 @@ create or replace type body o_canvas_cursos is
         w_metodo_listar_atividades  varchar2(100) := '/blueprint';
         w_param_1                   varchar2(100)  := 'template_id:';
         w_param_2                   varchar2(100)  := 'migration_id:';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_atividades;
@@ -280,9 +394,12 @@ create or replace type body o_canvas_cursos is
         w_parametros   := w_parametros || '/' || w_param_2 || p_migration_id;
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_blueprint_migration_by_id', r_msg => r_msg);
+        retorno :=self.find_by_method(w_metodo, 'find_blueprint_migration_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -290,7 +407,7 @@ create or replace type body o_canvas_cursos is
                 return null;
     end;
     
-    member function find_bp_migration_detail_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list is
+    member function find_bp_migration_detail_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
@@ -298,7 +415,7 @@ create or replace type body o_canvas_cursos is
         w_metodo_listar_atividades  varchar2(100) := '/blueprint';
         w_param_1                   varchar2(100)  := 'template_id:';
         w_param_2                   varchar2(100)  := 'migration_id:';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_atividades;
@@ -310,9 +427,12 @@ create or replace type body o_canvas_cursos is
         w_parametros   := w_parametros || '/' || w_param_2 || p_migration_id || '/details';
 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_migration_detail_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_migration_detail_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -320,13 +440,13 @@ create or replace type body o_canvas_cursos is
                 return null;
     end;
     
-    member function find_bp_subscription_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_subscription_id varchar2 default 'default', r_msg out clob) return pljson_list is
+    member function find_bp_subscription_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_subscription_id varchar2 default 'default', r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
         w_metodo_listar_atividades  varchar2(100) := '/blueprint';
         w_param_1                   varchar2(100)  := 'subscription_id:';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar_atividades;
@@ -336,9 +456,12 @@ create or replace type body o_canvas_cursos is
         end if;
         
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_bp_subscription_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_bp_subscription_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -347,21 +470,24 @@ create or replace type body o_canvas_cursos is
     end;
    
     /* Conjuntos de Grupos */
-    member function find_group_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, r_msg out clob) return pljson_list is
+    member function find_group_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, r_msg out clob) return pljson_list is
         w_log         clob;
         w_metodo      varchar2(1000);
         w_parametros  varchar2(1000);
 
         w_metodo_listar  varchar2(100) := '/group_categories';
-
+        retorno pljson_list;
     begin
         self.set_acao('GET');
         w_parametros := self.get_metodo || p_sis_course_id || w_metodo_listar;
                 
         w_metodo := self.entidade || w_parametros;
-        return self.find_by_method(w_metodo, 'find_group_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_group_by_id', r_msg => r_msg);
+        self.set_default;
+        return retorno;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -369,10 +495,11 @@ create or replace type body o_canvas_cursos is
                 return null;
     end;
 
-    member function create_group(SELF IN OUT NOCOPY o_canvas_cursos, p_json varchar2, p_sis_course_id varchar2, r_msg out clob) return pljson is
+    member function create_group(SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, p_sis_course_id varchar2, r_msg out clob) return pljson is
         w_log       clob;
         w_msg       clob;
         w_resposta  clob;
+        retorno     pljson;
     begin
         self.set_acao('GET');
         w_log      := 'Inicio: Criar um conjunto de grupos';
@@ -382,16 +509,22 @@ create or replace type body o_canvas_cursos is
         
         w_log := w_log || chr(10) || w_msg;
         
-        if self.get_show_log then
-            util.plob(w_log, p_debug => true);
-        end if;
-        
+        self.set_default;
         r_msg := w_log;
         if w_resposta is not null and w_resposta like '{%' then
             return pljson(w_resposta);
         else
             return null;
         end if;
+    exception
+            when others then
+                self.set_default;
+                w_log := w_log || chr(10) || util.get_erro;
+                if self.get_show_log then
+                    util.plob(w_log, p_debug => true);
+                end if;
+                r_msg := w_log;
+                return null;
     end;
     
     member procedure controller(p_sql in varchar2, is_batch in boolean, p_verify_id in boolean, r_msg out clob) is

@@ -1,3 +1,4 @@
+set define off
 create or replace type o_canvas_periodo_academico under o_canvas (
 
     /*
@@ -25,7 +26,7 @@ create or replace type o_canvas_periodo_academico under o_canvas (
     /**
     * <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type principal do canvas</p>
     *
-    * <p> Este objeto representa a entidade Período Academico (Enrollments) </p>
+    * <p> Este objeto representa a entidade Período Academico (Terms) </p>
     * <strong>Examplo:</strong>
     * <pre>
     * declare
@@ -61,7 +62,11 @@ create or replace type o_canvas_periodo_academico under o_canvas (
     /* Construtores */
     constructor function o_canvas_periodo_academico return self as result,
 
+    /* Gets and sets */
+    member procedure set_default_attribute(SELF IN OUT NOCOPY o_canvas_periodo_academico),
+
     /* Requisições */
+    overriding member function inserir_em_lote(SELF IN OUT NOCOPY o_canvas_periodo_academico, p_json clob, r_msg out clob) return pljson,
     /**
     * <p>Criar um Período Acadêmico</p>
     * <p>Criar uma nova períodos acadêmicos ou ciclos acadêmicos.</p>
@@ -171,8 +176,8 @@ create or replace type o_canvas_periodo_academico under o_canvas (
     * @param  p_json  json a ser enviado.
     * @param  r_msg   log.
     * @return resposta da requisição.
-    *  */
-    member function inserir  (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_json varchar2, r_msg out clob) return pljson,
+    *  
+    member function inserir  (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_json varchar2, r_msg out clob) return pljson,*/
     
     /**
     * <p>Atualizar Período Acadêmico</p>
@@ -228,12 +233,13 @@ create or replace type o_canvas_periodo_academico under o_canvas (
     *         }' "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<old_sis_term_id>"
     *     </code>
     * </p>
+    *
+    * @param  p_old_sis_term_id   term_id a ser atualizado.
     * @param  p_json              json a ser enviado.
     * @param  r_msg               log.
-    * @param  p_old_sis_term_id   term_id a ser atualizado.
     * @return resposta da requisição.
-    */
-    member function atualizar(SELF IN OUT NOCOPY o_canvas_periodo_academico, p_json varchar2, r_msg out clob) return pljson,
+    
+    member function atualizar (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_old_sis_term_id varchar2, p_json varchar2, r_msg out clob) return pljson,*/
 
     /**
     * <p>Excluir um Período Acadêmico.</p>
@@ -264,8 +270,8 @@ create or replace type o_canvas_periodo_academico under o_canvas (
     * @param  p_sis_term_id   *1
     * @param  p_account_id    *2
     * @return resposta da requisição.
-    */
-    member function deletar  (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_sis_term_id varchar2, p_account_id number, r_msg out clob) return pljson,
+    
+    member function deletar  (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_sis_term_id varchar2, p_account_id number, r_msg out clob) return pljson,*/
 
     /* Buscas */
     /**
@@ -300,7 +306,7 @@ create or replace type o_canvas_periodo_academico under o_canvas (
     * @param  p_state         *2
     * @return resposta da requisição.
     */
-    member function find_all (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_account_id number default null, p_include varchar2 default null, p_state varchar2 default null, r_log out clob) return pljson_list
+    member function find_all (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_account_id number default null, p_include varchar2 default null, p_state varchar2 default null, r_msg out clob) return pljson_list
 )NOT FINAL
 /
 sho err

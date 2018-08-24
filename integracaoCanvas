@@ -41,10 +41,19 @@ echo "Token: " ${Token} >> /home/oracle/integracaoCanvas.log
 #Executar a cURL
 if [[ "$Action" == "GET" || "$Action" == "DELETE" ]]      #Metodo GET ou DELETE
 then
-  echo "Vai executar GET/DELETE ..." >> /home/oracle/integracaoCanvas.log
-  echo "/usr/bin/curl -X ${Action} -H 'Authorization: Bearer ${Token}' 'https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}'" >> /home/oracle/integracaoCanvas.log
 
-  /usr/bin/curl -X ${Action} -H "Authorization: Bearer ${Token}" "https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}" 2>> /home/oracle/integracaoCanvas.log
+  if [[ "$Action" == "DELETE" && "$JSON"  ]]
+  then
+    echo "Vai executar DELETE ..." >> /home/oracle/integracaoCanvas.log
+    echo "/usr/bin/curl -X ${Action} -H 'Authorization: Bearer ${Token}' -H 'Content-Type: application/json' -d '${JSON}' 'https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}'" >> /home/oracle/integracaoCanvas.log
+
+    /usr/bin/curl -X ${Action} -H "Authorization: Bearer ${Token}" -H "Content-Type: application/json" -d "$JSON" "https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}"
+  else
+    echo "Vai executar GET/DELETE ..." >> /home/oracle/integracaoCanvas.log
+    echo "/usr/bin/curl -X ${Action} -H 'Authorization: Bearer ${Token}' 'https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}'" >> /home/oracle/integracaoCanvas.log
+
+    /usr/bin/curl -X ${Action} -H "Authorization: Bearer ${Token}" "https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}" 2>> /home/oracle/integracaoCanvas.log
+  fi
 elif [[ "$Action" == "POST"  || "$Action" == "PUT" ]]   #Metodo PUT ou POST com JSON
 then
   echo "Vai executar POST/PUT ..." >> /home/oracle/integracaoCanvas.log

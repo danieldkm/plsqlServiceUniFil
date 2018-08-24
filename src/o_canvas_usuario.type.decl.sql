@@ -1,4 +1,5 @@
-create or replace type o_canvas_usuarios under o_canvas (
+set define off
+create or replace type o_canvas_usuario under o_canvas (
     /*
     Copyright (c) 2018 Daniel Keyti Morita
 
@@ -28,26 +29,21 @@ create or replace type o_canvas_usuarios under o_canvas (
     * <strong>Exemplo:</strong>
     * <pre>
     * declare
-    *   mycanvas o_canvas := o_canvas_usuarios;
+    *   mycanvas o_canvas := o_canvas_usuario;
     *   usuarioInserido pljson; 
     *   w_msg clob; 
     * begin
     *   cursoInserido := mycanvas.inserir(
     *   '{
-    *       "course":
-    *       {
-    *           "account_id" : 1,
-    *           "name":"Nombre del Curso",
-    *           "code" : "C001",
-    *           "end_at":"2017-01-07T02:59:00Z",
-    *           "start_at":"2016-01-06T03:00:00Z",
-    *           "restrict_to_dates": false,
-    *           "sis_master_id":"30952006",
-    *           "sis_term_id" : "term",
-    *           "sis_course_id" :"30952006"
-    *       },
-    *       "publish": true,
-    *       "import_content": true
+    *       "user": {
+    *           "full_name": "Juan Perez",
+    *           "short_name" : "Juan",
+    *           "sortable_name" : "Juan Perez",
+    *           "email": "juan.perez@noreply.com"
+    *           "login": "juan.perez",
+    *           "password" : "this is the password",
+    *           "sis_user_id": "sis00001"
+    *       }
     *   }', w_msg);
     *   usuarioInserido.print;
     * end;
@@ -56,8 +52,11 @@ create or replace type o_canvas_usuarios under o_canvas (
     * @headcom
     */
 
-    constructor function o_canvas_usuarios return self as result,
-    
+    /* Construtores */
+    constructor function o_canvas_usuario return self as result,
+
+    /* Gets and sets */
+    member procedure set_default_attribute(SELF IN OUT NOCOPY o_canvas_usuario),
     /**
     * <p>Criar Usuários</p>
     * <p>Criar um grupo de usuários e não retorna informações dentro do corpo da resposta. Criação é diferido e os valores resultantes podem ser consumida pela fila correspondente ou de retorno de chamada.</p>
@@ -119,9 +118,8 @@ create or replace type o_canvas_usuarios under o_canvas (
     * @param  p_json  json a ser enviado;
     * @param  r_msg   log.
     * @return resposta da requisição.
-    * 
-    */
-    member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuarios, p_json clob    , r_msg out clob) return pljson,
+    *     
+    member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuario, p_json clob    , r_msg out clob) return pljson,*/
 
     /**
     * <p>Criar um usuário</p>
@@ -170,8 +168,8 @@ create or replace type o_canvas_usuarios under o_canvas (
     * @param  r_msg   log.
     * @return reposta da requisição.
     * 
-    */
-    member function inserir         (SELF IN OUT NOCOPY o_canvas_usuarios, p_json varchar2, r_msg out clob) return pljson,
+    
+    member function inserir         (SELF IN OUT NOCOPY o_canvas_usuario, p_json varchar2, r_msg out clob) return pljson,*/
 
     /**
     * <p>Atualizar Usuário</p>
@@ -222,8 +220,8 @@ create or replace type o_canvas_usuarios under o_canvas (
     * @param  r_msg   log.
     * @return reposta da requisição.
     * 
-    */
-    member function atualizar       (SELF IN OUT NOCOPY o_canvas_usuarios, p_json varchar2, p_user_id varchar2, r_msg out clob) return pljson,
+    
+    member function atualizar (SELF IN OUT NOCOPY o_canvas_usuario, p_user_id varchar2, p_json varchar2, r_msg out clob) return pljson,*/
 
 
     /**
@@ -238,8 +236,7 @@ create or replace type o_canvas_usuarios under o_canvas (
     * 
     * @return resposta da requisição.
     */
-    member function unir            (SELF IN OUT NOCOPY o_canvas_usuarios, p_from_user_id varchar2, p_to_user_id varchar2, r_msg out clob) return pljson,
-
+    member function unir            (SELF IN OUT NOCOPY o_canvas_usuario, p_from_user_id varchar2, p_to_user_id varchar2, r_msg out clob) return pljson,
 
     /**
     * <p>Obter o progresso de um usuário em um curso.</p>
@@ -253,7 +250,7 @@ create or replace type o_canvas_usuarios under o_canvas (
     * 
     * @return resposta.
     */
-    member function find_progress_by_id(SELF IN OUT NOCOPY o_canvas_usuarios, user_id varchar2, p_sis_user_id varchar2, r_msg out clob) return pljson_list,
+    member function find_progress_by_id(SELF IN OUT NOCOPY o_canvas_usuario, user_id varchar2, p_sis_user_id varchar2, r_msg out clob) return pljson_list,
 
     /**
         <p>Listar Usuários</p>
@@ -288,7 +285,7 @@ create or replace type o_canvas_usuarios under o_canvas (
         @param  r_log           log.
         @return reposta da requisição de busca.
     */
-    member function find_all           (SELF IN OUT NOCOPY o_canvas_usuarios, p_account_id number default null, p_search_term varchar2 default null, r_log out clob) return pljson_list
+    member function find_all           (SELF IN OUT NOCOPY o_canvas_usuario, p_account_id number default null, p_search_term varchar2 default null, r_log out clob) return pljson_list
 )NOT FINAL
 /
 sho err

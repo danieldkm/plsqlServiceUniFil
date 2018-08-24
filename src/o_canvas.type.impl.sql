@@ -1,3 +1,4 @@
+set define off
 /*
     Copyright (c) 2018 Daniel Keyti Morita
 
@@ -24,25 +25,34 @@ create or replace type body o_canvas is
     /* Construtores */
     constructor function o_canvas return self as result is
     begin
-        self.script   := '/home/oracle/integracaoCanvas';
-        self.show_log := 'true';
+        self.script    := '/home/oracle/integracaoCanvas';
+        self.show_log  := 'true';
+
+        self.variables := new pljson;
+        self.variables.put('script', self.script);
+        self.variables.put('show_log', self.show_log);
         return;
     end;
 
     constructor function o_canvas(pnm_entidade varchar2) return self as result is
     begin
-        self.entidade := pnm_entidade;
-        self.script   := '/home/oracle/integracaoCanvas';
-        self.show_log := 'true';
+        self.entidade  := pnm_entidade;
+        self.script    := '/home/oracle/integracaoCanvas';
+        self.show_log  := 'true';
+        self.variables := new pljson;
+        self.variables.put('entidade', self.entidade);
+        self.variables.put('script', self.script);
+        self.variables.put('show_log', self.show_log);
         return;
     end;
     
     /* GETs and SETs */
-    member procedure set_entidade(p_entidade varchar2) is begin self.entidade := p_entidade; end;
-    member procedure set_script  (p_script   varchar2) is begin self.script   := p_script;   end;
-    member procedure set_metodo  (p_metodo   varchar2) is begin self.metodo   := p_metodo;   end;
-    member procedure set_acao    (p_acao     varchar2) is begin self.acao     := p_acao;     end;
-    member procedure set_show_log(p_show_log varchar2) is begin self.show_log := p_show_log; end;
+    member procedure set_entidade (p_entidade varchar2) is begin self.entidade  := p_entidade;  end;
+    member procedure set_script   (p_script   varchar2) is begin self.script    := p_script;    end;
+    member procedure set_metodo   (p_metodo   varchar2) is begin self.metodo    := p_metodo;    end;
+    member procedure set_acao     (p_acao     varchar2) is begin self.acao      := p_acao;      end;
+    member procedure set_show_log (p_show_log varchar2) is begin self.show_log  := p_show_log;  end;
+    member procedure set_variables(p_variables pljson)  is begin self.variables := p_variables; end;
 
     member function get_entidade return varchar2 is begin return self.entidade; end;
     member function get_script(SELF IN OUT NOCOPY o_canvas)   return varchar2 is 
@@ -63,6 +73,119 @@ create or replace type body o_canvas is
         else
             return false;
         end if;
+    end;
+    member function get_variables return pljson is begin return self.variables; end;
+
+    member procedure set_default(SELF IN OUT NOCOPY o_canvas) is
+        v_pljson pljson;
+    begin
+        v_pljson := self.get_variables;
+        if v_pljson.exist('entidade') then
+            self.set_entidade(v_pljson.get('entidade').get_string);
+        end if;
+
+        if v_pljson.exist('script') then
+            self.set_script(v_pljson.get('script').get_string);
+        end if;
+
+        if v_pljson.exist('metodo') then
+            self.set_metodo(v_pljson.get('metodo').get_string);
+        end if;
+
+        if v_pljson.exist('acao') then
+            self.set_acao(v_pljson.get('acao').get_string);
+        end if;
+    end;
+
+    /* CRUD */
+    member function inserir_em_lote(SELF IN OUT NOCOPY o_canvas, p_json clob, r_msg out clob) return pljson is
+        retorno pljson;
+    begin 
+        self.set_acao('POST'); 
+        self.set_metodo(self.get_metodo || '/create');
+        if p_json is not null then
+            retorno := self.call_request(p_json, 'Inserir: '|| self.get_entidade ||'''s', r_msg);
+            self.set_default;
+            return retorno;
+        else
+            self.set_default; 
+            r_msg := '{"error": "p_json não pode ser nulo"}';
+            return null;
+        end if;
+    exception
+        when others then
+            self.set_default;
+            r_msg := 'o_canvas.inserir_em_lote' || CHR(10) || 'Error:' || util.get_erro;
+            return null;
+    end;
+
+    member function inserir (SELF IN OUT NOCOPY o_canvas, p_json varchar2, r_msg out clob) return pljson is
+        retorno pljson;
+    begin 
+        self.set_acao('POST');
+        if p_json is not null then
+            retorno := self.call_request(p_json, 'Inserir: ' || self.get_entidade , r_msg);
+            self.set_default;
+            return retorno;
+        else 
+            self.set_default;
+            r_msg := '{"error": "p_json não pode ser nulo"}';
+            return null;
+        end if;
+    exception
+        when others then
+            self.set_default;
+            r_msg := 'o_canvas.inserir: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            return null;
+    end;
+
+    member function atualizar (SELF IN OUT NOCOPY o_canvas, p_id varchar2, p_json varchar2, r_msg out clob) return pljson is
+        retorno pljson;
+    begin 
+        self.set_acao('PUT');
+        if p_id is not null then
+            self.set_metodo(self.get_metodo||p_id);
+        else 
+            self.set_default;
+            r_msg := '{"error": "p_id não pode ser nulo"}';
+            return null;
+        end if;
+        
+        if p_json is not null then
+            retorno := self.call_request(p_json, 'Atualizar: ' || self.get_entidade , r_msg);
+            self.set_default;
+            return retorno;
+        else
+            self.set_default;
+            r_msg := '{"error": "p_json não pode ser nulo"}';
+            return null;
+        end if;
+    exception
+        when others then
+            self.set_default;
+            r_msg := 'o_canvas.atualizar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            return null;
+    end;
+
+    member function deletar  (SELF IN OUT NOCOPY o_canvas, p_id varchar2, r_msg out clob) return pljson is
+        retorno pljson;
+    begin 
+        self.set_acao('DELETE');
+        if p_id is not null then
+            self.set_metodo(self.get_metodo || p_id);
+            retorno := self.call_request(null, 'Deletar: ' || self.get_entidade, r_msg);
+            self.set_default;
+            return  retorno;
+        else
+            self.set_default;
+            r_msg := '{"error": "p_id não pode ser nulo"}';
+            return null;
+        end if;
+    exception
+        when others then
+            self.set_default;
+            r_msg := 'o_canvas.deletar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            return null;
     end;
 
     /* Requisições */
@@ -229,6 +352,7 @@ create or replace type body o_canvas is
             util.plob(w_log, p_debug => true);
         end if;
         r_msg := w_log;
+        self.set_default;
         return w_pljson_list;
         exception
             when others then
@@ -294,9 +418,11 @@ create or replace type body o_canvas is
         if self.get_show_log then
             util.plob(w_log, p_debug => true);
         end if;
+        self.set_default;
         return w_pljson_list;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
@@ -337,9 +463,11 @@ create or replace type body o_canvas is
         if self.get_show_log then
             util.plob(w_log, p_debug => true);
         end if;
+        self.set_default;
         return w_pljson;
         exception
             when others then
+                self.set_default;
                 w_log := w_log || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);

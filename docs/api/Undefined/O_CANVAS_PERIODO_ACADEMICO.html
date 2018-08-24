@@ -1,0 +1,683 @@
+<HTML xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exslt="http://exslt.org/common">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>PL/JSON</TITLE>
+<LINK TITLE="Style" HREF="../stylesheet.css" TYPE="text/css" REL="stylesheet">
+<!--
+        sameCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesLowerCase=FALSE
+        namesUpperCase=FALSE
+        namesDefaultCase=TRUE
+        defaultNamesCase=UPPER
+        namesFromCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesToCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-->
+</HEAD>
+<BODY BGCOLOR="white">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+<H2>
+<FONT SIZE="-1"></FONT>
+<BR>Subtype&nbsp;O_CANVAS_PERIODO_ACADEMICO</H2> <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type principal do canvas</p>
+ <p> Este objeto representa a entidade PerÃ­odo Academico (Enrollments) </p>
+ <strong>Examplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas_periodo_academico;
+   resposta pljson;
+   w_msg clob;
+ begin
+   resposta := mycanvas.inserir(
+   '{
+       "term": {
+           "account_id": "1",
+           "sis_term_id": "Sp2014",
+           "name": "Spring 2014",
+           "start_at": "2016-01-10T18:48:00Z",
+           "end_at": "2017-01-10T18:48:00Z",
+           "student_start_at": "2017-07-12T03:00:00Z",
+           "student_end_at": "2017-07-12T03:00:00Z",
+           "teacher_start_at": "2017-07-12T03:00:00Z",
+           "teacher_end_at": "2017-07-23T02:59:59Z",
+           "assistant_start_at": "2017-07-23T02:59:59Z",
+           "assistant_end_at": "2017-07-23T02:59:59Z",
+           "designer_start_at": "2017-07-11T03:00:00Z",
+           "designer_end_at": "2017-07-16T02:59:59Z"
+       }
+   }', w_msg);
+   resposta.print;
+ end;
+ </pre>
+<P></P>
+<DL></DL>
+<HR>
+<P></P>
+<A NAME="field_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Field Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=O_CANVAS
+       localTypeName=
+       schema=
+       fieldType=O_CANVAS
+       synonymsFile=,,--><!--Object Type in same schema--><A href="O_CANVAS.html">O_CANVAS</A></CODE></FONT></TD><TD><CODE>SUPERTYPE</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="type_summary"></A><A NAME="method_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="ATUALIZAR"></A><TD><CODE><B><A HREF="#ATUALIZAR(O_CANVAS_PERIODO_ACADEMICO,VARCHAR2,CLOB)">ATUALIZAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, P_JSON IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Atualizar PerÃ­odo AcadÃªmico</p>
+ <p>Atualiza os dados de um perÃ­odo acadÃªmico.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>name                </td><td>string      </td><td>(requerido) Nome completo.</td></tr>
+             <tr><td>old_sis_term_id     </td><td>string      </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>sis_term_id         </td><td>string      </td><td>(opcional) Novo ID interno del sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>student_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>student_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>teacher_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>teacher_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>assistant_start_at  </td><td>datetime    </td><td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>assistant_end_at    </td><td>datetime    </td><td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>designer_start_at   </td><td>datetime    </td><td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>designer_end_at     </td><td>datetime    </td><td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>account_id          </td><td>integer     </td><td>(opcional) ID da conta de onde pretende para atualizar o perÃ­odo acadÃªmico.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="DELETAR"></A><TD><CODE><B><A HREF="#DELETAR(O_CANVAS_PERIODO_ACADEMICO,VARCHAR2,NUMBER,CLOB)">DELETAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, P_SIS_TERM_ID IN VARCHAR2, P_ACCOUNT_ID IN NUMBER, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Excluir um PerÃ­odo AcadÃªmico.</p>
+ <p>Exclui dados de um perÃ­odo acadÃªmico.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>account_id*1    </td><td>integer </td><td>(requerido) ID da conta em que o perÃ­odo acadÃªmico estÃ¡ criado.</td></tr>
+             <tr><td>sis_term_id*2   </td><td>string  </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) designado para o perÃ­odo acadÃªmico.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<sis_term_id>?account_id=<account_id>"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_ALL"></A><TD><CODE><B><A HREF="#FIND_ALL(O_CANVAS_PERIODO_ACADEMICO,NUMBER,VARCHAR2,VARCHAR2,CLOB)">FIND_ALL</A></B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, P_ACCOUNT_ID IN NUMBER DEFAULT NULL, P_INCLUDE IN VARCHAR2 DEFAULT NULL, P_STATE IN VARCHAR2 DEFAULT NULL, R_LOG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar PerÃ­odos AcadÃªmicos</p>
+ <p>Lista todos os perÃ­odos acadÃªmicos ou ciclos acadÃªmicos previamente criadas dentro da conta.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>account_id*1  </td><td>integer </td><td>(opcional) ID da conta de onde vocÃª quer para listar os perÃ­odos letivos.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="INSERIR"></A><TD><CODE><B><A HREF="#INSERIR(O_CANVAS_PERIODO_ACADEMICO,VARCHAR2,CLOB)">INSERIR</A></B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, P_JSON IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Criar um PerÃ­odo AcadÃªmico</p>
+ <p>Criar uma nova perÃ­odos acadÃªmicos ou ciclos acadÃªmicos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>name</td>
+                 <td>string</td>
+                 <td>(requerido) Nome completo.</td>
+             </tr>
+             <tr>
+                 <td>sis_term_id</td>
+                 <td>string</td>
+                 <td>(requerido) PerÃ­odo acadÃªmico identificador dentro do sistema.</td>
+             </tr>
+             <tr>
+                 <td>start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>student_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>student_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>teacher_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>teacher_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>assistant_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>assistant_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>designer_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>designer_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>account_id</td>
+                 <td>integer</td>
+                 <td>(opcional) ID da conta de onde pretende para criar o perÃ­odo acadÃªmico.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#O_CANVAS_PERIODO_ACADEMICO">O_CANVAS_PERIODO_ACADEMICO</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="trigger_summary"></A><A NAME="field_detail"></A><A NAME="type_detail"></A><A NAME="method_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="ATUALIZAR(O_CANVAS_PERIODO_ACADEMICO,VARCHAR2,CLOB)"></A>
+<H3>ATUALIZAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>ATUALIZAR</B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, <BR>                                        P_JSON IN VARCHAR2, <BR>                                        R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Atualizar PerÃ­odo AcadÃªmico</p>
+ <p>Atualiza os dados de um perÃ­odo acadÃªmico.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>name                </td><td>string      </td><td>(requerido) Nome completo.</td></tr>
+             <tr><td>old_sis_term_id     </td><td>string      </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>sis_term_id         </td><td>string      </td><td>(opcional) Novo ID interno del sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>student_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>student_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>teacher_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>teacher_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>assistant_start_at  </td><td>datetime    </td><td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>assistant_end_at    </td><td>datetime    </td><td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>designer_start_at   </td><td>datetime    </td><td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>designer_end_at     </td><td>datetime    </td><td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>account_id          </td><td>integer     </td><td>(opcional) ID da conta de onde pretende para atualizar o perÃ­odo acadÃªmico. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumido.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d
+         '{
+             "term": {
+                 "account_id": "1",
+                 "sis_term_id": "Sp2014",
+                 "name": "Spring 2014",
+                 "start_at": "2016-01-10T18:48:00Z",
+                 "end_at": "2017-01-10T18:48:00Z",
+                 "student_start_at": "2017-07-12T03:00:00Z",
+                 "student_end_at": "2017-07-12T03:00:00Z",
+                 "teacher_start_at": "2017-07-12T03:00:00Z",
+                 "teacher_end_at": "2017-07-23T02:59:59Z",
+                 "assistant_start_at": "2017-07-23T02:59:59Z",
+                 "assistant_end_at": "2017-07-23T02:59:59Z",
+                 "designer_start_at": "2017-07-11T03:00:00Z",
+                 "designer_end_at": "2017-07-16T02:59:59Z"
+             }
+         }' "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<old_sis_term_id>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a ser enviado.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="DELETAR(O_CANVAS_PERIODO_ACADEMICO,VARCHAR2,NUMBER,CLOB)"></A>
+<H3>DELETAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>DELETAR</B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, <BR>                                      P_SIS_TERM_ID IN VARCHAR2, <BR>                                      P_ACCOUNT_ID IN NUMBER, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Excluir um PerÃ­odo AcadÃªmico.</p>
+ <p>Exclui dados de um perÃ­odo acadÃªmico.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>account_id*1    </td><td>integer </td><td>(requerido) ID da conta em que o perÃ­odo acadÃªmico estÃ¡ criado.</td></tr>
+             <tr><td>sis_term_id*2   </td><td>string  </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) designado para o perÃ­odo acadÃªmico.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<sis_term_id>?account_id=<account_id>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_TERM_ID</CODE> -
+              *1</DD>
+<DD>
+<CODE>P_ACCOUNT_ID</CODE> -
+              *2</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_ALL(O_CANVAS_PERIODO_ACADEMICO,NUMBER,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_ALL</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_ALL</B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, <BR>                                            P_ACCOUNT_ID IN NUMBER DEFAULT NULL, <BR>                                            P_INCLUDE IN VARCHAR2 DEFAULT NULL, <BR>                                            P_STATE IN VARCHAR2 DEFAULT NULL, <BR>                                            R_LOG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar PerÃ­odos AcadÃªmicos</p>
+ <p>Lista todos os perÃ­odos acadÃªmicos ou ciclos acadÃªmicos previamente criadas dentro da conta.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>account_id*1  </td><td>integer </td><td>(opcional) ID da conta de onde vocÃª quer para listar os perÃ­odos letivos. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumido.<td></tr>
+             <tr><td>state*2       </td><td>string  </td><td>(opcional) Valores permitidos: active, deleted, all<td></tr>
+             <tr><td>include*3     </td><td>string  </td><td>(opcional) Se o valor permitido Ã© enviado, em seguida, os detalhes das datas de cada tipo de papel traz. Valor permitido: overrides<td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/terms?include[]=<include>&state=<state>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_ACCOUNT_ID</CODE> -
+              *1</DD>
+<DD>
+<CODE>P_INCLUDE</CODE> -
+              *3</DD>
+<DD>
+<CODE>P_STATE</CODE> -
+              *2</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="INSERIR(O_CANVAS_PERIODO_ACADEMICO,VARCHAR2,CLOB)"></A>
+<H3>INSERIR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>INSERIR</B>(SELF IN OUT NOCOPY O_CANVAS_PERIODO_ACADEMICO, <BR>                                      P_JSON IN VARCHAR2, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Criar um PerÃ­odo AcadÃªmico</p>
+ <p>Criar uma nova perÃ­odos acadÃªmicos ou ciclos acadÃªmicos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>name</td>
+                 <td>string</td>
+                 <td>(requerido) Nome completo.</td>
+             </tr>
+             <tr>
+                 <td>sis_term_id</td>
+                 <td>string</td>
+                 <td>(requerido) PerÃ­odo acadÃªmico identificador dentro do sistema.</td>
+             </tr>
+             <tr>
+                 <td>start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>student_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>student_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>teacher_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>teacher_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>assistant_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>assistant_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>designer_start_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>designer_end_at</td>
+                 <td>date</td>
+                 <td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
+             </tr>
+             <tr>
+                 <td>account_id</td>
+                 <td>integer</td>
+                 <td>(opcional) ID da conta de onde pretende para criar o perÃ­odo acadÃªmico. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumido.</td>
+             </tr>
+         </tbody>
+     </table>
+ <p>
+ <p>
+     <code>
+         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d
+         '{
+             "term": {
+                 "account_id": "1",
+                 "sis_term_id": "Sp2014",
+                 "name": "Spring 2014",
+                 "start_at": "2016-01-10T18:48:00Z",
+                 "end_at": "2017-01-10T18:48:00Z",
+                 "student_start_at": "2017-07-12T03:00:00Z",
+                 "student_end_at": "2017-07-12T03:00:00Z",
+                 "teacher_start_at": "2017-07-12T03:00:00Z",
+                 "teacher_end_at": "2017-07-23T02:59:59Z",
+                 "assistant_start_at": "2017-07-23T02:59:59Z",
+                 "assistant_end_at": "2017-07-23T02:59:59Z",
+                 "designer_start_at": "2017-07-11T03:00:00Z",
+                 "designer_end_at": "2017-07-16T02:59:59Z"
+             }
+         }' "https://<apim host and port>/<university>/api/lms/v1/terms"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a ser enviado.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS_PERIODO_ACADEMICO"></A>
+<H3>O_CANVAS_PERIODO_ACADEMICO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS_PERIODO_ACADEMICO</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="trigger_detail"></A>
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+</BODY>
+</HTML>

@@ -1,3 +1,4 @@
+set define off
 /*
     Copyright (c) 2018 Daniel Keyti Morita
 
@@ -19,36 +20,52 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 */
-create or replace type body o_canvas_usuarios is
+create or replace type body o_canvas_usuario is
 
-    constructor function o_canvas_usuarios return self as result is
+    /* Construtores */
+    constructor function o_canvas_usuario return self as result is
     begin
-        self.set_entidade('users');
-        self.set_metodo('/sis_user_id:');
+        self.set_default_attribute;
         return;
     end;
 
-    member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuarios, p_json clob, r_msg out clob) return pljson is
+    /* Gets and sets */
+    member procedure set_default_attribute(SELF IN OUT NOCOPY o_canvas_usuario) is
+    begin
+        self.set_entidade('users');
+        self.set_metodo('/sis_user_id:');
+    end;
+
+    /*member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuario, p_json clob, r_msg out clob) return pljson is
     begin 
         self.set_acao('POST'); 
         self.set_metodo(self.get_metodo || '/create');
         return self.call_request(p_json, 'Inserir usuarios', r_msg);
     exception
         when others then
-            r_msg := 'o_canvas_usuarios.inserir_usuarios' || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := 'o_canvas_usuario.inserir_usuarios' || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
-    member function inserir         (SELF IN OUT NOCOPY o_canvas_usuarios, p_json varchar2, r_msg out clob) return pljson is begin self.set_acao('POST'); return self.call_request(p_json, 'Inserir curso'  , r_msg); end;
+    member function inserir         (SELF IN OUT NOCOPY o_canvas_usuario, p_json varchar2, r_msg out clob) return pljson is begin self.set_acao('POST'); return self.call_request(p_json, 'Inserir curso'  , r_msg); end;
 
-    member function atualizar (SELF IN OUT NOCOPY o_canvas_usuarios, p_json varchar2, p_user_id varchar2, r_msg out clob) return pljson is 
+    member function atualizar (SELF IN OUT NOCOPY o_canvas_usuario, p_user_id varchar2, p_json varchar2, r_msg out clob) return pljson is 
     begin 
-        self.set_acao('PUT');  
-        self.set_metodo(self.get_metodo || p_user_id);
-        return self.call_request(p_json, 'Atualizar curso', r_msg); 
-    end;
+        self.set_acao('PUT');
+        if p_user_id is not null then
+            self.set_metodo(self.get_metodo||p_user_id);
+        else 
+            r_msg := '{"error": "p_user_id não pode ser nulo"}';
+            return '{"error": "p_user_id não pode ser nulo"}';
+        end if;
+        return self.call_request(p_json, 'Atualizar Usuário' , r_msg);
+    exception
+        when others then
+            r_msg := 'o_canvas_usuario.atualizar' || CHR(10) || 'Error:' || util.get_erro;
+            return '{"error": '||util.get_erro||'}';
+    end;*/
 
-    member function unir(SELF IN OUT NOCOPY o_canvas_usuarios, p_from_user_id varchar2, p_to_user_id varchar2, r_msg out clob) return pljson is
+    member function unir(SELF IN OUT NOCOPY o_canvas_usuario, p_from_user_id varchar2, p_to_user_id varchar2, r_msg out clob) return pljson is
         w_log       clob;
         w_msg       clob;
         w_resposta  pljson;
@@ -69,7 +86,7 @@ create or replace type body o_canvas_usuarios is
         return w_resposta;
     end;
 
-    member function find_progress_by_id(SELF IN OUT NOCOPY o_canvas_usuarios, user_id varchar2, p_sis_user_id varchar2, r_msg out clob) return pljson_list is
+    member function find_progress_by_id(SELF IN OUT NOCOPY o_canvas_usuario, user_id varchar2, p_sis_user_id varchar2, r_msg out clob) return pljson_list is
         w_log            clob;
         w_metodo         varchar2(1000);
         w_parametros     varchar2(1000);
@@ -93,7 +110,7 @@ create or replace type body o_canvas_usuarios is
                 return null;
     end;
 
-    member function find_all(SELF IN OUT NOCOPY o_canvas_usuarios, p_account_id number default null, p_search_term varchar2 default null, r_log out clob) return pljson_list is
+    member function find_all(SELF IN OUT NOCOPY o_canvas_usuario, p_account_id number default null, p_search_term varchar2 default null, r_log out clob) return pljson_list is
         w_parametros  varchar2(1000);
         w_param_1     varchar2(100) := 'account_id=';
         w_param_2     varchar2(100) := 'search_term=';

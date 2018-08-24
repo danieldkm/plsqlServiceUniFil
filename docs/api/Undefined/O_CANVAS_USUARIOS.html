@@ -1,0 +1,667 @@
+<HTML xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exslt="http://exslt.org/common">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>PL/JSON</TITLE>
+<LINK TITLE="Style" HREF="../stylesheet.css" TYPE="text/css" REL="stylesheet">
+<!--
+        sameCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesLowerCase=FALSE
+        namesUpperCase=FALSE
+        namesDefaultCase=TRUE
+        defaultNamesCase=UPPER
+        namesFromCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesToCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-->
+</HEAD>
+<BODY BGCOLOR="white">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+<H2>
+<FONT SIZE="-1"></FONT>
+<BR>Subtype&nbsp;O_CANVAS_USUARIOS</H2> <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type do usuÃ¡rio</p>
+ <p> Este objeto representa a entidade UsuÃ¡rio (User) </p>
+ <strong>Exemplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas_usuarios;
+   usuarioInserido pljson;
+   w_msg clob;
+ begin
+   cursoInserido := mycanvas.inserir(
+   '{
+       "course":
+       {
+           "account_id" : 1,
+           "name":"Nombre del Curso",
+           "code" : "C001",
+           "end_at":"2017-01-07T02:59:00Z",
+           "start_at":"2016-01-06T03:00:00Z",
+           "restrict_to_dates": false,
+           "sis_master_id":"30952006",
+           "sis_term_id" : "term",
+           "sis_course_id" :"30952006"
+       },
+       "publish": true,
+       "import_content": true
+   }', w_msg);
+   usuarioInserido.print;
+ end;
+ </pre>
+<P></P>
+<DL></DL>
+<HR>
+<P></P>
+<A NAME="field_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Field Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=O_CANVAS
+       localTypeName=
+       schema=
+       fieldType=O_CANVAS
+       synonymsFile=,,--><!--Object Type in same schema--><A href="O_CANVAS.html">O_CANVAS</A></CODE></FONT></TD><TD><CODE>SUPERTYPE</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="type_summary"></A><A NAME="method_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="ATUALIZAR"></A><TD><CODE><B><A HREF="#ATUALIZAR(O_CANVAS_USUARIOS,VARCHAR2,VARCHAR2,CLOB)">ATUALIZAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, P_JSON IN VARCHAR2, P_USER_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Atualizar UsuÃ¡rio</p>
+ <p>Atualiza os dados do usuÃ¡rio.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id         </td><td>string  </td><td>(requerido) ID identificador do usuÃ¡rio no LMS.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_ALL"></A><TD><CODE><B><A HREF="#FIND_ALL(O_CANVAS_USUARIOS,NUMBER,VARCHAR2,CLOB)">FIND_ALL</A></B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, P_ACCOUNT_ID IN NUMBER DEFAULT NULL, P_SEARCH_TERM IN VARCHAR2 DEFAULT NULL, R_LOG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <p>Listar UsuÃ¡rios</p>
+<p>Listar todos os usuÃ¡rios criados anteriormente dentro da conta.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_PROGRESS_BY_ID"></A><TD><CODE><B><A HREF="#FIND_PROGRESS_BY_ID(O_CANVAS_USUARIOS,VARCHAR2,VARCHAR2,CLOB)">FIND_PROGRESS_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, USER_ID IN VARCHAR2, P_SIS_USER_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Obter o progresso de um usuÃ¡rio em um curso.</p>
+ <p>Devolve a informaÃ§Ã£o relativa ao progresso de um usuÃ¡rio em um curso determinado.</p>
+ <p>users/<user_id>/progress?sis_course_id=<sis_course_id></p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="INSERIR"></A><TD><CODE><B><A HREF="#INSERIR(O_CANVAS_USUARIOS,VARCHAR2,CLOB)">INSERIR</A></B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, P_JSON IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Criar um usuÃ¡rio</p>
+ <p>Criar um usuÃ¡rio individual e retorna a entidade de usuÃ¡rio criada.</p>
+ <p>
+     <table>
+         <thead>
+         <tr>
+             <td>Campo</td>
+             <td>Tipo</td>
+             <td>ComentÃ¡rios</td>
+         </tr>
+             <tr><td>full_name           </td><td>string  </td><td>Nome completo.</td></tr>
+             <tr><td>short_name          </td><td>string  </td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
+             <tr><td>sortable_name       </td><td>string  </td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
+             <tr><td>email               </td><td>string  </td><td>EndereÃ§o de e-mail.</td></tr>
+             <tr><td>login               </td><td>string  </td><td>(requerido) Identificador de entrada.</td></tr>
+             <tr><td>password            </td><td>string  </td><td>Senha.</td></tr>
+             <tr><td>sis_user_id         </td><td>string  </td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
+             <tr><td>auth_provider_id    </td><td>string  </td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
+         </thead>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "user": {
+                 "full_name": "Juan Perez",
+                 "short_name" : "Juan",
+                 "sortable_name" : "Juan Perez",
+                 "email": "juan.perez@noreply.com",
+                 "login": "juan.perez",
+                 "password" : "this is the password",
+                 "sis_user_id": "sis00001",
+                 "auth_provider_id": ""
+             }
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/users"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="INSERIR_USUARIOS"></A><TD><CODE><B><A HREF="#INSERIR_USUARIOS(O_CANVAS_USUARIOS,CLOB,CLOB)">INSERIR_USUARIOS</A></B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, P_JSON IN CLOB, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Criar UsuÃ¡rios</p>
+ <p>Criar um grupo de usuÃ¡rios e nÃ£o retorna informaÃ§Ãµes dentro do corpo da resposta.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#O_CANVAS_USUARIOS">O_CANVAS_USUARIOS</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="UNIR"></A><TD><CODE><B><A HREF="#UNIR(O_CANVAS_USUARIOS,VARCHAR2,VARCHAR2,CLOB)">UNIR</A></B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, P_FROM_USER_ID IN VARCHAR2, P_TO_USER_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Unir um usuÃ¡rio com outro.</p>
+ <p>Unificar dois usuÃ¡rios em um sÃ³.</TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="trigger_summary"></A><A NAME="field_detail"></A><A NAME="type_detail"></A><A NAME="method_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="ATUALIZAR(O_CANVAS_USUARIOS,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>ATUALIZAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>ATUALIZAR</B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, <BR>                                        P_JSON IN VARCHAR2, <BR>                                        P_USER_ID IN VARCHAR2, <BR>                                        R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Atualizar UsuÃ¡rio</p>
+ <p>Atualiza os dados do usuÃ¡rio.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id         </td><td>string  </td><td>(requerido) ID identificador do usuÃ¡rio no LMS. (CANVAS_ID)</td></tr>
+             <tr><td>full_name       </td><td>string  </td><td>(opcional) Nome completo.</td></tr>
+             <tr><td>short_name      </td><td>string  </td><td>(opcional) O nome que serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
+             <tr><td>sortable_name   </td><td>string  </td><td>(opcional) Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
+             <tr><td>email           </td><td>string  </td><td>(opcional) EndereÃ§o de e-mail.</td></tr>
+             <tr><td>login           </td><td>string  </td><td>Identificador de entreda. (Requerido se vocÃª precisa para atualizar senha ou sis_user_id)</td></tr>
+             <tr><td>password        </td><td>string  </td><td>(opcional) Senha.</td></tr>
+             <tr><td>sis_user_id     </td><td>string  </td><td>(opcional) Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d
+         '{
+             "user": {
+                 "full_name": "Juan Perez",
+                 "short_name" : "Juan",
+                 "sortable_name" : "Juan Perez",
+                 "email": "juan.perez@noreply.com"
+                 "login": "juan.perez",
+                 "password" : "this is the password",
+                 "sis_user_id": "sis00001"
+             }
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/users/<user_id>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a ser inserido.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>reposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_ALL(O_CANVAS_USUARIOS,NUMBER,VARCHAR2,CLOB)"></A>
+<H3>FIND_ALL</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_ALL</B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, <BR>                                            P_ACCOUNT_ID IN NUMBER DEFAULT NULL, <BR>                                            P_SEARCH_TERM IN VARCHAR2 DEFAULT NULL, <BR>                                            R_LOG OUT CLOB)</PRE>
+<DL>
+<DD><p>Listar UsuÃ¡rios</p>
+<p>Listar todos os usuÃ¡rios criados anteriormente dentro da conta. Este serviÃ§o Ã© paginado.</p>
+<p>
+<table>
+<thead>
+<tr>
+<td>Campo</td>
+<td>Tipo</td>
+<td>ComentÃ¡rios</td>
+</tr>
+</thead>
+<tbody>
+<tr><td>account_id 1*</td>  <td>integer</td> <td>(opcional) ID da conta / sub - conta onde vocÃª quer para listar os usuÃ¡rios. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumido.</td></tr>
+<tr><td>search_term 2*</td> <td>string</td>  <td>(opcional) SequÃªncia de caracteres (pelo menos 3), para ser utilizado como padrÃ£o de busca em SIS_ID dados, nome, login_id ou e-mail.</td></tr>
+</tbody>
+</table>
+</p>
+<p>
+<code>
+curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+"https://<apim host and port>/<university>/api/lms/v1/
+users?account_id=<account_id>&search_term=<search_term>"
+</code>
+</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_ACCOUNT_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_SEARCH_TERM</CODE> -
+              2*</DD>
+<DD>
+<CODE>R_LOG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>reposta da requisiÃ§Ã£o de busca.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_PROGRESS_BY_ID(O_CANVAS_USUARIOS,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_PROGRESS_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_PROGRESS_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, <BR>                                                       USER_ID IN VARCHAR2, <BR>                                                       P_SIS_USER_ID IN VARCHAR2, <BR>                                                       R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Obter o progresso de um usuÃ¡rio em um curso.</p>
+ <p>Devolve a informaÃ§Ã£o relativa ao progresso de um usuÃ¡rio em um curso determinado.</p>
+ <p>users/<user_id>/progress?sis_course_id=<sis_course_id></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>USER_ID</CODE> -
+              (requerido) ID identificador do usuario no LMS. (canvas_id)</DD>
+<DD>
+<CODE>P_SIS_USER_ID</CODE> -
+              (requerido) ID identificador do curso no SIS.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="INSERIR(O_CANVAS_USUARIOS,VARCHAR2,CLOB)"></A>
+<H3>INSERIR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>INSERIR</B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, <BR>                                      P_JSON IN VARCHAR2, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Criar um usuÃ¡rio</p>
+ <p>Criar um usuÃ¡rio individual e retorna a entidade de usuÃ¡rio criada.</p>
+ <p>
+     <table>
+         <thead>
+         <tr>
+             <td>Campo</td>
+             <td>Tipo</td>
+             <td>ComentÃ¡rios</td>
+         </tr>
+             <tr><td>full_name           </td><td>string  </td><td>Nome completo.</td></tr>
+             <tr><td>short_name          </td><td>string  </td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
+             <tr><td>sortable_name       </td><td>string  </td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
+             <tr><td>email               </td><td>string  </td><td>EndereÃ§o de e-mail.</td></tr>
+             <tr><td>login               </td><td>string  </td><td>(requerido) Identificador de entrada.</td></tr>
+             <tr><td>password            </td><td>string  </td><td>Senha.</td></tr>
+             <tr><td>sis_user_id         </td><td>string  </td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
+             <tr><td>auth_provider_id    </td><td>string  </td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
+         </thead>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "user": {
+                 "full_name": "Juan Perez",
+                 "short_name" : "Juan",
+                 "sortable_name" : "Juan Perez",
+                 "email": "juan.perez@noreply.com",
+                 "login": "juan.perez",
+                 "password" : "this is the password",
+                 "sis_user_id": "sis00001",
+                 "auth_provider_id": ""
+             }
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/users"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a ser inserido.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>reposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="INSERIR_USUARIOS(O_CANVAS_USUARIOS,CLOB,CLOB)"></A>
+<H3>INSERIR_USUARIOS</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>INSERIR_USUARIOS</B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, <BR>                                               P_JSON IN CLOB, <BR>                                               R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Criar UsuÃ¡rios</p>
+ <p>Criar um grupo de usuÃ¡rios e nÃ£o retorna informaÃ§Ãµes dentro do corpo da resposta. CriaÃ§Ã£o Ã© diferido e os valores resultantes podem ser consumida pela fila correspondente ou de retorno de chamada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>full_name           </td><td>string</td><td>Nome completo.</td></tr>
+             <tr><td>short_name          </td><td>string</td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
+             <tr><td>sortable_name       </td><td>string</td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
+             <tr><td>email               </td><td>string</td><td>EndereÃ§o de e-mail.</td></tr>
+             <tr><td>login               </td><td>string</td><td>(requerido) Identificador de entrada.</td></tr>
+             <tr><td>password            </td><td>string</td><td>Senha.</td></tr>
+             <tr><td>sis_user_id         </td><td>string</td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
+             <tr><td>auth_provider_id    </td><td>string</td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '[
+                 {
+                     "user": {
+                         "full_name": "Juan Perez",
+                         "short_name" : "Juan",
+                         "sortable_name" : "Juan Perez",
+                         "email": "juan.perez@noreply.com",
+                         "login": "juan.perez",
+                         "password" : "this is the password",
+                         "sis_user_id": "sis00001",
+                         "auth_provider_id": ""
+                     }
+                 },
+                 {
+                     "user": {
+                         "full_name": "Juan Martinez",
+                         "short_name" : "Juan",
+                         "sortable_name" : "Juan Martinez",
+                         "email": "juan.martinez@noreply.com",
+                         "login": "juan.martinez",
+                         "password" : "this is the password",
+                         "sis_user_id": "sis00002",
+                         "auth_provider_id": ""
+                     }
+                 }
+         ]'
+         "https://<apim host and port>/<university>/api/lms/v1/users/create"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a ser enviado;</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS_USUARIOS"></A>
+<H3>O_CANVAS_USUARIOS</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS_USUARIOS</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="UNIR(O_CANVAS_USUARIOS,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>UNIR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>UNIR</B>(SELF IN OUT NOCOPY O_CANVAS_USUARIOS, <BR>                                   P_FROM_USER_ID IN VARCHAR2, <BR>                                   P_TO_USER_ID IN VARCHAR2, <BR>                                   R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Unir um usuÃ¡rio com outro.</p>
+ <p>Unificar dois usuÃ¡rios em um sÃ³. Remove usuÃ¡rio identificado pelo from_user_id e mover todos os dados para o usuÃ¡rio identificado por to_user_id.</p>
+ <p>users/<from_user_id>/merge_into/<to_user_id></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_FROM_USER_ID</CODE> -
+              (requerido) ID do usuÃ¡rio a ser excluÃ­do.</DD>
+<DD>
+<CODE>P_TO_USER_ID</CODE> -
+              (requerido) ID do usuÃ¡rio que conterÃ¡ os dados e login de ambos usuÃ¡rios.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="trigger_detail"></A>
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+</BODY>
+</HTML>

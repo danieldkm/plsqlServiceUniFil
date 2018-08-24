@@ -1,4 +1,5 @@
-create or replace type o_canvas_cursos under o_canvas (
+set define off
+create or replace type o_canvas_curso under o_canvas (
     /*
     Copyright (c) 2018 Daniel Keyti Morita
 
@@ -28,7 +29,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * <strong>Exemplo:</strong>
     * <pre>
     * declare
-    *   mycanvas o_canvas := o_canvas_cursos;
+    *   mycanvas o_canvas := o_canvas_curso;
     *   cursoInserido pljson; 
     *   w_msg clob; 
     * begin
@@ -57,9 +58,148 @@ create or replace type o_canvas_cursos under o_canvas (
     */
 
     /* Construtores */
-    constructor function o_canvas_cursos return self as result,
+    constructor function o_canvas_curso return self as result,
+    /* Gets and sets */
+    member procedure set_default_attribute(SELF IN OUT NOCOPY o_canvas_curso),
 
     /* Requisições */
+    /**
+    * <p>Concluir um curso</p>
+    * <p>Concluir ou excluir um curso existente.</p>
+    * <p>
+    *     <table>
+    *         <thead>
+    *             <tr>
+    *                 <td>Campo</td>
+    *                 <td>Tipo</td>
+    *                 <td>Comentários</td>
+    *             </tr>
+    *         </thead>
+    *         <tbody>
+    *             <tr>
+    *                 <td>sis_course_id 1*</td>
+    *                 <td>string</td>
+    *                 <td>Identificador do curso.</td>
+    *             </tr>
+    *             <tr>
+    *                 <td>action 2*</td>
+    *                 <td>string</td>
+    *                 <td>Valores permitidos: delete ou conclude.</td>
+    *             </tr>
+    *         </tbody>
+    *     </table>
+    * </p>
+    * <p>
+    *     <code>
+    *         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+    *         "https://<apim host and port>/<university>/api/lms/v1/
+    *         courses/sis_course_id:<sis_course_id>" -d event=<action>
+    *     
+    *         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+    *         "https://<apim host and port>/<university>/api/lms/v1/
+    *         courses/sis_course_id:<sis_course_id>?event=<action>"
+    *     </code>
+    * </p>
+    * 
+    * @param  p_sis_course_id 1*
+    * @param  p_action        2*
+    * @param  r_msg           log.
+    * @return reposta da requisição
+    */
+    member function concluir(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_action varchar2, r_msg out clob) return pljson,
+    overriding member function deletar  (SELF IN OUT NOCOPY o_canvas_curso, p_id varchar2, r_msg out clob) return pljson,
+
+    /**
+    * <p>Liberar e eliminar um curso</p>
+    * <p>Liberar o SIS_ID de um curso e depois excluí-lo.</p>
+    * <p>
+    *     <table>
+    *         <thead>
+    *             <tr>
+    *                 <td>Campo</td>
+    *                 <td>Tipo</td>
+    *                 <td>Comentários</td>
+    *             </tr>
+    *         </thead>
+    *         <tbody>
+    *             <tr>
+    *                 <td>sis_course_id 1*</td>
+    *                 <td>string</td>
+    *                 <td>(requerido) Identificador do curso.</td>
+    *             </tr>
+    *         </tbody>
+    *     </table>
+    * </p>
+    * <p>
+    *     <code>
+    *         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+    *         "https://<apim host and port>/<university>/api/lms/v1/
+    *         courses/sis_course_id:<sis_course_id>/release"
+    *     </code>
+    * </p>
+    * 
+    * @param  p_sis_course_id 1*
+    * @param  r_msg           log.
+    * @return     reposta da requisição.
+    */
+    member function liberar_eliminar(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, r_msg out clob) return pljson,
+    
+    /**
+    * <p>Atualizar as configurações do Curso</p>
+    * <p>Atualiza algumas configurações de um curso.</p>
+    * <p>
+    *     <table>
+    *         <thead>
+    *             <tr>
+    *                 <td>Campo</td>
+    *                 <td>Tipo</td>
+    *                 <td>Comentários</td>
+    *             </tr>
+    *         </thead>
+    *         <tbody>
+    *             <tr><td>sis_course_id 1*                    </td><td>string  </td><td>Identificador do curso.</td></tr>
+    *             <tr><td>allow_student_discussion_topics     </td><td>boolean </td><td>Permitir que os alunos criem temas de discussão.</td></tr>
+    *             <tr><td>allow_student_forum_attachments     </td><td>boolean </td><td>Permitir que os alunos anexem arquivos às discussões.</td></tr>
+    *             <tr><td>allow_student_discussion_editing    </td><td>boolean </td><td>Permitir aos alunos editar ou excluir suas próprias mensagens de discussão.</td></tr>
+    *             <tr><td>allow_student_organized_groups      </td><td>boolean </td><td>Permita que os alunos organizem seus próprios grupos.</td></tr>
+    *             <tr><td>hide_final_grades                   </td><td>boolean </td><td>Ocultar os totais no resumo das notas dos alunos.</td></tr>
+    *             <tr><td>hide_distribution_graphs            </td><td>boolean </td><td>Ocultar gráficos de distribuição de notas de alunos.</td></tr>
+    *             <tr><td>lock_all_announcements              </td><td>boolean </td><td>Desativar Comentários em anúncios.</td></tr>
+    *             <tr><td>restrict_student_past_view          </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos após a data de término.</td></tr>
+    *             <tr><td>restrict_student_future_view        </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos antes da data de início.</td></tr>
+    *             <tr><td>show_announcements_on_home_page     </td><td>boolean </td><td>Mostrar os anúncios mais recentes na página inicial do curso (se houver um Wiki, por padrão ele tem cinco anúncios, configuráveis através de home_page_announcement_limit).</td></tr>
+    *             <tr><td>home_page_announcement_limit        </td><td>integer </td><td>Limitar o número de anúncios na página inicial, se estiver habilitado através de show_announcements_on_home_page.</td></tr>
+    *         </tbody>
+    *     </table>
+    * </p>
+    * <p>
+    *     <code>
+    *         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+    *         -d '{
+    *             "allow_student_discussion_topics" : false,
+    *             "allow_student_forum_attachments" : false,
+    *             "allow_student_discussion_editing" : false,
+    *             "allow_student_organized_groups" : false,
+    *             "hide_final_grades" : false,
+    *             "hide_distribution_graphs" : false,
+    *             "lock_all_announcements" : false,
+    *             "restrict_student_past_view" : false,
+    *             "restrict_student_future_view" : false,
+    *             "show_announcements_on_home_page" : false,
+    *             "home_page_announcement_limit" : 100
+    *         }'
+    *         "https://<apim host and port>/<university>/api/lms/v1/
+    *         courses/sis_course_id:<sis_course_id>/settings"
+    *     </code>
+    * </p>
+    * 
+    * @param  p_sis_course_id 1*
+    * @param  p_json          json com as configuraçãoes
+    * @param  r_msg           log.
+    * 
+    * @return resposta da requisição.
+    */
+    member function atualizar_configuracoes(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_json varchar2, r_msg out clob) return pljson,
     /**
     * <p>Criar um Curso</p>
     * <p>Criar um curso individual e retorna a entidade atual criada.</p>
@@ -116,31 +256,54 @@ create or replace type o_canvas_cursos under o_canvas (
     * @param  r_msg   log.
     * 
     * @return resposta da requisição.
-    *  
+    * 
+    member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_curso, p_json clob    , r_msg out clob) return pljson,
+    member function inserir       (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,
+    member function atualizar     (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,
     */
-    member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_cursos, p_json clob    , r_msg out clob) return pljson,
-    member function inserir       (SELF IN OUT NOCOPY o_canvas_cursos, p_json varchar2, r_msg out clob) return pljson,
-    member function atualizar     (SELF IN OUT NOCOPY o_canvas_cursos, p_json varchar2, r_msg out clob) return pljson,
 
     /* Buscas */
     /**
-        Listar Cursos
-        Lista todos os cursos criados anteriormente dentro da conta. Este serviço é paginado.
-
-        Campo       Tipo    Comentários
-        account_id  integer (opcional) ID de conta / sub-conta onde você deseja listar os cursos. Se o parâmetro não é enviado, por padrão, a conta root é assumida.
-        state       string  (opcional) Você pode usar o Estado para filtrar os cursos. Os valores permitidos são: created, claimed, available, completed, deleted, all. Se o parâmetro não for recebido, tendo em conta todos os estados, exceto deleted.
-        search_term string  (opcional) Sequência de caracteres ( pelo menos 3), para ser usado como dados de pesquisa padrão no nome do curso, código do curso ou SIS_ID.
-        include     string  (opcional) Você pode usar o valor total_students para que a informação iria ser adicionado ao número de alunos do estado: active e invited.
-        sis_term_id string  (opcional) O SIS_ID de um período acadêmico pode ser usado para filtrar os cursos. Se o parâmetro não for recebido, todos os períodos são considerados.
-
-    curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json" 
-    "https://<apim host and port>/<university>/api/lms/v1/
-    courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=<include>&sis_term_id=<sis_term_id>"
-
-
+    * <p>Listar Cursos</p>
+    * <p>Lista todos os cursos criados anteriormente dentro da conta. Este serviço é paginado.</p>
+    *     
+    * <p>
+    *     <table>
+    *         <thead>
+    *             <tr>
+    *                 <td>Campo</td>
+    *                 <td>Tipo</td>
+    *                 <td>Comentários</td>
+    *             </tr>
+    *         </thead>
+    *         <tbody>
+    *             <tr><td>account_id 1*</td><td>integer </td><td>(opcional) ID de conta / sub-conta onde você deseja listar os cursos. Se o parâmetro não é enviado, por padrão, a conta root é assumida.</td></tr>
+    *             <tr><td>state 2*     </td><td>string  </td><td>(opcional) Você pode usar o Estado para filtrar os cursos. Os valores permitidos são: created, claimed, available, completed, deleted, all. Se o parâmetro não for recebido, tendo em conta todos os estados, exceto deleted.</td></tr>
+    *             <tr><td>search_term 3*</td><td>string  </td><td>(opcional) Sequência de caracteres ( pelo menos 3), para ser usado como dados de pesquisa padrão no nome do curso, código do curso ou SIS_ID.</td></tr>
+    *             <tr><td>include 4*    </td><td>string  </td><td>(opcional) Você pode usar o valor total_students para que a informação iria ser adicionado ao número de alunos do estado: active e invited.</td></tr>
+    *             <tr><td>sis_term_id 5*</td><td>string  </td><td>(opcional) O SIS_ID de um período acadêmico pode ser usado para filtrar os cursos. Se o parâmetro não for recebido, todos os períodos são considerados.</td></tr>
+    *         </tbody>
+    *     </table>
+    * </p>
+    * <p>
+    *     <code>
+    *         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json" 
+    *         "https://<apim host and port>/<university>/api/lms/v1/
+    *         courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=<include>&sis_term_id=<sis_term_id>"
+    *     </code>
+    * </p>
+    * 
+    * @param  p_account_id    1*
+    * @param  p_state         2*
+    * @param  p_search_term   3*
+    * @param  p_include       4*
+    * @param  p_sis_term_id   5*
+    * @param  r_log           log.
+    * 
+    * @return respota da requisição.
+    * 
     */
-    member function find_all(SELF IN OUT NOCOPY o_canvas_cursos, p_account_id number default null, p_state varchar2 default null, p_search_term varchar2 default null, p_include varchar2 default null, p_sis_term_id varchar2 default null, r_log out clob) return pljson_list,
+    member function find_all(SELF IN OUT NOCOPY o_canvas_curso, p_account_id number default null, p_state varchar2 default null, p_search_term varchar2 default null, p_include varchar2 default null, p_sis_term_id varchar2 default null, r_log out clob) return pljson_list,
 
     /* Atividades - Assignments */
     /**
@@ -155,7 +318,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_assignments_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_search_term varchar2 default null, p_only_gradable_assignments boolean default false, r_msg out clob) return pljson_list,
+    member function find_assignments_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_search_term varchar2 default null, p_only_gradable_assignments boolean default false, r_msg out clob) return pljson_list,
 
     /* Seções */
     /**
@@ -169,7 +332,7 @@ create or replace type o_canvas_cursos under o_canvas (
     *
     * @return lista de json.
     */
-    member function find_sections_by_id   (SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_include varchar2 default null, r_msg out clob) return pljson_list,
+    member function find_sections_by_id   (SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_include varchar2 default null, r_msg out clob) return pljson_list,
 
     /* Inscrições */
     /**
@@ -184,7 +347,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_enrollments_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_role varchar2 default null, p_state varchar2 default null, r_msg out clob) return pljson_list,
+    member function find_enrollments_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_role varchar2 default null, p_state varchar2 default null, r_msg out clob) return pljson_list,
     
     /* Cursos Modelo (BluePrint Courses) */
     /**
@@ -198,7 +361,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_blueprint_by_id          (SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list,
+    member function find_blueprint_by_id          (SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list,
 
     /**
     * <p>Obter informação do curso associado.</p>
@@ -211,7 +374,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_blueprint_associate_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list,
+    member function find_blueprint_associate_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list,
 
     /**
     * <p>Lista de modelos de migração.</p>
@@ -224,7 +387,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_blueprint_migrate_by_id  (SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list,
+    member function find_blueprint_migrate_by_id  (SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', r_msg out clob) return pljson_list,
 
     /**
     * <p>Mostrar migração de um curso modelo.</p>
@@ -238,7 +401,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_bp_migration_by_id       (SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list,
+    member function find_bp_migration_by_id       (SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list,
 
     /**
     * <p>Obter detalhes de uma migração.</p>
@@ -252,7 +415,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_bp_migration_detail_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list,
+    member function find_bp_migration_detail_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_template_id varchar2 default 'default', p_migration_id varchar2, r_msg out clob) return pljson_list,
 
     /**
     * <p>Listar importações de um curso modelo.</p>
@@ -265,7 +428,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_bp_subscription_by_id    (SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, p_subscription_id varchar2 default 'default', r_msg out clob) return pljson_list,
+    member function find_bp_subscription_by_id    (SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, p_subscription_id varchar2 default 'default', r_msg out clob) return pljson_list,
     /* Conjuntos de Grupos */
     /**
     * <p>Listar conjuntos de grupos de um curso.</p>
@@ -278,7 +441,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function find_group_by_id(SELF IN OUT NOCOPY o_canvas_cursos, p_sis_course_id varchar2, r_msg out clob) return pljson_list,
+    member function find_group_by_id(SELF IN OUT NOCOPY o_canvas_curso, p_sis_course_id varchar2, r_msg out clob) return pljson_list,
 
     /**
     * <p>Criar um conjunto de grupos.</p>
@@ -302,7 +465,7 @@ create or replace type o_canvas_cursos under o_canvas (
     * 
     * @return lista de json.
     */
-    member function create_group    (SELF IN OUT NOCOPY o_canvas_cursos, p_json varchar2, p_sis_course_id varchar2, r_msg out clob) return pljson,
+    member function create_group    (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, p_sis_course_id varchar2, r_msg out clob) return pljson,
 
     /* Controles */
     /**

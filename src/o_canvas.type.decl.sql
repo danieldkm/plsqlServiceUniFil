@@ -1,3 +1,4 @@
+set define off
 create or replace type o_canvas as object (
 
     /*
@@ -40,11 +41,12 @@ create or replace type o_canvas as object (
     */
     
     /* Variáveis */
-    entidade varchar2(100),
-    script   varchar2(100),
-    metodo   varchar2(100),
-    acao     varchar2(100),
-    show_log varchar2(10),
+    entidade  varchar2(100),
+    script    varchar2(100),
+    metodo    varchar2(100),
+    acao      varchar2(100),
+    show_log  varchar2(10),
+    variables pljson,
     
     /* Construtores */
 
@@ -71,13 +73,21 @@ create or replace type o_canvas as object (
     member procedure set_metodo  (p_metodo   varchar2),
     member procedure set_acao    (p_acao     varchar2),
     member procedure set_show_log(p_show_log varchar2),
+    member procedure set_variables(p_variables pljson),
+    member procedure set_default(SELF IN OUT NOCOPY o_canvas),
     
     member function get_entidade return varchar2,
     member function get_script(SELF IN OUT NOCOPY o_canvas)   return varchar2,
-    member function get_metodo   return varchar2,
-    member function get_acao     return varchar2,
-    member function get_show_log return boolean,
-    
+    member function get_metodo    return varchar2,
+    member function get_acao      return varchar2,
+    member function get_show_log  return boolean,
+    member function get_variables return pljson,
+
+    /* CRUD */
+    member function inserir_em_lote(SELF IN OUT NOCOPY o_canvas, p_json clob, r_msg out clob) return pljson,
+    member function inserir (SELF IN OUT NOCOPY o_canvas, p_json varchar2, r_msg out clob) return pljson,
+    member function atualizar (SELF IN OUT NOCOPY o_canvas, p_id varchar2, p_json varchar2, r_msg out clob) return pljson,
+    member function deletar  (SELF IN OUT NOCOPY o_canvas, p_id varchar2, r_msg out clob) return pljson,
     /* Requisições */
     /**
     * <p>Executar comandos OS via JAVA <code>(Host_command3)</code>, 

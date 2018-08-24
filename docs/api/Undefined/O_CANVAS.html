@@ -1,0 +1,1147 @@
+<HTML xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exslt="http://exslt.org/common">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>PL/JSON</TITLE>
+<LINK TITLE="Style" HREF="../stylesheet.css" TYPE="text/css" REL="stylesheet">
+<!--
+        sameCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesLowerCase=FALSE
+        namesUpperCase=FALSE
+        namesDefaultCase=TRUE
+        defaultNamesCase=UPPER
+        namesFromCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesToCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-->
+</HEAD>
+<BODY BGCOLOR="white">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+<H2>
+<FONT SIZE="-1"></FONT>
+<BR>Object Type&nbsp;O_CANVAS</H2> <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type principal do canvas</p>
+
+ <strong>Examplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas;
+ begin
+   mycanvas.find_all.print();
+   mycanvas.find_by_id('ID da Entidade').print();
+ end;
+ </pre>
+<P></P>
+<DL></DL>
+<HR>
+<P></P>
+<A NAME="field_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Field Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=VARCHAR2(100)
+       localTypeName=
+       schema=
+       fieldType=VARCHAR2(100)
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->VARCHAR2(100)</CODE></FONT></TD><TD><CODE><B><A HREF="#ACAO">ACAO</A></B></CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=VARCHAR2(100)
+       localTypeName=
+       schema=
+       fieldType=VARCHAR2(100)
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->VARCHAR2(100)</CODE></FONT></TD><TD><CODE><B><A HREF="#ENTIDADE">ENTIDADE</A></B></CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=VARCHAR2(100)
+       localTypeName=
+       schema=
+       fieldType=VARCHAR2(100)
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->VARCHAR2(100)</CODE></FONT></TD><TD><CODE><B><A HREF="#METODO">METODO</A></B></CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=VARCHAR2(100)
+       localTypeName=
+       schema=
+       fieldType=VARCHAR2(100)
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->VARCHAR2(100)</CODE></FONT></TD><TD><CODE><B><A HREF="#SCRIPT">SCRIPT</A></B></CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=VARCHAR2(10)
+       localTypeName=
+       schema=
+       fieldType=VARCHAR2(10)
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->VARCHAR2(10)</CODE></FONT></TD><TD><CODE><B><A HREF="#SHOW_LOG">SHOW_LOG</A></B></CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="type_summary"></A><A NAME="method_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="CALL_REQUEST"></A><TD><CODE><B><A HREF="#CALL_REQUEST(O_CANVAS,VARCHAR2,VARCHAR2,CLOB)">CALL_REQUEST</A></B>(SELF IN OUT NOCOPY O_CANVAS, P_JSON IN VARCHAR2, P_DS_CHAMADA IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Padronizar a chamada das requisiÃ§Ãµes.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="CONTROLLER_PREPARE_JSON"></A><TD><CODE><B><A HREF="#CONTROLLER_PREPARE_JSON(PLJSON,VARCHAR2,VARCHAR2,BOOLEAN,CLOB)">CONTROLLER_PREPARE_JSON</A></B>(P_PLJSON IN PLJSON, P_ENTITY IN VARCHAR2, P_TEMPLATE IN VARCHAR2, VALIDATE_JSON IN BOOLEAN, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Objetivo: tratar o formato do json para enviar na requisiÃ§Ã£o.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=11 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="CONTROLLER_SAVE_REQUEST"></A><TD><CODE><B><A HREF="#CONTROLLER_SAVE_REQUEST(VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,BOOLEAN,BOOLEAN,CLOB,VARCHAR2,BOOLEAN)">CONTROLLER_SAVE_REQUEST</A></B>(P_SQL IN VARCHAR2, P_METHOD IN VARCHAR2, P_DS_ENTITY IN VARCHAR2, P_ENTITY IN VARCHAR2, P_NM_TABLE IN VARCHAR2, P_TEMPLATE IN VARCHAR2, IS_BATCH IN BOOLEAN, P_VERIFY_ID IN BOOLEAN, R_MSG OUT CLOB, P_METHOD_FIND IN VARCHAR2 DEFAULT '?&amp;search_term=', IS_UPDATE IN BOOLEAN DEFAULT TRUE)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Padronizar a forma de salvar/criar/enviar uma chamada de
+ requisiÃ§Ã£o.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=6 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="EXECUTE_HOSTCOMMAND"></A><TD><CODE><B><A HREF="#EXECUTE_HOSTCOMMAND(O_CANVAS,VARCHAR2,VARCHAR2,CLOB,CLOB,CLOB)">EXECUTE_HOSTCOMMAND</A></B>(SELF IN OUT NOCOPY O_CANVAS, P_ACTION IN VARCHAR2, P_METHOD IN VARCHAR2, P_JSON IN CLOB DEFAULT NULL, R_JSON OUT CLOB, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Executar comandos OS via JAVA <code>(Host_command3)</code>,
+ nesse caso foi criado um arquivo 'BASH' que estÃ¡ definido na variÃ¡vel <code>script</code>
+ que define o caminho do arquivo e o nome do mesmo e retorna o resultado.</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=2 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_ALL"></A><TD><CODE><B><A HREF="#FIND_ALL(O_CANVAS,CLOB)">FIND_ALL</A></B>(SELF IN OUT NOCOPY O_CANVAS, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Request GET, busca todos os dados conforme entidade.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BY_ID(O_CANVAS,VARCHAR2,CLOB)">FIND_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS, P_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Request GET, busca dados pelo id.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BY_METHOD"></A><TD><CODE><B><A HREF="#FIND_BY_METHOD(O_CANVAS,VARCHAR2,VARCHAR2,BOOLEAN,CLOB)">FIND_BY_METHOD</A></B>(SELF IN OUT NOCOPY O_CANVAS, P_METODO IN VARCHAR2, P_DS_CHAMADA IN VARCHAR2, HAS_PAGINATION IN BOOLEAN DEFAULT FALSE, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Request GET, busca por metodo
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#GET_ACAO">GET_ACAO</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#GET_ENTIDADE">GET_ENTIDADE</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#GET_METODO">GET_METODO</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="GET_SCRIPT"></A><TD><CODE><B><A HREF="#GET_SCRIPT(O_CANVAS)">GET_SCRIPT</A></B>(SELF IN OUT NOCOPY O_CANVAS)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION BOOLEAN
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION BOOLEAN
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION BOOLEAN</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#GET_SHOW_LOG">GET_SHOW_LOG</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=1 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#O_CANVAS">O_CANVAS</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Construtor para criar objeto vazio.</p>
+
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=1 
+		argumentCount=1 
+		predecessorCount=1 
+		siblingNoArgumentCount=1--><TD><CODE><B><A HREF="#O_CANVAS(VARCHAR2)">O_CANVAS</A></B>(PNM_ENTIDADE IN VARCHAR2)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Construtor <code>pljson</code> instÃ¢ncia defindo o nome da entidade.</p>
+
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=7 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="REQUEST"></A><TD><CODE><B><A HREF="#REQUEST(O_CANVAS,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,CLOB,CLOB)">REQUEST</A></B>(SELF IN OUT NOCOPY O_CANVAS, P_JSON IN VARCHAR2, P_ACTION IN VARCHAR2, P_METODO IN VARCHAR2, P_DS_CHAMADA IN VARCHAR2, R_JSON OUT CLOB, R_LOG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Request POST/PUT
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="REQUEST_GET"></A><TD><CODE><B><A HREF="#REQUEST_GET(O_CANVAS,VARCHAR2,VARCHAR2,CLOB,CLOB)">REQUEST_GET</A></B>(SELF IN OUT NOCOPY O_CANVAS, P_METODO IN VARCHAR2, P_DS_CHAMADA IN VARCHAR2, R_JSON OUT CLOB, R_LOG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Request GET
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_ACAO"></A><TD><CODE><B><A HREF="#SET_ACAO(VARCHAR2)">SET_ACAO</A></B>(P_ACAO IN VARCHAR2)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_ENTIDADE"></A><TD><CODE><B><A HREF="#SET_ENTIDADE(VARCHAR2)">SET_ENTIDADE</A></B>(P_ENTIDADE IN VARCHAR2)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_METODO"></A><TD><CODE><B><A HREF="#SET_METODO(VARCHAR2)">SET_METODO</A></B>(P_METODO IN VARCHAR2)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_SCRIPT"></A><TD><CODE><B><A HREF="#SET_SCRIPT(VARCHAR2)">SET_SCRIPT</A></B>(P_SCRIPT IN VARCHAR2)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_SHOW_LOG"></A><TD><CODE><B><A HREF="#SET_SHOW_LOG(VARCHAR2)">SET_SHOW_LOG</A></B>(P_SHOW_LOG IN VARCHAR2)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="trigger_summary"></A><A NAME="field_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Field Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="ACAO"></A>
+<H3>ACAO</H3>
+<PRE>
+        public VARCHAR2(100) <B>ACAO</B>
+</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+</DL>
+<HR>
+<A NAME="ENTIDADE"></A>
+<H3>ENTIDADE</H3>
+<PRE>
+        public VARCHAR2(100) <B>ENTIDADE</B>
+</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+</DL>
+<HR>
+<A NAME="METODO"></A>
+<H3>METODO</H3>
+<PRE>
+        public VARCHAR2(100) <B>METODO</B>
+</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+</DL>
+<HR>
+<A NAME="SCRIPT"></A>
+<H3>SCRIPT</H3>
+<PRE>
+        public VARCHAR2(100) <B>SCRIPT</B>
+</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+</DL>
+<HR>
+<A NAME="SHOW_LOG"></A>
+<H3>SHOW_LOG</H3>
+<PRE>
+        public VARCHAR2(10) <B>SHOW_LOG</B>
+</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+</DL>
+<HR>
+<A NAME="type_detail"></A><A NAME="method_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="CALL_REQUEST(O_CANVAS,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>CALL_REQUEST</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>CALL_REQUEST</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                           P_JSON IN VARCHAR2, <BR>                                           P_DS_CHAMADA IN VARCHAR2, <BR>                                           R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> Padronizar a chamada das requisiÃ§Ãµes.
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a ser enviado</DD>
+<DD>
+<CODE>P_DS_CHAMADA</CODE> -
+              descriÃ§Ã£o da chamada "INSERT"/"UPDATE"</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="CONTROLLER_PREPARE_JSON(PLJSON,VARCHAR2,VARCHAR2,BOOLEAN,CLOB)"></A>
+<H3>CONTROLLER_PREPARE_JSON</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2 <B>CONTROLLER_PREPARE_JSON</B>(P_PLJSON IN PLJSON, <BR>                                                        P_ENTITY IN VARCHAR2, <BR>                                                        P_TEMPLATE IN VARCHAR2, <BR>                                                        VALIDATE_JSON IN BOOLEAN, <BR>                                                        R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> Objetivo: tratar o formato do json para enviar na requisiÃ§Ã£o.
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_PLJSON</CODE> -
+              json a ser configurado.</DD>
+<DD>
+<CODE>P_ENTITY</CODE> -
+              nome da entidade.</DD>
+<DD>
+<CODE>P_TEMPLATE</CODE> -
+              template como referÃªncia.</DD>
+<DD>
+<CODE>VALIDATE_JSON</CODE> -
+              validar json caso true.</DD>
+</DT>
+<DT>Returns:
+          <DD>string do json tratado.</DD>
+</DT>
+<DT>Throws:
+        <DD>
+<CODE>E_FORMATO_JSON_INVALIDO</CODE> -
+               msg_formato_json_invalido.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="CONTROLLER_SAVE_REQUEST(VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,BOOLEAN,BOOLEAN,CLOB,VARCHAR2,BOOLEAN)"></A>
+<H3>CONTROLLER_SAVE_REQUEST</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>CONTROLLER_SAVE_REQUEST</B>(P_SQL IN VARCHAR2, <BR>                                                P_METHOD IN VARCHAR2, <BR>                                                P_DS_ENTITY IN VARCHAR2, <BR>                                                P_ENTITY IN VARCHAR2, <BR>                                                P_NM_TABLE IN VARCHAR2, <BR>                                                P_TEMPLATE IN VARCHAR2, <BR>                                                IS_BATCH IN BOOLEAN, <BR>                                                P_VERIFY_ID IN BOOLEAN, <BR>                                                R_MSG OUT CLOB, <BR>                                                P_METHOD_FIND IN VARCHAR2 DEFAULT '?&amp;search_term=', <BR>                                                IS_UPDATE IN BOOLEAN DEFAULT TRUE)</PRE>
+<DL>
+<DD> Padronizar a forma de salvar/criar/enviar uma chamada de
+ requisiÃ§Ã£o.
+ <b>Procedimento:</b>
+ <p>log_footer: log de rodapÃ©</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SQL</CODE> -
+              select a ser enviado.</DD>
+<DD>
+<CODE>P_METHOD</CODE> -
+              metodo a ser utilizado na  chamada.</DD>
+<DD>
+<CODE>P_DS_ENTITY</CODE> -
+              descriÃ§Ã£o da entidade a ser chamada (UsuÃ¡rio, Curso,...).</DD>
+<DD>
+<CODE>P_ENTITY</CODE> -
+              nome da entidade (user, course, term, etc).</DD>
+<DD>
+<CODE>P_NM_TABLE</CODE> -
+              nome da tabela que serÃ¡ atualizada no base oracle.</DD>
+<DD>
+<CODE>P_TEMPLATE</CODE> -
+              template padrÃ£o referente da entidade.</DD>
+<DD>
+<CODE>IS_BATCH</CODE> -
+              em lote.</DD>
+<DD>
+<CODE>P_VERIFY_ID</CODE> -
+              verifica se o id ja existe no canvas.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              <b>retorna</b> o log.</DD>
+<DD>
+<CODE>P_METHOD_FIND</CODE> -
+              metodo de busca para buscar o id no canvas.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="EXECUTE_HOSTCOMMAND(O_CANVAS,VARCHAR2,VARCHAR2,CLOB,CLOB,CLOB)"></A>
+<H3>EXECUTE_HOSTCOMMAND</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>EXECUTE_HOSTCOMMAND</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                            P_ACTION IN VARCHAR2, <BR>                                            P_METHOD IN VARCHAR2, <BR>                                            P_JSON IN CLOB DEFAULT NULL, <BR>                                            R_JSON OUT CLOB, <BR>                                            R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Executar comandos OS via JAVA <code>(Host_command3)</code>,
+ nesse caso foi criado um arquivo 'BASH' que estÃ¡ definido na variÃ¡vel <code>script</code>
+ que define o caminho do arquivo e o nome do mesmo e retorna o resultado.</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_ACTION</CODE> -
+              aÃ§Ã£o a ser requisitado (GET, POST, PUT, etc)</DD>
+<DD>
+<CODE>P_METHOD</CODE> -
+              metodo da chamada da requisiÃ§Ã£o</DD>
+<DD>
+<CODE>P_JSON</CODE> -
+              quando hÃ¡ persistÃªncia deve informar</DD>
+<DD>
+<CODE>R_JSON</CODE> -
+              <b>retorna</b> o resultado da requisiÃ§Ã£o, ler documentaÃ§Ã£o para mais detalhes</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              <b>retorna</b> as informaÃ§Ãµes para o log</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_ALL(O_CANVAS,CLOB)"></A>
+<H3>FIND_ALL</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_ALL</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                            R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> Request GET, busca todos os dados conforme entidade.
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BY_ID(O_CANVAS,VARCHAR2,CLOB)"></A>
+<H3>FIND_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>FIND_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                         P_ID IN VARCHAR2, <BR>                                         R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> Request GET, busca dados pelo id.
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_ID</CODE> -
+              id da entidade.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta, lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BY_METHOD(O_CANVAS,VARCHAR2,VARCHAR2,BOOLEAN,CLOB)"></A>
+<H3>FIND_BY_METHOD</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BY_METHOD</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                                  P_METODO IN VARCHAR2, <BR>                                                  P_DS_CHAMADA IN VARCHAR2, <BR>                                                  HAS_PAGINATION IN BOOLEAN DEFAULT FALSE, <BR>                                                  R_MSG OUT CLOB)</PRE>
+<DL>
+<DD>Request GET, busca por metodo
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_METODO</CODE> -
+              metodo a ser utilizado</DD>
+<DD>
+<CODE>P_DS_CHAMADA</CODE> -
+              descriÃ§Ã£o da chamada</DD>
+<DD>
+<CODE>HAS_PAGINATION</CODE> -
+              caso tenha paginaÃ§Ã£o realizar as chamadas com "paginadas"</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="GET_ACAO"></A>
+<H3>GET_ACAO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2 <B>GET_ACAO</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="GET_ENTIDADE"></A>
+<H3>GET_ENTIDADE</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2 <B>GET_ENTIDADE</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="GET_METODO"></A>
+<H3>GET_METODO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2 <B>GET_METODO</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="GET_SCRIPT(O_CANVAS)"></A>
+<H3>GET_SCRIPT</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION VARCHAR2
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION VARCHAR2
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION VARCHAR2 <B>GET_SCRIPT</B>(SELF IN OUT NOCOPY O_CANVAS)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="GET_SHOW_LOG"></A>
+<H3>GET_SHOW_LOG</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION BOOLEAN
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION BOOLEAN
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION BOOLEAN <B>GET_SHOW_LOG</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS"></A>
+<H3>O_CANVAS</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS</B>()</PRE>
+<DL>
+<DD> <p>Construtor para criar objeto vazio.</p>
+
+</DD>
+<DD>
+<DL>
+<DT>Returns:
+          <DD>A instÃ¢ncia <code>pljson</code>.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS(VARCHAR2)"></A>
+<H3>O_CANVAS</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS</B>(PNM_ENTIDADE IN VARCHAR2)</PRE>
+<DL>
+<DD> <p>Construtor <code>pljson</code> instÃ¢ncia defindo o nome da entidade.</p>
+
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>PNM_ENTIDADE</CODE> -
+              O nome da entidade que ira definir a variÃ¡vel <code>entidade</code>.</DD>
+</DT>
+<DT>Returns:
+          <DD>A instÃ¢ncia <code>pljson</code>.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="REQUEST(O_CANVAS,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,CLOB,CLOB)"></A>
+<H3>REQUEST</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>REQUEST</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                P_JSON IN VARCHAR2, <BR>                                P_ACTION IN VARCHAR2, <BR>                                P_METODO IN VARCHAR2, <BR>                                P_DS_CHAMADA IN VARCHAR2, <BR>                                R_JSON OUT CLOB, <BR>                                R_LOG OUT CLOB)</PRE>
+<DL>
+<DD> Request POST/PUT
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              json a set enviado.</DD>
+<DD>
+<CODE>P_METODO</CODE> -
+              metodo a ser realizado na busca</DD>
+<DD>
+<CODE>P_DS_CHAMADA</CODE> -
+              descriÃ§Ã£o da chamada</DD>
+<DD>
+<CODE>R_JSON</CODE> -
+              resposta da requisiÃ§Ã£o</DD>
+<DD>
+<CODE>R_LOG</CODE> -
+              log</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="REQUEST_GET(O_CANVAS,VARCHAR2,VARCHAR2,CLOB,CLOB)"></A>
+<H3>REQUEST_GET</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>REQUEST_GET</B>(SELF IN OUT NOCOPY O_CANVAS, <BR>                                    P_METODO IN VARCHAR2, <BR>                                    P_DS_CHAMADA IN VARCHAR2, <BR>                                    R_JSON OUT CLOB, <BR>                                    R_LOG OUT CLOB)</PRE>
+<DL>
+<DD> Request GET
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_METODO</CODE> -
+              metodo a ser realizado na busca</DD>
+<DD>
+<CODE>P_DS_CHAMADA</CODE> -
+              descriÃ§Ã£o da chamada</DD>
+<DD>
+<CODE>R_JSON</CODE> -
+              resposta da requisiÃ§Ã£o</DD>
+<DD>
+<CODE>R_LOG</CODE> -
+              log</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_ACAO(VARCHAR2)"></A>
+<H3>SET_ACAO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_ACAO</B>(P_ACAO IN VARCHAR2)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_ENTIDADE(VARCHAR2)"></A>
+<H3>SET_ENTIDADE</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_ENTIDADE</B>(P_ENTIDADE IN VARCHAR2)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_METODO(VARCHAR2)"></A>
+<H3>SET_METODO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_METODO</B>(P_METODO IN VARCHAR2)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_SCRIPT(VARCHAR2)"></A>
+<H3>SET_SCRIPT</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_SCRIPT</B>(P_SCRIPT IN VARCHAR2)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_SHOW_LOG(VARCHAR2)"></A>
+<H3>SET_SHOW_LOG</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_SHOW_LOG</B>(P_SHOW_LOG IN VARCHAR2)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="trigger_detail"></A>
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+</BODY>
+</HTML>
