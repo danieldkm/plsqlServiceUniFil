@@ -1,0 +1,60 @@
+#!/bin/bash
+
+########################################################################
+# Script...: integracaoCanvas
+# Sintaxe..: integracaoCanvas {GET|POST} {método} {JSON} 
+# Descrição: Fazer a integração com a plataforma Canvas através de cURL
+# Criação..: 18.09.2017 - Joseval Lana Braga
+# Alteração: 
+#########################################################################
+
+echo "" >> /home/oracle/integracaoCanvas.log
+echo "--- Inicio Integracao -------" >> /home/oracle/integracaoCanvas.log
+/bin/date >> /home/oracle/integracaoCanvas.log
+echo "Parametros recebidos: " $# >> /home/oracle/integracaoCanvas.log
+echo "São eles: " $* >> /home/oracle/integracaoCanvas.log
+
+#Testar os Parametros
+if [ $# -lt 2 ]
+then
+  echo "Erro de sintaxe   "
+  echo "  Sintaxe: comando {GET|DELETE} {método}"
+  echo "  Sintaxe: comando {PUT|POST}   {método} {JSON}"
+  exit 1
+fi
+
+if [[ "$1" == "POST" && $# -lt 3 ]]
+then
+  echo "Deve ser inserido o arquivo JSON na linha de comando"
+  exit 1
+fi
+
+Action=$1
+Metodo=$2
+JSON=$3
+
+#Buscar Token
+Token=$(/usr/bin/curl -k -d "grant_type=client_credentials" -H 'authorization: Basic 1Utwb29fQzNxMU1hRTBHVWdBZnpTb1VaTTNrYTpOdGhNTUJZY3k1U0xmaXhUb19hYW9xZGhJeDhh' https://apis.ilumno.com/token 2>/dev/null | /bin/cut -d',' -f4 | /bin/sed s/\{//g | /bin/sed s/\"//g | /bin/cut -d':' -f2 | /bin/cut -c1-36)
+
+echo "Token: " ${Token} >> /home/oracle/integracaoCanvas.log
+
+#Executar a cURL
+if [[ "$Action" == "GET" || "$Action" == "DELETE" ]]      #Metodo GET ou DELETE
+then
+  echo "Vai executar GET/DELETE ..." >> /home/oracle/integracaoCanvas.log
+  echo "/usr/bin/curl -X ${Action} -H 'Authorization: Bearer ${Token}' 'https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}'" >> /home/oracle/integracaoCanvas.log
+
+  /usr/bin/curl -X ${Action} -H "Authorization: Bearer ${Token}" "https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}" 2>> /home/oracle/integracaoCanvas.log
+elif [[ "$Action" == "POST"  || "$Action" == "PUT" ]]   #Metodo PUT ou POST com JSON
+then
+  echo "Vai executar POST/PUT ..." >> /home/oracle/integracaoCanvas.log
+  echo "/usr/bin/curl -X ${Action} -H 'Authorization: Bearer ${Token}' -H 'Content-Type: application/json' -d '${JSON}' 'https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}'" >> /home/oracle/integracaoCanvas.log
+
+  /usr/bin/curl -X ${Action} -H "Authorization: Bearer ${Token}" -H "Content-Type: application/json" -d "$JSON" "https://apis.ilumno.com/unifil/api/lms/v1/${Metodo}"
+else
+  echo "Método informado deve ser GET, POST, PUT ou DELETE"
+fi
+
+/bin/date >> /home/oracle/integracaoCanvas.log
+echo "--- Fim Integracao -------" >> /home/oracle/integracaoCanvas.log
+echo >> /home/oracle/integracaoCanvas.log
