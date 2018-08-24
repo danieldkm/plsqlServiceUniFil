@@ -28,7 +28,7 @@ create or replace type body o_canvas is
         self.script    := '/home/oracle/integracaoCanvas';
         self.show_log  := 'true';
 
-        self.variables := new pljson;
+        self.variables := new pljson('{}');
         self.variables.put('script', self.script);
         self.variables.put('show_log', self.show_log);
         return;
@@ -39,7 +39,7 @@ create or replace type body o_canvas is
         self.entidade  := pnm_entidade;
         self.script    := '/home/oracle/integracaoCanvas';
         self.show_log  := 'true';
-        self.variables := new pljson;
+        self.variables := new pljson('{}');
         self.variables.put('entidade', self.entidade);
         self.variables.put('script', self.script);
         self.variables.put('show_log', self.show_log);
@@ -57,12 +57,12 @@ create or replace type body o_canvas is
     member function get_entidade return varchar2 is begin return self.entidade; end;
     member function get_script(SELF IN OUT NOCOPY o_canvas)   return varchar2 is 
     begin 
-        if self.script is null then
-            self.script := '/home/oracle/integracaoCanvas';
+        --if self.script is null then
+        --    self.script := '/home/oracle/integracaoCanvas';
+        --    return self.script;
+        --else
             return self.script;
-        else
-            return self.script;
-        end if;
+        --end if;
     end;
     member function get_metodo   return varchar2 is begin return self.metodo;   end;
     member function get_acao     return varchar2 is begin return self.acao;     end;

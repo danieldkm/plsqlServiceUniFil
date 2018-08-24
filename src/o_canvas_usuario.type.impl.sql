@@ -31,9 +31,15 @@ create or replace type body o_canvas_usuario is
 
     /* Gets and sets */
     member procedure set_default_attribute(SELF IN OUT NOCOPY o_canvas_usuario) is
+        tmp pljson;
     begin
         self.set_entidade('users');
         self.set_metodo('/sis_user_id:');
+        tmp := pljson('{}');
+        tmp.put('entidade', self.entidade);
+        tmp.put('script', self.script);
+        tmp.put('show_log', self.show_log);
+        self.set_variables(tmp);
     end;
 
     /*member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuario, p_json clob, r_msg out clob) return pljson is

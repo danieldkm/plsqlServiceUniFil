@@ -1,7 +1,7 @@
 # PLSQL Service REST
 
 Integração com Plataforma "EAD" utilizando. 
-Projeto desenvolvido para consumir serviço REST, desenvolvido por terceiros, utilizando a linguagem PL/SQL.
+Projeto desenvolvido para consumir serviço REST, utilizando a linguagem PL/SQL.
 
 ## Instalação
 
@@ -10,8 +10,28 @@ Projeto desenvolvido para consumir serviço REST, desenvolvido por terceiros, ut
 3. Instalar o [PLJSON](https://github.com/pljson/pljson).
 4. Copie o arquivo `integracaoCanvas` para um destino padrão e altere o mesmo.
 5. Use o `sql*plus` ou alguma outra ferramenta capaz de rodar scripts, para rodar o `install.sql`.
+6. Gerar documentação `./build-apidocs.sh`, se estiver no windows instale o `Cygwin64`.
+
 
 ### Testando
+
+```
+declare
+  	obj o_canvas;
+  	w_msg clob;
+  	respostas pljson_list;
+begin
+	--obj := new o_canvas_usuario;
+	--respostas := obj.find_all(w_msg);
+	--respostas.print;
+
+	obj := new o_canvas_curso;
+	respostas := obj.find_all(w_msg);
+	--respostas.print;
+    util.plob(w_msg||'oxi');
+end;
+/
+```
 
 ## Desenvolvimento
 

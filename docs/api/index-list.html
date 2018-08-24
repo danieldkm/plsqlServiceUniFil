@@ -69,18 +69,18 @@
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#atualizar(o_canvas_cursos,varchar2,clob)">ATUALIZAR</A>
+<A HREF="undefined/o_canvas.html#atualizar(o_canvas,varchar2,varchar2,clob)">ATUALIZAR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
 <BR>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_periodo_academico.html#atualizar(o_canvas_periodo_academico,varchar2,clob)">ATUALIZAR</A>
+<A HREF="undefined/o_canvas_curso.html#atualizar_configuracoes(o_canvas_curso,varchar2,varchar2,clob)">ATUALIZAR_CONFIGURACOES</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_PERIODO_ACADEMICO)</FONT>
-<BR> <p>Atualizar PerÃ­odo AcadÃªmico</p>
- <p>Atualiza os dados de um perÃ­odo acadÃªmico.</p>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR> <p>Atualizar as configuraÃ§Ãµes do Curso</p>
+ <p>Atualiza algumas configuraÃ§Ãµes de um curso.</p>
  <p>
      <table>
          <thead>
@@ -91,51 +91,41 @@
              </tr>
          </thead>
          <tbody>
-             <tr><td>name                </td><td>string      </td><td>(requerido) Nome completo.</td></tr>
-             <tr><td>old_sis_term_id     </td><td>string      </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>sis_term_id         </td><td>string      </td><td>(opcional) Novo ID interno del sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>student_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>student_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>teacher_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>teacher_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>assistant_start_at  </td><td>datetime    </td><td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>assistant_end_at    </td><td>datetime    </td><td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>designer_start_at   </td><td>datetime    </td><td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>designer_end_at     </td><td>datetime    </td><td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>account_id          </td><td>integer     </td><td>(opcional) ID da conta de onde pretende para atualizar o perÃ­odo acadÃªmico.<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_secoes.html#atualizar(o_canvas_secoes,varchar2,clob)">ATUALIZAR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
-<BR>
-<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_usuarios.html#atualizar(o_canvas_usuarios,varchar2,varchar2,clob)">ATUALIZAR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
-<BR> <p>Atualizar UsuÃ¡rio</p>
- <p>Atualiza os dados do usuÃ¡rio.</p>
+             <tr><td>sis_course_id 1*                    </td><td>string  </td><td>Identificador do curso.</td></tr>
+             <tr><td>allow_student_discussion_topics     </td><td>boolean </td><td>Permitir que os alunos criem temas de discussÃ£o.</td></tr>
+             <tr><td>allow_student_forum_attachments     </td><td>boolean </td><td>Permitir que os alunos anexem arquivos Ã s discussÃµes.</td></tr>
+             <tr><td>allow_student_discussion_editing    </td><td>boolean </td><td>Permitir aos alunos editar ou excluir suas prÃ³prias mensagens de discussÃ£o.</td></tr>
+             <tr><td>allow_student_organized_groups      </td><td>boolean </td><td>Permita que os alunos organizem seus prÃ³prios grupos.</td></tr>
+             <tr><td>hide_final_grades                   </td><td>boolean </td><td>Ocultar os totais no resumo das notas dos alunos.</td></tr>
+             <tr><td>hide_distribution_graphs            </td><td>boolean </td><td>Ocultar grÃ¡ficos de distribuiÃ§Ã£o de notas de alunos.</td></tr>
+             <tr><td>lock_all_announcements              </td><td>boolean </td><td>Desativar ComentÃ¡rios em anÃºncios.</td></tr>
+             <tr><td>restrict_student_past_view          </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos apÃ³s a data de tÃ©rmino.</td></tr>
+             <tr><td>restrict_student_future_view        </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos antes da data de inÃ­cio.</td></tr>
+             <tr><td>show_announcements_on_home_page     </td><td>boolean </td><td>Mostrar os anÃºncios mais recentes na pÃ¡gina inicial do curso (se houver um Wiki, por padrÃ£o ele tem cinco anÃºncios, configurÃ¡veis atravÃ©s de home_page_announcement_limit).</td></tr>
+             <tr><td>home_page_announcement_limit        </td><td>integer </td><td>Limitar o nÃºmero de anÃºncios na pÃ¡gina inicial, se estiver habilitado atravÃ©s de show_announcements_on_home_page.</td></tr>
+         </tbody>
+     </table>
+ </p>
  <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>user_id         </td><td>string  </td><td>(requerido) ID identificador do usuÃ¡rio no LMS.<P></P>
-</DD>
-<DD>
-<A HREF="Undefined/_O_CANVAS_SECOES_body.html#ATUALIZAR(O_CANVAS_SECOES,VARCHAR2,CLOB)">ATUALIZAR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES body)</FONT>
-<BR>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "allow_student_discussion_topics" : false,
+             "allow_student_forum_attachments" : false,
+             "allow_student_discussion_editing" : false,
+             "allow_student_organized_groups" : false,
+             "hide_final_grades" : false,
+             "hide_distribution_graphs" : false,
+             "lock_all_announcements" : false,
+             "restrict_student_past_view" : false,
+             "restrict_student_future_view" : false,
+             "show_announcements_on_home_page" : false,
+             "home_page_announcement_limit" : 100
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/settings"
+     </code>
+ </p>
 <P></P>
 </DD>
 </DL>
@@ -153,9 +143,50 @@
 <BR> Padronizar a chamada das requisiÃ§Ãµes.<P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#controller(varchar2,boolean,boolean,clob)">CONTROLLER</A>
+<A HREF="undefined/o_canvas_curso.html#concluir(o_canvas_curso,varchar2,varchar2,clob)">CONCLUIR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR> <p>Concluir um curso</p>
+ <p>Concluir ou excluir um curso existente.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>Identificador do curso.</td>
+             </tr>
+             <tr>
+                 <td>action 2*</td>
+                 <td>string</td>
+                 <td>Valores permitidos: delete ou conclude.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>" -d event=<action>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>?event=<action>"
+     </code>
+ </p>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_curso.html#controller(varchar2,boolean,boolean,clob)">CONTROLLER</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Foi criado esse controle pois o controle padrÃ£o
  (controle_save_request) nÃ£o atende a estrutura do curso.</p>
 <P></P>
@@ -174,9 +205,9 @@
  requisiÃ§Ã£o.<P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#create_group(o_canvas_cursos,varchar2,varchar2,clob)">CREATE_GROUP</A>
+<A HREF="undefined/o_canvas_curso.html#create_group(o_canvas_curso,varchar2,varchar2,clob)">CREATE_GROUP</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Criar um conjunto de grupos.</p>
  <p>Criar um novo conjunto de grupos.</p>
  <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
@@ -190,11 +221,25 @@
 <DT>
 <A NAME="D"></A>D</DT>
 <DD>
-<A HREF="undefined/o_canvas_periodo_academico.html#deletar(o_canvas_periodo_academico,varchar2,number,clob)">DELETAR</A>
+<A HREF="undefined/o_canvas.html#deletar(o_canvas,varchar2,clob)">DELETAR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_PERIODO_ACADEMICO)</FONT>
-<BR> <p>Excluir um PerÃ­odo AcadÃªmico.</p>
- <p>Exclui dados de um perÃ­odo acadÃªmico.</p>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_curso.html#deletar(o_canvas_curso,varchar2,clob)">DELETAR</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_inscricao.html#deletar(o_canvas_inscricao,varchar2,varchar2,varchar2,clob)">DELETAR</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_INSCRICAO)</FONT>
+<BR> <p>Excluir, concluir ou desativar uma InscriÃ§Ã£o</p>
+ <p>Dependendo da aÃ§Ã£o especificada, o serviÃ§o pode concluir, inativar ou excluir uma inscriÃ§Ã£o</p>
  <p>
      <table>
          <thead>
@@ -205,32 +250,39 @@
              </tr>
          </thead>
          <tbody>
-             <tr><td>account_id*1    </td><td>integer </td><td>(requerido) ID da conta em que o perÃ­odo acadÃªmico estÃ¡ criado.</td></tr>
-             <tr><td>sis_term_id*2   </td><td>string  </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) designado para o perÃ­odo acadÃªmico.</td></tr>
+             <tr><td>sis_course_id 1*</td><td>string  </td><td>(requerido) ID interno do SIS que referencia o cursos onde se encontra e inscriÃ§Ã£o.</td></tr>
+             <tr><td>enrollment_id 2*</td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td></tr>
+             <tr><td>action        3*</td><td>string  </td><td>(requerido) Tarefa a realizar: conclude, delete ou deactivate</td></tr>
          </tbody>
      </table>
  </p>
  <p>
      <code>
          curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
-         "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<sis_term_id>?account_id=<account_id>"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>?task=<action>"
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>"
+         -d task=<action>
      </code>
  </p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_secoes.html#deletar(o_canvas_secoes,varchar2,number,clob)">DELETAR</A>
+<A HREF="undefined/o_canvas_secao.html#deletar(o_canvas_secao,varchar2,number,clob)">DELETAR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
-<BR>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
+<BR> <p>Excluir uma SeÃ§Ã£o</p>
+ <p>Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?group_id=<group_id>"
+     </code>
+ </p>
 <P></P>
-</DD>
-<DD>
-<A HREF="Undefined/_O_CANVAS_SECOES_body.html#DELETAR(O_CANVAS_SECOES,VARCHAR2,NUMBER,CLOB)">DELETAR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES body)</FONT>
-<BR>Excluir uma SeÃ§Ã£o
-Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.<P></P>
 </DD>
 </DL>
 <DL>
@@ -263,11 +315,11 @@ Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolam
 <BR> Request GET, busca todos os dados conforme entidade.<P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_all(o_canvas_cursos,number,varchar2,varchar2,varchar2,varchar2,clob)">FIND_ALL</A>
+<A HREF="undefined/o_canvas_curso.html#find_all(o_canvas_curso,number,varchar2,varchar2,varchar2,varchar2,clob)">FIND_ALL</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
-<BR>Listar Cursos
-Lista todos os cursos criados anteriormente dentro da conta.<P></P>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR> <p>Listar Cursos</p>
+ <p>Lista todos os cursos criados anteriormente dentro da conta.<P></P>
 </DD>
 <DD>
 <A HREF="undefined/o_canvas_periodo_academico.html#find_all(o_canvas_periodo_academico,number,varchar2,varchar2,clob)">FIND_ALL</A>
@@ -288,70 +340,70 @@ Lista todos os cursos criados anteriormente dentro da conta.<P></P>
              <tr><td>account_id*1  </td><td>integer </td><td>(opcional) ID da conta de onde vocÃª quer para listar os perÃ­odos letivos.<P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_usuarios.html#find_all(o_canvas_usuarios,number,varchar2,clob)">FIND_ALL</A>
+<A HREF="undefined/o_canvas_usuario.html#find_all(o_canvas_usuario,number,varchar2,clob)">FIND_ALL</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIO)</FONT>
 <BR><p>Listar UsuÃ¡rios</p>
 <p>Listar todos os usuÃ¡rios criados anteriormente dentro da conta.<P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_assignments_by_id(o_canvas_cursos,varchar2,varchar2,boolean,clob)">FIND_ASSIGNMENTS_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_assignments_by_id(o_canvas_curso,varchar2,varchar2,boolean,clob)">FIND_ASSIGNMENTS_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Listar atividades de um curso.</p>
  <p>Listar as atividades e tarefas de um curso.</p>
  <p>courses/<sis_course_id>/assignments?search_term=<search_term>&only_gradable_assignments=<only_gradable_assignments></p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_blueprint_associate_by_id(o_canvas_cursos,varchar2,varchar2,clob)">FIND_BLUEPRINT_ASSOCIATE_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_blueprint_associate_by_id(o_canvas_curso,varchar2,varchar2,clob)">FIND_BLUEPRINT_ASSOCIATE_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Obter informaÃ§Ã£o do curso associado.</p>
  <p>ProvÃª informaÃ§Ã£o sobre os cursos associados a um curso modelo.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/associated_courses</p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_blueprint_by_id(o_canvas_cursos,varchar2,varchar2,clob)">FIND_BLUEPRINT_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_blueprint_by_id(o_canvas_curso,varchar2,varchar2,clob)">FIND_BLUEPRINT_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Obter informaÃ§Ã£o do Curso Modelo.</p>
  <p>ProvÃª a informaÃ§Ã£o sobre o curso modelo especificado.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id></p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_blueprint_migrate_by_id(o_canvas_cursos,varchar2,varchar2,clob)">FIND_BLUEPRINT_MIGRATE_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_blueprint_migrate_by_id(o_canvas_curso,varchar2,varchar2,clob)">FIND_BLUEPRINT_MIGRATE_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Lista de modelos de migraÃ§Ã£o.</p>
  <p>Mostra uma lista paginada de migraÃ§Ãµes para o modelo.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate</p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_bp_migration_by_id(o_canvas_cursos,varchar2,varchar2,varchar2,clob)">FIND_BP_MIGRATION_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_bp_migration_by_id(o_canvas_curso,varchar2,varchar2,varchar2,clob)">FIND_BP_MIGRATION_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Mostrar migraÃ§Ã£o de um curso modelo.</p>
  <p>Mostra o estado de uma migraÃ§Ã£o.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id></p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_bp_migration_detail_by_id(o_canvas_cursos,varchar2,varchar2,varchar2,clob)">FIND_BP_MIGRATION_DETAIL_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_bp_migration_detail_by_id(o_canvas_curso,varchar2,varchar2,varchar2,clob)">FIND_BP_MIGRATION_DETAIL_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Obter detalhes de uma migraÃ§Ã£o.</p>
  <p>Mostra as alteraÃ§Ãµes que foram propagadas numa migraÃ§Ã£o de um curso modelo.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id>/details</p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_bp_subscription_by_id(o_canvas_cursos,varchar2,varchar2,clob)">FIND_BP_SUBSCRIPTION_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_bp_subscription_by_id(o_canvas_curso,varchar2,varchar2,clob)">FIND_BP_SUBSCRIPTION_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Listar importaÃ§Ãµes de um curso modelo.</p>
  <p>Mostra uma lista de migraÃ§Ãµes de um curso modelo importadas em um curso associado.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/subscription_id:<subscription_id>/migrate</p>
@@ -364,6 +416,36 @@ Lista todos os cursos criados anteriormente dentro da conta.<P></P>
 <BR> Request GET, busca dados pelo id.<P></P>
 </DD>
 <DD>
+<A HREF="undefined/o_canvas_secao.html#find_by_id(o_canvas_secao,varchar2,varchar2,clob)">FIND_BY_ID</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
+<BR> <p>Obter detalhes de uma SeÃ§Ã£o</p>
+ <p>Os detalhes de uma seÃ§Ã£o especÃ­fica indicada no parÃ¢metro de consulta sÃ£o obtidos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_section_id 1*</td><td>string  </td><td>ID interno do sistema acadÃªmico (SIS) atribuÃ­do para a seÃ§Ã£o.</td></tr>
+             <tr><td>include        2*</td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o seja adicionada do nÃºmero de alunos do estado: active e invited.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?include=<include>"
+     </code>
+ </p>
+<P></P>
+</DD>
+<DD>
 <A HREF="undefined/o_canvas.html#find_by_method(o_canvas,varchar2,varchar2,boolean,clob)">FIND_BY_METHOD</A>
 					
 					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
@@ -371,34 +453,34 @@ Lista todos os cursos criados anteriormente dentro da conta.<P></P>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_enrollments_by_id(o_canvas_cursos,varchar2,varchar2,varchar2,clob)">FIND_ENROLLMENTS_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_enrollments_by_id(o_canvas_curso,varchar2,varchar2,varchar2,clob)">FIND_ENROLLMENTS_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Listar inscriÃ§Ãµes em um Curso.</p>
  <p>Lista todas as inscriÃ§Ãµes previamente criadas dentro de um curso.<P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_group_by_id(o_canvas_cursos,varchar2,clob)">FIND_GROUP_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_group_by_id(o_canvas_curso,varchar2,clob)">FIND_GROUP_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Listar conjuntos de grupos de um curso.</p>
  <p>Devolve uma lista de conjuntos de grupos de um curso.</p>
  <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_usuarios.html#find_progress_by_id(o_canvas_usuarios,varchar2,varchar2,clob)">FIND_PROGRESS_BY_ID</A>
+<A HREF="undefined/o_canvas_usuario.html#find_progress_by_id(o_canvas_usuario,varchar2,varchar2,clob)">FIND_PROGRESS_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIO)</FONT>
 <BR> <p>Obter o progresso de um usuÃ¡rio em um curso.</p>
  <p>Devolve a informaÃ§Ã£o relativa ao progresso de um usuÃ¡rio em um curso determinado.</p>
  <p>users/<user_id>/progress?sis_course_id=<sis_course_id></p>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#find_sections_by_id(o_canvas_cursos,varchar2,varchar2,clob)">FIND_SECTIONS_BY_ID</A>
+<A HREF="undefined/o_canvas_curso.html#find_sections_by_id(o_canvas_curso,varchar2,varchar2,clob)">FIND_SECTIONS_BY_ID</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
 <BR> <p>Listar seÃ§Ãµes em um Curso.</p>
  <p>Lista todas as seÃ§Ãµes previamente criadas dentro de um curso.<P></P>
 </DD>
@@ -441,6 +523,13 @@ Lista todos os cursos criados anteriormente dentro da conta.<P></P>
 <BR>
 <P></P>
 </DD>
+<DD>
+<A HREF="undefined/o_canvas.html#get_variables">GET_VARIABLES</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
+<BR>
+<P></P>
+</DD>
 </DL>
 <DL>
 <DT>
@@ -450,193 +539,65 @@ Lista todos os cursos criados anteriormente dentro da conta.<P></P>
 <DT>
 <A NAME="I"></A>I</DT>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#inserir(o_canvas_cursos,varchar2,clob)">INSERIR</A>
+<A HREF="undefined/o_canvas.html#inserir(o_canvas,varchar2,clob)">INSERIR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
 <BR>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_periodo_academico.html#inserir(o_canvas_periodo_academico,varchar2,clob)">INSERIR</A>
+<A HREF="undefined/o_canvas_inscricao.html#inserir(o_canvas_inscricao,varchar2,varchar2,clob)">INSERIR</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_INSCRICAO)</FONT>
+<BR> <p>Criar InscriÃ§Ã£o</p>
+ <p>Cria uma inscriÃ§Ã£o individual e retorna a entidade inscriÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id             </td><td>integer</td><td> (requerido) ID do usuÃ¡rio a ser inscrito.</td><tr>
+             <tr><td>type                </td><td>string </td><td>(requerido) Tipo de InscriÃ§Ã£o.<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_secao.html#inserir(o_canvas_secao,varchar2,varchar2,clob)">INSERIR</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
+<BR> <p>Criar uma seÃ§Ã£o</p>
+ <p>Cria uma seÃ§Ã£o individual e retorna a entidade seÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id       </td><td>string   </td><td>CÃ³digo do curso no sistema acadÃªmico.</td></tr>
+             <tr><td>name                </td><td>string   </td><td>Nome da seÃ§Ã£o.</td></tr>
+             <tr><td>sis_section_id      </td><td>string   </td><td>CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime </td><td>(opcional) Data de inÃ­cio da seÃ§Ã£o</td></tr>
+             <tr><td>end_at              </td><td>datetime </td><td>(opcional) Data de fim da seÃ§Ã£o</td></tr>
+             <tr><td>restrict_to_dates   </td><td>boolean  </td><td>(opcional) Restringe as inscriÃ§Ãµes as datas de inicio e fim da seÃ§Ã£o.<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas.html#inserir_em_lote(o_canvas,clob,clob)">INSERIR_EM_LOTE</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_periodo_academico.html#inserir_em_lote(o_canvas_periodo_academico,clob,clob)">INSERIR_EM_LOTE</A>
 					
 					&nbsp; <FONT SIZE="-1">(O_CANVAS_PERIODO_ACADEMICO)</FONT>
-<BR> <p>Criar um PerÃ­odo AcadÃªmico</p>
- <p>Criar uma nova perÃ­odos acadÃªmicos ou ciclos acadÃªmicos.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr>
-                 <td>name</td>
-                 <td>string</td>
-                 <td>(requerido) Nome completo.</td>
-             </tr>
-             <tr>
-                 <td>sis_term_id</td>
-                 <td>string</td>
-                 <td>(requerido) PerÃ­odo acadÃªmico identificador dentro do sistema.</td>
-             </tr>
-             <tr>
-                 <td>start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>student_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>student_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>teacher_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>teacher_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>assistant_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>assistant_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>designer_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>designer_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>account_id</td>
-                 <td>integer</td>
-                 <td>(opcional) ID da conta de onde pretende para criar o perÃ­odo acadÃªmico.<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_secoes.html#inserir(o_canvas_secoes,varchar2,clob)">INSERIR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
-<BR>
-<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_usuarios.html#inserir(o_canvas_usuarios,varchar2,clob)">INSERIR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
-<BR> <p>Criar um usuÃ¡rio</p>
- <p>Criar um usuÃ¡rio individual e retorna a entidade de usuÃ¡rio criada.</p>
- <p>
-     <table>
-         <thead>
-         <tr>
-             <td>Campo</td>
-             <td>Tipo</td>
-             <td>ComentÃ¡rios</td>
-         </tr>
-             <tr><td>full_name           </td><td>string  </td><td>Nome completo.</td></tr>
-             <tr><td>short_name          </td><td>string  </td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
-             <tr><td>sortable_name       </td><td>string  </td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
-             <tr><td>email               </td><td>string  </td><td>EndereÃ§o de e-mail.</td></tr>
-             <tr><td>login               </td><td>string  </td><td>(requerido) Identificador de entrada.</td></tr>
-             <tr><td>password            </td><td>string  </td><td>Senha.</td></tr>
-             <tr><td>sis_user_id         </td><td>string  </td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
-             <tr><td>auth_provider_id    </td><td>string  </td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
-         </thead>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d '{
-             "user": {
-                 "full_name": "Juan Perez",
-                 "short_name" : "Juan",
-                 "sortable_name" : "Juan Perez",
-                 "email": "juan.perez@noreply.com",
-                 "login": "juan.perez",
-                 "password" : "this is the password",
-                 "sis_user_id": "sis00001",
-                 "auth_provider_id": ""
-             }
-         }'
-         "https://<apim host and port>/<university>/api/lms/v1/users"
-     </code>
- </p>
-<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_cursos.html#inserir_cursos(o_canvas_cursos,clob,clob)">INSERIR_CURSOS</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
-<BR> <p>Criar um Curso</p>
- <p>Criar um curso individual e retorna a entidade atual criada.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>account_id          </td><td>integer     </td><td>ID de conta / subconta no LMS.</td></tr>
-             <tr><td>name                </td><td>string      </td><td>Nome do curso</td></tr>
-             <tr><td>code                </td><td>string      </td><td>CÃ³digo do curso.</td></tr>
-             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do curso.</td></tr>
-             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do curso.</td></tr>
-             <tr><td>restrict_to_dates   </td><td>boolean     </td><td>(opcional) Restringe inscriÃ§Ãµes nas datas de inÃ­cio e fim do curso.<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_secoes.html#inserir_secoes(o_canvas_secoes,clob,clob)">INSERIR_SECOES</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
-<BR>
-<P></P>
-</DD>
-<DD>
-<A HREF="undefined/o_canvas_usuarios.html#inserir_usuarios(o_canvas_usuarios,clob,clob)">INSERIR_USUARIOS</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
-<BR> <p>Criar UsuÃ¡rios</p>
- <p>Criar um grupo de usuÃ¡rios e nÃ£o retorna informaÃ§Ãµes dentro do corpo da resposta.<P></P>
-</DD>
-<DD>
-<A HREF="Undefined/_O_CANVAS_SECOES_body.html#INSERIR(O_CANVAS_SECOES,VARCHAR2,CLOB)">INSERIR</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES body)</FONT>
-<BR>
-<P></P>
-</DD>
-<DD>
-<A HREF="Undefined/_O_CANVAS_SECOES_body.html#INSERIR_SECOES(O_CANVAS_SECOES,CLOB,CLOB)">INSERIR_SECOES</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES body)</FONT>
 <BR>
 <P></P>
 </DD>
@@ -653,18 +614,52 @@ Lista todos os cursos criados anteriormente dentro da conta.<P></P>
 <DT>
 <A NAME="L"></A>L</DT>
 <DD>
-<A HREF="undefined/o_canvas_secoes.html#liberar_eliminar(varchar2,clob)">LIBERAR_ELIMINAR</A>
+<A HREF="undefined/o_canvas_curso.html#liberar_eliminar(o_canvas_curso,varchar2,clob)">LIBERAR_ELIMINAR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
-<BR>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR> <p>Liberar e eliminar um curso</p>
+ <p>Liberar o SIS_ID de um curso e depois excluÃ­-lo.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>(requerido) Identificador do curso.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/release"
+     </code>
+ </p>
 <P></P>
 </DD>
 <DD>
-<A HREF="Undefined/_O_CANVAS_SECOES_body.html#LIBERAR_ELIMINAR(VARCHAR2,CLOB)">LIBERAR_ELIMINAR</A>
+<A HREF="undefined/o_canvas_secao.html#liberar_eliminar(o_canvas_secao,varchar2,clob)">LIBERAR_ELIMINAR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES body)</FONT>
-<BR>Liberar e eliminar uma SeÃ§Ã£o
-Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
+<BR> <p>Liberar e eliminar uma SeÃ§Ã£o</p>
+ <p>Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/release"
+     </code>
+ </p>
+<P></P>
 </DD>
 </DL>
 <DL>
@@ -702,9 +697,16 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#o_canvas">O_CANVAS</A>
+<A HREF="undefined/o_canvas_curso.html#o_canvas">O_CANVAS</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_inscricao.html#o_canvas">O_CANVAS</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_INSCRICAO)</FONT>
 <BR>
 <P></P>
 </DD>
@@ -716,23 +718,30 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_secoes.html#o_canvas">O_CANVAS</A>
+<A HREF="undefined/o_canvas_secao.html#o_canvas">O_CANVAS</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
 <BR>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_usuarios.html#o_canvas">O_CANVAS</A>
+<A HREF="undefined/o_canvas_usuario.html#o_canvas">O_CANVAS</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIO)</FONT>
 <BR>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_cursos.html#o_canvas_cursos">O_CANVAS_CURSOS</A>
+<A HREF="undefined/o_canvas_curso.html#o_canvas_curso">O_CANVAS_CURSO</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_inscricao.html#o_canvas_inscricao">O_CANVAS_INSCRICAO</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_INSCRICAO)</FONT>
 <BR>
 <P></P>
 </DD>
@@ -744,23 +753,16 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_secoes.html#o_canvas_secoes">O_CANVAS_SECOES</A>
+<A HREF="undefined/o_canvas_secao.html#o_canvas_secao">O_CANVAS_SECAO</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
 <BR>
 <P></P>
 </DD>
 <DD>
-<A HREF="undefined/o_canvas_usuarios.html#o_canvas_usuarios">O_CANVAS_USUARIOS</A>
+<A HREF="undefined/o_canvas_usuario.html#o_canvas_usuario">O_CANVAS_USUARIO</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
-<BR>
-<P></P>
-</DD>
-<DD>
-<A HREF="Undefined/_O_CANVAS_SECOES_body.html#O_CANVAS_SECOES">O_CANVAS_SECOES</A>
-					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECOES body)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIO)</FONT>
 <BR>
 <P></P>
 </DD>
@@ -776,6 +778,37 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <DL>
 <DT>
 <A NAME="R"></A>R</DT>
+<DD>
+<A HREF="undefined/o_canvas_inscricao.html#reativar(o_canvas_inscricao,varchar2,varchar2,clob)">REATIVAR</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_INSCRICAO)</FONT>
+<BR> <p>Reativar uma inscriÃ§Ã£o</p>
+ <p>Reativa uma inscriÃ§Ã£o desativada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id </td><td>string  </td><td>(requerido) ID interno do SIS que referencia o curso onde se encontra a inscriÃ§Ã£o.</td><tr>
+             <tr><td>enrollment_id </td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>/reactivate"
+         -d '{}'
+     </code>
+ </p>
+<P></P>
+</DD>
 <DD>
 <A HREF="undefined/o_canvas.html#request(o_canvas,varchar2,varchar2,varchar2,varchar2,clob,clob)">REQUEST</A>
 					
@@ -809,6 +842,48 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <P></P>
 </DD>
 <DD>
+<A HREF="undefined/o_canvas.html#set_default(o_canvas)">SET_DEFAULT</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_curso.html#set_default_attribute(o_canvas_curso)">SET_DEFAULT_ATTRIBUTE</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_CURSO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_inscricao.html#set_default_attribute(o_canvas_inscricao)">SET_DEFAULT_ATTRIBUTE</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_INSCRICAO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_periodo_academico.html#set_default_attribute(o_canvas_periodo_academico)">SET_DEFAULT_ATTRIBUTE</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_PERIODO_ACADEMICO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_secao.html#set_default_attribute(o_canvas_secao)">SET_DEFAULT_ATTRIBUTE</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_SECAO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
+<A HREF="undefined/o_canvas_usuario.html#set_default_attribute(o_canvas_usuario)">SET_DEFAULT_ATTRIBUTE</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIO)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
 <A HREF="undefined/o_canvas.html#set_entidade(varchar2)">SET_ENTIDADE</A>
 					
 					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
@@ -837,6 +912,13 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <P></P>
 </DD>
 <DD>
+<A HREF="undefined/o_canvas.html#set_variables(pljson)">SET_VARIABLES</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
+<BR>
+<P></P>
+</DD>
+<DD>
 <A HREF="undefined/o_canvas.html#show_log">SHOW_LOG</A>
 					
 					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
@@ -852,9 +934,9 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <DT>
 <A NAME="U"></A>U</DT>
 <DD>
-<A HREF="undefined/o_canvas_usuarios.html#unir(o_canvas_usuarios,varchar2,varchar2,clob)">UNIR</A>
+<A HREF="undefined/o_canvas_usuario.html#unir(o_canvas_usuario,varchar2,varchar2,clob)">UNIR</A>
 					
-					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIOS)</FONT>
+					&nbsp; <FONT SIZE="-1">(O_CANVAS_USUARIO)</FONT>
 <BR> <p>Unir um usuÃ¡rio com outro.</p>
  <p>Unificar dois usuÃ¡rios em um sÃ³.<P></P>
 </DD>
@@ -862,6 +944,13 @@ Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.<P></P>
 <DL>
 <DT>
 <A NAME="V"></A>V</DT>
+<DD>
+<A HREF="undefined/o_canvas.html#variables">VARIABLES</A>
+					
+					&nbsp; <FONT SIZE="-1">(O_CANVAS)</FONT>
+<BR>
+<P></P>
+</DD>
 </DL>
 <DL>
 <DT>

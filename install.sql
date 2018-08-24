@@ -11,7 +11,8 @@ PROMPT -----------------------------------;
 PROMPT -- Compiling objects for PL/JSON --;
 PROMPT -----------------------------------;
 @@uninstall.sql
-
+--@@src/util.package.sql
+--@@src/canvas.package.sql
 @@src/o_canvas.type.decl.sql
 @@src/o_canvas.type.impl.sql
 @@src/o_canvas_usuario.type.decl.sql
@@ -24,3 +25,8 @@ PROMPT -----------------------------------;
 @@src/o_canvas_secao.type.impl.sql
 @@src/o_canvas_inscricao.type.decl.sql
 @@src/o_canvas_inscricao.type.impl.sql
+
+PROMPT ------------------------------------------;
+PROMPT -- Adding optional packages for PL/JSON --;
+PROMPT ------------------------------------------;
+

@@ -1,0 +1,514 @@
+<HTML xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exslt="http://exslt.org/common">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>PL/JSON</TITLE>
+<LINK TITLE="Style" HREF="../stylesheet.css" TYPE="text/css" REL="stylesheet">
+<!--
+        sameCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesLowerCase=FALSE
+        namesUpperCase=FALSE
+        namesDefaultCase=TRUE
+        defaultNamesCase=UPPER
+        namesFromCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesToCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-->
+</HEAD>
+<BODY BGCOLOR="white">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+<H2>
+<FONT SIZE="-1"></FONT>
+<BR>Subtype&nbsp;O_CANVAS_SECAO</H2> <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type da seÃ§Ã£o</p>
+ <p> Este objeto representa a entidade SeÃ§Ã£o (Section) </p>
+ <strong>Examplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas_secao;
+   secaoInserido pljson;
+   w_msg clob;
+ begin
+   secaoInserido := mycanvas.inserir(
+   '{
+       "course_section":
+       {
+           "name":"Nombre de la secciÃ³n",
+           "end_at":"2017-01-07T02:59:00Z",
+           "start_at":"2016-01-06T03:00:00Z",
+           "sis_section_id":"30952006",
+           "isolate_section": true,
+           "restrict_to_dates": true
+       }
+   }', w_msg);
+   secaoInserido.print();
+ end;
+ </pre>
+<P></P>
+<DL></DL>
+<HR>
+<P></P>
+<A NAME="field_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Field Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=O_CANVAS
+       localTypeName=
+       schema=
+       fieldType=O_CANVAS
+       synonymsFile=,,--><!--Object Type in same schema--><A href="O_CANVAS.html">O_CANVAS</A></CODE></FONT></TD><TD><CODE>SUPERTYPE</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="type_summary"></A><A NAME="method_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="DELETAR"></A><TD><CODE><B><A HREF="#DELETAR(O_CANVAS_SECAO,VARCHAR2,NUMBER,CLOB)">DELETAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, P_SIS_SECTION_ID IN VARCHAR2, P_GROUP_ID IN NUMBER DEFAULT NULL, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Excluir uma SeÃ§Ã£o</p>
+ <p>Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?group_id=<group_id>"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BY_ID(O_CANVAS_SECAO,VARCHAR2,VARCHAR2,CLOB)">FIND_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, P_SIS_SECTION_ID IN VARCHAR2, P_INCLUDE IN VARCHAR2 DEFAULT NULL, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Obter detalhes de uma SeÃ§Ã£o</p>
+ <p>Os detalhes de uma seÃ§Ã£o especÃ­fica indicada no parÃ¢metro de consulta sÃ£o obtidos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_section_id 1*</td><td>string  </td><td>ID interno do sistema acadÃªmico (SIS) atribuÃ­do para a seÃ§Ã£o.</td></tr>
+             <tr><td>include        2*</td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o seja adicionada do nÃºmero de alunos do estado: active e invited.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?include=<include>"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="INSERIR"></A><TD><CODE><B><A HREF="#INSERIR(O_CANVAS_SECAO,VARCHAR2,VARCHAR2,CLOB)">INSERIR</A></B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, P_SIS_COURSE_ID IN VARCHAR2, P_JSON IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Criar uma seÃ§Ã£o</p>
+ <p>Cria uma seÃ§Ã£o individual e retorna a entidade seÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id       </td><td>string   </td><td>CÃ³digo do curso no sistema acadÃªmico.</td></tr>
+             <tr><td>name                </td><td>string   </td><td>Nome da seÃ§Ã£o.</td></tr>
+             <tr><td>sis_section_id      </td><td>string   </td><td>CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime </td><td>(opcional) Data de inÃ­cio da seÃ§Ã£o</td></tr>
+             <tr><td>end_at              </td><td>datetime </td><td>(opcional) Data de fim da seÃ§Ã£o</td></tr>
+             <tr><td>restrict_to_dates   </td><td>boolean  </td><td>(opcional) Restringe as inscriÃ§Ãµes as datas de inicio e fim da seÃ§Ã£o.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="LIBERAR_ELIMINAR"></A><TD><CODE><B><A HREF="#LIBERAR_ELIMINAR(O_CANVAS_SECAO,VARCHAR2,CLOB)">LIBERAR_ELIMINAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, P_SIS_SECTION_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Liberar e eliminar uma SeÃ§Ã£o</p>
+ <p>Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/release"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#O_CANVAS_SECAO">O_CANVAS_SECAO</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_DEFAULT_ATTRIBUTE"></A><TD><CODE><B><A HREF="#SET_DEFAULT_ATTRIBUTE(O_CANVAS_SECAO)">SET_DEFAULT_ATTRIBUTE</A></B>(SELF IN OUT NOCOPY O_CANVAS_SECAO)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="trigger_summary"></A><A NAME="field_detail"></A><A NAME="type_detail"></A><A NAME="method_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="DELETAR(O_CANVAS_SECAO,VARCHAR2,NUMBER,CLOB)"></A>
+<H3>DELETAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>DELETAR</B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, <BR>                                      P_SIS_SECTION_ID IN VARCHAR2, <BR>                                      P_GROUP_ID IN NUMBER DEFAULT NULL, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Excluir uma SeÃ§Ã£o</p>
+ <p>Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?group_id=<group_id>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o para cada seÃ§Ã£o.
+member function inserir_secoes  (SELF IN OUT NOCOPY o_canvas_secao, p_json clob    , r_msg out clob) return pljson,</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BY_ID(O_CANVAS_SECAO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, <BR>                                              P_SIS_SECTION_ID IN VARCHAR2, <BR>                                              P_INCLUDE IN VARCHAR2 DEFAULT NULL, <BR>                                              R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Obter detalhes de uma SeÃ§Ã£o</p>
+ <p>Os detalhes de uma seÃ§Ã£o especÃ­fica indicada no parÃ¢metro de consulta sÃ£o obtidos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_section_id 1*</td><td>string  </td><td>ID interno do sistema acadÃªmico (SIS) atribuÃ­do para a seÃ§Ã£o.</td></tr>
+             <tr><td>include        2*</td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o seja adicionada do nÃºmero de alunos do estado: active e invited.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?include=<include>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_SECTION_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_INCLUDE</CODE> -
+              2*</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="INSERIR(O_CANVAS_SECAO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>INSERIR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>INSERIR</B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, <BR>                                      P_SIS_COURSE_ID IN VARCHAR2, <BR>                                      P_JSON IN VARCHAR2, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Criar uma seÃ§Ã£o</p>
+ <p>Cria uma seÃ§Ã£o individual e retorna a entidade seÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id       </td><td>string   </td><td>CÃ³digo do curso no sistema acadÃªmico.</td></tr>
+             <tr><td>name                </td><td>string   </td><td>Nome da seÃ§Ã£o.</td></tr>
+             <tr><td>sis_section_id      </td><td>string   </td><td>CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime </td><td>(opcional) Data de inÃ­cio da seÃ§Ã£o</td></tr>
+             <tr><td>end_at              </td><td>datetime </td><td>(opcional) Data de fim da seÃ§Ã£o</td></tr>
+             <tr><td>restrict_to_dates   </td><td>boolean  </td><td>(opcional) Restringe as inscriÃ§Ãµes as datas de inicio e fim da seÃ§Ã£o. <br>Se este parÃ¢metro nÃ£o vier definido, assumirÃ¡ o valor padrÃ£o false. Se vier definido como true, serÃ¡ necessÃ¡rio definir as datas de inÃ­cio e fim da seÃ§Ã£o.</td></tr>
+             <tr><td>isolate_section     </td><td>boolean  </td><td>Indicador para permitir o isolamento de seÃ§Ãµes. <br>Para ser definido como true, tem que existir um Conjunto de Grupos chamado <code>GRUPO SECAO</code> criado no curso.</td></tr>
+         </tbody>
+     </table>
+ </p>
+<p>
+<code>
+curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+-d '{
+"course_section":
+{
+"name":"Nombre de la secciÃ³n",
+"end_at":"2017-01-07T02:59:00Z",
+"start_at":"2016-01-06T03:00:00Z",
+"sis_section_id":"30952006",
+"isolate_section": true,
+"restrict_to_dates": true
+}
+}'
+"https://<apim host and port>/<university>/api/lms/v1/
+courses/sis_course_id:<sis_course_id>/sections"
+</code>
+</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_JSON</CODE> -
+              2* json (seÃ§Ã£o) a ser inserido</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="LIBERAR_ELIMINAR(O_CANVAS_SECAO,VARCHAR2,CLOB)"></A>
+<H3>LIBERAR_ELIMINAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>LIBERAR_ELIMINAR</B>(SELF IN OUT NOCOPY O_CANVAS_SECAO, <BR>                                               P_SIS_SECTION_ID IN VARCHAR2, <BR>                                               R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Liberar e eliminar uma SeÃ§Ã£o</p>
+ <p>Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/release"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_SECTION_ID</CODE> -
+              (requerido) CÃ³digo do sistema acadÃªmico para a seÃ§Ã£o a ser eliminada.</DD>
+</DT>
+<DT>Returns:
+          <DD>reposta da requisiÃ§Ã£o;</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS_SECAO"></A>
+<H3>O_CANVAS_SECAO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS_SECAO</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_DEFAULT_ATTRIBUTE(O_CANVAS_SECAO)"></A>
+<H3>SET_DEFAULT_ATTRIBUTE</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_DEFAULT_ATTRIBUTE</B>(SELF IN OUT NOCOPY O_CANVAS_SECAO)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="trigger_detail"></A>
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+</BODY>
+</HTML>

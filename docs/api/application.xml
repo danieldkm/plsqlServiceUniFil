@@ -39,6 +39,9 @@
     <VARIABLE NAME="SHOW_LOG" VERSION="1">
       <RETURN TYPE="VARCHAR2(10)"/>
     </VARIABLE>
+    <VARIABLE NAME="VARIABLES" VERSION="1">
+      <RETURN TYPE="PLJSON"/>
+    </VARIABLE>
     <FUNCTION NAME="O_CANVAS" SCOPE="CONSTRUCTOR" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Construtor para criar objeto vazio.</p>
 
@@ -52,7 +55,7 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[A instÃ¢ncia <code>pljson</code>.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="50" END_LINE="57" LINES="1" START_COLUMN="26" START_LINE="57"/>
+      <SUMMARY END_COLUMN="50" END_LINE="58" LINES="1" START_COLUMN="26" START_LINE="58"/>
     </FUNCTION>
     <FUNCTION NAME="O_CANVAS" SCOPE="CONSTRUCTOR" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Construtor <code>pljson</code> instÃ¢ncia defindo o nome da entidade.</p>
@@ -73,53 +76,96 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[A instÃ¢ncia <code>pljson</code>.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="73" END_LINE="66" LINES="1" START_COLUMN="26" START_LINE="66"/>
+      <SUMMARY END_COLUMN="73" END_LINE="67" LINES="1" START_COLUMN="26" START_LINE="67"/>
     </FUNCTION>
     <PROCEDURE NAME="SET_ENTIDADE" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN" NAME="P_ENTIDADE" TYPE="VARCHAR2"/>
       <RETURN TYPE="MEMBER PROCEDURE"/>
-      <SUMMARY END_COLUMN="54" END_LINE="69" LINES="1" START_COLUMN="22" START_LINE="69"/>
+      <SUMMARY END_COLUMN="54" END_LINE="70" LINES="1" START_COLUMN="22" START_LINE="70"/>
     </PROCEDURE>
     <PROCEDURE NAME="SET_SCRIPT" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN" NAME="P_SCRIPT" TYPE="VARCHAR2"/>
       <RETURN TYPE="MEMBER PROCEDURE"/>
-      <SUMMARY END_COLUMN="54" END_LINE="70" LINES="1" START_COLUMN="22" START_LINE="70"/>
+      <SUMMARY END_COLUMN="54" END_LINE="71" LINES="1" START_COLUMN="22" START_LINE="71"/>
     </PROCEDURE>
     <PROCEDURE NAME="SET_METODO" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN" NAME="P_METODO" TYPE="VARCHAR2"/>
       <RETURN TYPE="MEMBER PROCEDURE"/>
-      <SUMMARY END_COLUMN="54" END_LINE="71" LINES="1" START_COLUMN="22" START_LINE="71"/>
+      <SUMMARY END_COLUMN="54" END_LINE="72" LINES="1" START_COLUMN="22" START_LINE="72"/>
     </PROCEDURE>
     <PROCEDURE NAME="SET_ACAO" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN" NAME="P_ACAO" TYPE="VARCHAR2"/>
       <RETURN TYPE="MEMBER PROCEDURE"/>
-      <SUMMARY END_COLUMN="54" END_LINE="72" LINES="1" START_COLUMN="22" START_LINE="72"/>
+      <SUMMARY END_COLUMN="54" END_LINE="73" LINES="1" START_COLUMN="22" START_LINE="73"/>
     </PROCEDURE>
     <PROCEDURE NAME="SET_SHOW_LOG" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN" NAME="P_SHOW_LOG" TYPE="VARCHAR2"/>
       <RETURN TYPE="MEMBER PROCEDURE"/>
-      <SUMMARY END_COLUMN="54" END_LINE="73" LINES="1" START_COLUMN="22" START_LINE="73"/>
+      <SUMMARY END_COLUMN="54" END_LINE="74" LINES="1" START_COLUMN="22" START_LINE="74"/>
+    </PROCEDURE>
+    <PROCEDURE NAME="SET_VARIABLES" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN" NAME="P_VARIABLES" TYPE="PLJSON"/>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="54" END_LINE="75" LINES="1" START_COLUMN="22" START_LINE="75"/>
+    </PROCEDURE>
+    <PROCEDURE NAME="SET_DEFAULT" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS"/>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="61" END_LINE="76" LINES="1" START_COLUMN="22" START_LINE="76"/>
     </PROCEDURE>
     <FUNCTION NAME="GET_ENTIDADE" SCOPE="MEMBER" VERSION="1">
       <RETURN TYPE="MEMBER FUNCTION VARCHAR2"/>
-      <SUMMARY END_COLUMN="41" END_LINE="75" LINES="1" START_COLUMN="21" START_LINE="75"/>
+      <SUMMARY END_COLUMN="41" END_LINE="78" LINES="1" START_COLUMN="21" START_LINE="78"/>
     </FUNCTION>
     <FUNCTION NAME="GET_SCRIPT" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS"/>
       <RETURN TYPE="MEMBER FUNCTION VARCHAR2"/>
-      <SUMMARY END_COLUMN="70" END_LINE="76" LINES="1" START_COLUMN="21" START_LINE="76"/>
+      <SUMMARY END_COLUMN="70" END_LINE="79" LINES="1" START_COLUMN="21" START_LINE="79"/>
     </FUNCTION>
     <FUNCTION NAME="GET_METODO" SCOPE="MEMBER" VERSION="1">
       <RETURN TYPE="MEMBER FUNCTION VARCHAR2"/>
-      <SUMMARY END_COLUMN="41" END_LINE="77" LINES="1" START_COLUMN="21" START_LINE="77"/>
+      <SUMMARY END_COLUMN="42" END_LINE="80" LINES="1" START_COLUMN="21" START_LINE="80"/>
     </FUNCTION>
     <FUNCTION NAME="GET_ACAO" SCOPE="MEMBER" VERSION="1">
       <RETURN TYPE="MEMBER FUNCTION VARCHAR2"/>
-      <SUMMARY END_COLUMN="41" END_LINE="78" LINES="1" START_COLUMN="21" START_LINE="78"/>
+      <SUMMARY END_COLUMN="42" END_LINE="81" LINES="1" START_COLUMN="21" START_LINE="81"/>
     </FUNCTION>
     <FUNCTION NAME="GET_SHOW_LOG" SCOPE="MEMBER" VERSION="1">
       <RETURN TYPE="MEMBER FUNCTION BOOLEAN"/>
-      <SUMMARY END_COLUMN="41" END_LINE="79" LINES="1" START_COLUMN="21" START_LINE="79"/>
+      <SUMMARY END_COLUMN="42" END_LINE="82" LINES="1" START_COLUMN="21" START_LINE="82"/>
+    </FUNCTION>
+    <FUNCTION NAME="GET_VARIABLES" SCOPE="MEMBER" VERSION="1">
+      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="42" END_LINE="83" LINES="1" START_COLUMN="21" START_LINE="83"/>
+    </FUNCTION>
+    <FUNCTION NAME="INSERIR_EM_LOTE" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS"/>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="CLOB"/>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="102" END_LINE="86" LINES="1" START_COLUMN="21" START_LINE="86"/>
+    </FUNCTION>
+    <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS"/>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="99" END_LINE="87" LINES="1" START_COLUMN="21" START_LINE="87"/>
+    </FUNCTION>
+    <FUNCTION NAME="ATUALIZAR" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS"/>
+      <ARGUMENT MODE="IN" NAME="P_ID" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="116" END_LINE="88" LINES="1" START_COLUMN="21" START_LINE="88"/>
+    </FUNCTION>
+    <FUNCTION NAME="DELETAR" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS"/>
+      <ARGUMENT MODE="IN" NAME="P_ID" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="98" END_LINE="89" LINES="1" START_COLUMN="21" START_LINE="89"/>
     </FUNCTION>
     <PROCEDURE NAME="EXECUTE_HOSTCOMMAND" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Executar comandos OS via JAVA <code>(Host_command3)</code>,
@@ -162,7 +208,7 @@
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[r_msg       <b>retorna</b> as informaÃ§Ãµes para o log]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="175" END_LINE="93" LINES="1" START_COLUMN="22" START_LINE="93"/>
+      <SUMMARY END_COLUMN="175" END_LINE="102" LINES="1" START_COLUMN="22" START_LINE="102"/>
     </PROCEDURE>
     <FUNCTION NAME="CALL_REQUEST" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Padronizar a chamada das requisiÃ§Ãµes.]]></COMMENT_FIRST_LINE>
@@ -194,7 +240,7 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="126" END_LINE="105" LINES="1" START_COLUMN="21" START_LINE="105"/>
+      <SUMMARY END_COLUMN="126" END_LINE="114" LINES="1" START_COLUMN="21" START_LINE="114"/>
     </FUNCTION>
     <PROCEDURE NAME="REQUEST_GET" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Request GET
@@ -227,7 +273,7 @@
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[r_log           log]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="136" END_LINE="116" LINES="1" START_COLUMN="22" START_LINE="116"/>
+      <SUMMARY END_COLUMN="136" END_LINE="125" LINES="1" START_COLUMN="22" START_LINE="125"/>
     </PROCEDURE>
     <PROCEDURE NAME="REQUEST" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Request POST/PUT
@@ -267,7 +313,7 @@
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[r_log           log]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="168" END_LINE="127" LINES="1" START_COLUMN="22" START_LINE="127"/>
+      <SUMMARY END_COLUMN="168" END_LINE="136" LINES="1" START_COLUMN="22" START_LINE="136"/>
     </PROCEDURE>
     <FUNCTION NAME="FIND_BY_METHOD" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[Request GET, busca por metodo
@@ -303,7 +349,7 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="168" END_LINE="141" LINES="1" START_COLUMN="21" START_LINE="141"/>
+      <SUMMARY END_COLUMN="168" END_LINE="150" LINES="1" START_COLUMN="21" START_LINE="150"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_ALL" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Request GET, busca todos os dados conforme entidade.]]></COMMENT_FIRST_LINE>
@@ -322,7 +368,7 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="82" END_LINE="150" LINES="1" START_COLUMN="21" START_LINE="150"/>
+      <SUMMARY END_COLUMN="82" END_LINE="159" LINES="1" START_COLUMN="21" START_LINE="159"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Request GET, busca dados pelo id.]]></COMMENT_FIRST_LINE>
@@ -347,7 +393,7 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[resposta, lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="99" END_LINE="160" LINES="1" START_COLUMN="21" START_LINE="160"/>
+      <SUMMARY END_COLUMN="99" END_LINE="169" LINES="1" START_COLUMN="21" START_LINE="169"/>
     </FUNCTION>
     <FUNCTION NAME="CONTROLLER_PREPARE_JSON" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Objetivo: tratar o formato do json para enviar na requisiÃ§Ã£o.]]></COMMENT_FIRST_LINE>
@@ -390,7 +436,7 @@
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[string do json tratado.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="151" END_LINE="175" LINES="1" START_COLUMN="21" START_LINE="175"/>
+      <SUMMARY END_COLUMN="151" END_LINE="184" LINES="1" START_COLUMN="21" START_LINE="184"/>
     </FUNCTION>
     <PROCEDURE NAME="CONTROLLER_SAVE_REQUEST" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ Padronizar a forma de salvar/criar/enviar uma chamada de
@@ -462,11 +508,11 @@
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[r_msg           <b>retorna</b> o log.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="321" END_LINE="195" LINES="1" START_COLUMN="22" START_LINE="195"/>
+      <SUMMARY END_COLUMN="321" END_LINE="204" LINES="1" START_COLUMN="22" START_LINE="204"/>
     </PROCEDURE>
-    <SUMMARY END_COLUMN="11" END_LINE="197" LINES="197" START_COLUMN="24" START_LINE="1"/>
+    <SUMMARY END_COLUMN="11" END_LINE="206" LINES="206" START_COLUMN="24" START_LINE="1"/>
   </OBJECT_TYPE>
-  <OBJECT_TYPE NAME="O_CANVAS_CURSOS" SCHEMA="">
+  <OBJECT_TYPE NAME="O_CANVAS_CURSO" SCHEMA="">
     <SUPERTYPE NAME="O_CANVAS">
       <RETURN TYPE="O_CANVAS"/>
     </SUPERTYPE>
@@ -475,7 +521,7 @@
  <strong>Exemplo:</strong>
  <pre>
  declare
-   mycanvas o_canvas := o_canvas_cursos;
+   mycanvas o_canvas := o_canvas_curso;
    cursoInserido pljson;
    w_msg clob;
  begin
@@ -504,13 +550,18 @@
       <COMMENT>
       </COMMENT>
     </TAG>
-    <FUNCTION NAME="O_CANVAS_CURSOS" SCOPE="CONSTRUCTOR" VERSION="1">
+    <FUNCTION NAME="O_CANVAS_CURSO" SCOPE="CONSTRUCTOR" VERSION="1">
       <RETURN TYPE="CONSTRUCTOR FUNCTION SELF AS RESULT"/>
-      <SUMMARY END_COLUMN="57" END_LINE="60" LINES="1" START_COLUMN="26" START_LINE="60"/>
+      <SUMMARY END_COLUMN="56" END_LINE="60" LINES="1" START_COLUMN="26" START_LINE="60"/>
     </FUNCTION>
-    <FUNCTION NAME="INSERIR_CURSOS" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Criar um Curso</p>
- <p>Criar um curso individual e retorna a entidade atual criada.</p>
+    <PROCEDURE NAME="SET_DEFAULT_ATTRIBUTE" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="77" END_LINE="62" LINES="1" START_COLUMN="22" START_LINE="62"/>
+    </PROCEDURE>
+    <FUNCTION NAME="CONCLUIR" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Concluir um curso</p>
+ <p>Concluir ou excluir um curso existente.</p>
  <p>
      <table>
          <thead>
@@ -521,65 +572,281 @@
              </tr>
          </thead>
          <tbody>
-             <tr><td>account_id          </td><td>integer     </td><td>ID de conta / subconta no LMS.</td></tr>
-             <tr><td>name                </td><td>string      </td><td>Nome do curso</td></tr>
-             <tr><td>code                </td><td>string      </td><td>CÃ³digo do curso.</td></tr>
-             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do curso.</td></tr>
-             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do curso.</td></tr>
-             <tr><td>restrict_to_dates   </td><td>boolean     </td><td>(opcional) Restringe inscriÃ§Ãµes nas datas de inÃ­cio e fim do curso.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Criar um Curso</p>
- <p>Criar um curso individual e retorna a entidade atual criada.</p>
- <p>
-     <table>
-         <thead>
              <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>Identificador do curso.</td>
              </tr>
-         </thead>
-         <tbody>
-             <tr><td>account_id          </td><td>integer     </td><td>ID de conta / subconta no LMS.</td></tr>
-             <tr><td>name                </td><td>string      </td><td>Nome do curso</td></tr>
-             <tr><td>code                </td><td>string      </td><td>CÃ³digo do curso.</td></tr>
-             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do curso.</td></tr>
-             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do curso.</td></tr>
-             <tr><td>restrict_to_dates   </td><td>boolean     </td><td>(opcional) Restringe inscriÃ§Ãµes nas datas de inÃ­cio e fim do curso. Se este parÃ¢metro nÃ£o vier definido, assumirÃ¡ o valor padrÃ£o false. Se vier definido como true, serÃ¡ necessÃ¡rio definir as datas de inÃ­cio e fim do curso.</td></tr>
-             <tr><td>sis_master_id       </td><td>string      </td><td>Id conteÃºdo do curso mestre. O curso serÃ¡ criado somente quando a referÃªncia de sis_master_id for vÃ¡lida.</td></tr>
-             <tr><td>sis_term_id         </td><td>string      </td><td>Identificador do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>sis_course_id       </td><td>string      </td><td>Identificador do curso.</td></tr>
-             <tr><td>publish             </td><td>boolean     </td><td>Determina se o curso deve estar publicado ou nÃ£o.</td></tr>
-             <tr><td>import_content      </td><td>boolean     </td><td>Determina se o conteÃºdo do curso master serÃ¡ importado. Para isso acontecer, este parÃ¢metro deve ser definido como true e sis_master_id deverÃ¡ ter um ID vÃ¡lido.</td></tr>
+             <tr>
+                 <td>action 2*</td>
+                 <td>string</td>
+                 <td>Valores permitidos: delete ou conclude.</td>
+             </tr>
          </tbody>
      </table>
  </p>
  <p>
      <code>
-         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d
-         '{
-             "course":
-             {
-                 "account_id" : 1,
-                 "name":"Nombre del Curso",
-                 "code" : "C001",
-                 "end_at":"2017-01-07T02:59:00Z",
-                 "start_at":"2016-01-06T03:00:00Z",
-                 "restrict_to_dates": false,
-                 "sis_master_id":"30952006",
-                 "sis_term_id" : "term",
-                 "sis_course_id" :"30952006"
-             },
-             "publish": true,
-             "import_content": true
-         }'
-         "https://<apim host and port>/<university>/api/lms/v1/courses"
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>" -d event=<action>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>?event=<action>"
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Concluir um curso</p>
+ <p>Concluir ou excluir um curso existente.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>Identificador do curso.</td>
+             </tr>
+             <tr>
+                 <td>action 2*</td>
+                 <td>string</td>
+                 <td>Valores permitidos: delete ou conclude.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>" -d event=<action>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>?event=<action>"
      </code>
  </p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="CLOB">
-        <COMMENT><![CDATA[json a ser enviado.]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_ACTION" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[2*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_course_id 1*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_action        2*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg           log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="133" END_LINE="108" LINES="1" START_COLUMN="21" START_LINE="108"/>
+    </FUNCTION>
+    <FUNCTION INHERITANCE="OVERRIDING" NAME="DELETAR" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
+      <ARGUMENT MODE="IN" NAME="P_ID" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
+      <RETURN TYPE="OVERRIDING MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="115" END_LINE="109" LINES="1" START_COLUMN="32" START_LINE="109"/>
+    </FUNCTION>
+    <FUNCTION NAME="LIBERAR_ELIMINAR" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Liberar e eliminar um curso</p>
+ <p>Liberar o SIS_ID de um curso e depois excluÃ­-lo.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>(requerido) Identificador do curso.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/release"
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Liberar e eliminar um curso</p>
+ <p>Liberar o SIS_ID de um curso e depois excluÃ­-lo.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>(requerido) Identificador do curso.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/release"
+     </code>
+ </p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o.]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_course_id 1*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg           log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o.]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="122" END_LINE="144" LINES="1" START_COLUMN="21" START_LINE="144"/>
+    </FUNCTION>
+    <FUNCTION NAME="ATUALIZAR_CONFIGURACOES" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Atualizar as configuraÃ§Ãµes do Curso</p>
+ <p>Atualiza algumas configuraÃ§Ãµes de um curso.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*                    </td><td>string  </td><td>Identificador do curso.</td></tr>
+             <tr><td>allow_student_discussion_topics     </td><td>boolean </td><td>Permitir que os alunos criem temas de discussÃ£o.</td></tr>
+             <tr><td>allow_student_forum_attachments     </td><td>boolean </td><td>Permitir que os alunos anexem arquivos Ã s discussÃµes.</td></tr>
+             <tr><td>allow_student_discussion_editing    </td><td>boolean </td><td>Permitir aos alunos editar ou excluir suas prÃ³prias mensagens de discussÃ£o.</td></tr>
+             <tr><td>allow_student_organized_groups      </td><td>boolean </td><td>Permita que os alunos organizem seus prÃ³prios grupos.</td></tr>
+             <tr><td>hide_final_grades                   </td><td>boolean </td><td>Ocultar os totais no resumo das notas dos alunos.</td></tr>
+             <tr><td>hide_distribution_graphs            </td><td>boolean </td><td>Ocultar grÃ¡ficos de distribuiÃ§Ã£o de notas de alunos.</td></tr>
+             <tr><td>lock_all_announcements              </td><td>boolean </td><td>Desativar ComentÃ¡rios em anÃºncios.</td></tr>
+             <tr><td>restrict_student_past_view          </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos apÃ³s a data de tÃ©rmino.</td></tr>
+             <tr><td>restrict_student_future_view        </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos antes da data de inÃ­cio.</td></tr>
+             <tr><td>show_announcements_on_home_page     </td><td>boolean </td><td>Mostrar os anÃºncios mais recentes na pÃ¡gina inicial do curso (se houver um Wiki, por padrÃ£o ele tem cinco anÃºncios, configurÃ¡veis atravÃ©s de home_page_announcement_limit).</td></tr>
+             <tr><td>home_page_announcement_limit        </td><td>integer </td><td>Limitar o nÃºmero de anÃºncios na pÃ¡gina inicial, se estiver habilitado atravÃ©s de show_announcements_on_home_page.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "allow_student_discussion_topics" : false,
+             "allow_student_forum_attachments" : false,
+             "allow_student_discussion_editing" : false,
+             "allow_student_organized_groups" : false,
+             "hide_final_grades" : false,
+             "hide_distribution_graphs" : false,
+             "lock_all_announcements" : false,
+             "restrict_student_past_view" : false,
+             "restrict_student_future_view" : false,
+             "show_announcements_on_home_page" : false,
+             "home_page_announcement_limit" : 100
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/settings"
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Atualizar as configuraÃ§Ãµes do Curso</p>
+ <p>Atualiza algumas configuraÃ§Ãµes de um curso.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*                    </td><td>string  </td><td>Identificador do curso.</td></tr>
+             <tr><td>allow_student_discussion_topics     </td><td>boolean </td><td>Permitir que os alunos criem temas de discussÃ£o.</td></tr>
+             <tr><td>allow_student_forum_attachments     </td><td>boolean </td><td>Permitir que os alunos anexem arquivos Ã s discussÃµes.</td></tr>
+             <tr><td>allow_student_discussion_editing    </td><td>boolean </td><td>Permitir aos alunos editar ou excluir suas prÃ³prias mensagens de discussÃ£o.</td></tr>
+             <tr><td>allow_student_organized_groups      </td><td>boolean </td><td>Permita que os alunos organizem seus prÃ³prios grupos.</td></tr>
+             <tr><td>hide_final_grades                   </td><td>boolean </td><td>Ocultar os totais no resumo das notas dos alunos.</td></tr>
+             <tr><td>hide_distribution_graphs            </td><td>boolean </td><td>Ocultar grÃ¡ficos de distribuiÃ§Ã£o de notas de alunos.</td></tr>
+             <tr><td>lock_all_announcements              </td><td>boolean </td><td>Desativar ComentÃ¡rios em anÃºncios.</td></tr>
+             <tr><td>restrict_student_past_view          </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos apÃ³s a data de tÃ©rmino.</td></tr>
+             <tr><td>restrict_student_future_view        </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos antes da data de inÃ­cio.</td></tr>
+             <tr><td>show_announcements_on_home_page     </td><td>boolean </td><td>Mostrar os anÃºncios mais recentes na pÃ¡gina inicial do curso (se houver um Wiki, por padrÃ£o ele tem cinco anÃºncios, configurÃ¡veis atravÃ©s de home_page_announcement_limit).</td></tr>
+             <tr><td>home_page_announcement_limit        </td><td>integer </td><td>Limitar o nÃºmero de anÃºncios na pÃ¡gina inicial, se estiver habilitado atravÃ©s de show_announcements_on_home_page.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "allow_student_discussion_topics" : false,
+             "allow_student_forum_attachments" : false,
+             "allow_student_discussion_editing" : false,
+             "allow_student_organized_groups" : false,
+             "hide_final_grades" : false,
+             "hide_distribution_graphs" : false,
+             "lock_all_announcements" : false,
+             "restrict_student_past_view" : false,
+             "restrict_student_future_view" : false,
+             "show_announcements_on_home_page" : false,
+             "home_page_announcement_limit" : 100
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/settings"
+     </code>
+ </p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[json com as configuraÃ§Ã£oes]]></COMMENT>
       </ARGUMENT>
       <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
         <COMMENT><![CDATA[log.]]></COMMENT>
@@ -588,55 +855,76 @@
         <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
       </RETURN>
       <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_json  json a ser enviado.]]></COMMENT>
+        <COMMENT><![CDATA[p_sis_course_id 1*]]></COMMENT>
       </TAG>
       <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
+        <COMMENT><![CDATA[p_json          json com as configuraÃ§Ã£oes]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg           log.]]></COMMENT>
       </TAG>
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="112" END_LINE="121" LINES="1" START_COLUMN="21" START_LINE="121"/>
-    </FUNCTION>
-    <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="112" END_LINE="122" LINES="1" START_COLUMN="21" START_LINE="122"/>
-    </FUNCTION>
-    <FUNCTION NAME="ATUALIZAR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="112" END_LINE="123" LINES="1" START_COLUMN="21" START_LINE="123"/>
+      <SUMMARY END_COLUMN="146" END_LINE="201" LINES="1" START_COLUMN="21" START_LINE="201"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_ALL" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[Listar Cursos
-Lista todos os cursos criados anteriormente dentro da conta.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[Listar Cursos
-Lista todos os cursos criados anteriormente dentro da conta. Este serviÃ§o Ã© paginado.
-Campo       Tipo    ComentÃ¡rios
-account_id  integer (opcional) ID de conta / sub-conta onde vocÃª deseja listar os cursos. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumida.
-state       string  (opcional) VocÃª pode usar o Estado para filtrar os cursos. Os valores permitidos sÃ£o: created, claimed, available, completed, deleted, all. Se o parÃ¢metro nÃ£o for recebido, tendo em conta todos os estados, exceto deleted.
-search_term string  (opcional) SequÃªncia de caracteres ( pelo menos 3), para ser usado como dados de pesquisa padrÃ£o no nome do curso, cÃ³digo do curso ou SIS_ID.
-include     string  (opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o iria ser adicionado ao nÃºmero de alunos do estado: active e invited.
-sis_term_id string  (opcional) O SIS_ID de um perÃ­odo acadÃªmico pode ser usado para filtrar os cursos. Se o parÃ¢metro nÃ£o for recebido, todos os perÃ­odos sÃ£o considerados.
-curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
-"https://<apim host and port>/<university>/api/lms/v1/
-courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=<include>&sis_term_id=<sis_term_id>"
-
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Listar Cursos</p>
+ <p>Lista todos os cursos criados anteriormente dentro da conta.]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Listar Cursos</p>
+ <p>Lista todos os cursos criados anteriormente dentro da conta. Este serviÃ§o Ã© paginado.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>account_id 1*</td><td>integer </td><td>(opcional) ID de conta / sub-conta onde vocÃª deseja listar os cursos. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumida.</td></tr>
+             <tr><td>state 2*     </td><td>string  </td><td>(opcional) VocÃª pode usar o Estado para filtrar os cursos. Os valores permitidos sÃ£o: created, claimed, available, completed, deleted, all. Se o parÃ¢metro nÃ£o for recebido, tendo em conta todos os estados, exceto deleted.</td></tr>
+             <tr><td>search_term 3*</td><td>string  </td><td>(opcional) SequÃªncia de caracteres ( pelo menos 3), para ser usado como dados de pesquisa padrÃ£o no nome do curso, cÃ³digo do curso ou SIS_ID.</td></tr>
+             <tr><td>include 4*    </td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o iria ser adicionado ao nÃºmero de alunos do estado: active e invited.</td></tr>
+             <tr><td>sis_term_id 5*</td><td>string  </td><td>(opcional) O SIS_ID de um perÃ­odo acadÃªmico pode ser usado para filtrar os cursos. Se o parÃ¢metro nÃ£o for recebido, todos os perÃ­odos sÃ£o considerados.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=<include>&sis_term_id=<sis_term_id>"
+     </code>
+ </p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_ACCOUNT_ID" TYPE="NUMBER"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_STATE" TYPE="VARCHAR2"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_SEARCH_TERM" TYPE="VARCHAR2"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_INCLUDE" TYPE="VARCHAR2"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_SIS_TERM_ID" TYPE="VARCHAR2"/>
       <ARGUMENT MODE="OUT" NAME="R_LOG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON_LIST"/>
-      <SUMMARY END_COLUMN="261" END_LINE="143" LINES="1" START_COLUMN="21" START_LINE="143"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON_LIST">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.
+member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_curso, p_json clob    , r_msg out clob) return pljson,
+member function inserir       (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,
+member function atualizar     (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_json  json a ser enviado.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.
+member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_curso, p_json clob    , r_msg out clob) return pljson,
+member function inserir       (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,
+member function atualizar     (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="260" END_LINE="305" LINES="1" START_COLUMN="21" START_LINE="305"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_ASSIGNMENTS_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Listar atividades de um curso.</p>
@@ -647,7 +935,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Listar as atividades e tarefas de um curso.</p>
  <p>courses/<sis_course_id>/assignments?search_term=<search_term>&only_gradable_assignments=<only_gradable_assignments></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS acadÃªmico que referencia o curso de onde se encontram as atividades.]]></COMMENT>
       </ARGUMENT>
@@ -676,7 +964,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="217" END_LINE="158" LINES="1" START_COLUMN="21" START_LINE="158"/>
+      <SUMMARY END_COLUMN="216" END_LINE="320" LINES="1" START_COLUMN="21" START_LINE="320"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_SECTIONS_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Listar seÃ§Ãµes em um Curso.</p>
@@ -685,7 +973,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Lista todas as seÃ§Ãµes previamente criadas dentro de um curso. Este serviÃ§o Ã© paginado.</p>
  <p>courses/sis_course_id:<sis_course_id>/sections?include=<include></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao curso.]]></COMMENT>
       </ARGUMENT>
@@ -708,7 +996,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="162" END_LINE="172" LINES="1" START_COLUMN="21" START_LINE="172"/>
+      <SUMMARY END_COLUMN="161" END_LINE="334" LINES="1" START_COLUMN="21" START_LINE="334"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_ENROLLMENTS_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Listar inscriÃ§Ãµes em um Curso.</p>
@@ -717,7 +1005,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Lista todas as inscriÃ§Ãµes previamente criadas dentro de um curso. Este serviÃ§o Ã© paginado.</p>
  <p>courses/sis_course_id:<sis_course_id>/enrollments?role=<role>&state=<state></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao curso.]]></COMMENT>
       </ARGUMENT>
@@ -748,7 +1036,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="190" END_LINE="187" LINES="1" START_COLUMN="21" START_LINE="187"/>
+      <SUMMARY END_COLUMN="189" END_LINE="349" LINES="1" START_COLUMN="21" START_LINE="349"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BLUEPRINT_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Obter informaÃ§Ã£o do Curso Modelo.</p>
@@ -759,7 +1047,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>ProvÃª a informaÃ§Ã£o sobre o curso modelo especificado.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -784,7 +1072,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="179" END_LINE="201" LINES="1" START_COLUMN="21" START_LINE="201"/>
+      <SUMMARY END_COLUMN="178" END_LINE="363" LINES="1" START_COLUMN="21" START_LINE="363"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BLUEPRINT_ASSOCIATE_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Obter informaÃ§Ã£o do curso associado.</p>
@@ -795,7 +1083,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>ProvÃª informaÃ§Ã£o sobre os cursos associados a um curso modelo.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/associated_courses</p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -820,7 +1108,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="179" END_LINE="214" LINES="1" START_COLUMN="21" START_LINE="214"/>
+      <SUMMARY END_COLUMN="178" END_LINE="376" LINES="1" START_COLUMN="21" START_LINE="376"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BLUEPRINT_MIGRATE_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Lista de modelos de migraÃ§Ã£o.</p>
@@ -831,7 +1119,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Mostra uma lista paginada de migraÃ§Ãµes para o modelo.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate</p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -856,7 +1144,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="179" END_LINE="227" LINES="1" START_COLUMN="21" START_LINE="227"/>
+      <SUMMARY END_COLUMN="178" END_LINE="389" LINES="1" START_COLUMN="21" START_LINE="389"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BP_MIGRATION_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Mostrar migraÃ§Ã£o de um curso modelo.</p>
@@ -867,7 +1155,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Mostra o estado de uma migraÃ§Ã£o.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -898,7 +1186,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="204" END_LINE="241" LINES="1" START_COLUMN="21" START_LINE="241"/>
+      <SUMMARY END_COLUMN="203" END_LINE="403" LINES="1" START_COLUMN="21" START_LINE="403"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BP_MIGRATION_DETAIL_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Obter detalhes de uma migraÃ§Ã£o.</p>
@@ -909,7 +1197,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Mostra as alteraÃ§Ãµes que foram propagadas numa migraÃ§Ã£o de um curso modelo.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id>/details</p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -940,7 +1228,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="204" END_LINE="255" LINES="1" START_COLUMN="21" START_LINE="255"/>
+      <SUMMARY END_COLUMN="203" END_LINE="417" LINES="1" START_COLUMN="21" START_LINE="417"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_BP_SUBSCRIPTION_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Listar importaÃ§Ãµes de um curso modelo.</p>
@@ -951,7 +1239,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Mostra uma lista de migraÃ§Ãµes de um curso modelo importadas em um curso associado.</p>
  <p>courses/sis_course_id:<sis_course_id>/blueprint/subscription_id:<subscription_id>/migrate</p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -976,7 +1264,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="183" END_LINE="268" LINES="1" START_COLUMN="21" START_LINE="268"/>
+      <SUMMARY END_COLUMN="182" END_LINE="430" LINES="1" START_COLUMN="21" START_LINE="430"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_GROUP_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Listar conjuntos de grupos de um curso.</p>
@@ -987,7 +1275,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <p>Devolve uma lista de conjuntos de grupos de um curso.</p>
  <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID interno do SIS que referencia o curso modelo.]]></COMMENT>
       </ARGUMENT>
@@ -1006,7 +1294,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="123" END_LINE="281" LINES="1" START_COLUMN="21" START_LINE="281"/>
+      <SUMMARY END_COLUMN="122" END_LINE="443" LINES="1" START_COLUMN="21" START_LINE="443"/>
     </FUNCTION>
     <FUNCTION NAME="CREATE_GROUP" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Criar um conjunto de grupos.</p>
@@ -1029,7 +1317,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
      </code>
  </p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_CURSO"/>
       <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) json do grupo.]]></COMMENT>
       </ARGUMENT>
@@ -1054,7 +1342,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[lista de json.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="140" END_LINE="305" LINES="1" START_COLUMN="21" START_LINE="305"/>
+      <SUMMARY END_COLUMN="139" END_LINE="467" LINES="1" START_COLUMN="21" START_LINE="467"/>
     </FUNCTION>
     <PROCEDURE NAME="CONTROLLER" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Foi criado esse controle pois o controle padrÃ£o
@@ -1088,16 +1376,313 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[r_msg       <b>retorna</b> o log.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="111" END_LINE="317" LINES="1" START_COLUMN="22" START_LINE="317"/>
+      <SUMMARY END_COLUMN="111" END_LINE="479" LINES="1" START_COLUMN="22" START_LINE="479"/>
     </PROCEDURE>
-    <SUMMARY END_COLUMN="1" END_LINE="319" LINES="319" START_COLUMN="24" START_LINE="1"/>
+    <SUMMARY END_COLUMN="1" END_LINE="481" LINES="481" START_COLUMN="24" START_LINE="1"/>
+  </OBJECT_TYPE>
+  <OBJECT_TYPE NAME="O_CANVAS_INSCRICAO" SCHEMA="">
+    <SUPERTYPE NAME="O_CANVAS">
+      <RETURN TYPE="O_CANVAS"/>
+    </SUPERTYPE>
+    <COMMENT><![CDATA[ <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type Inscricao</p>
+ <p> Este objeto representa a entidade inscriÃ§Ã£o (Enrollments) </p>
+ <strong>Exemplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas_inscricao;
+   w_msg clob;
+ begin
+   mycanvas.o_canvas.inserir(
+   '{
+       "enrollment": {
+           "user_id": 55,
+           "type": "StudentEnrollment",
+           "role_id": 12,
+           "state": "active",
+           "limit_interaction": true
+           "send_notification": false,
+           "group_id": 1,
+       }
+   }', w_msg);
+   mycanvas.print;
+ end;
+ </pre>
+]]></COMMENT>
+    <TAG TYPE="@HEADCOM">
+      <COMMENT>
+      </COMMENT>
+    </TAG>
+    <FUNCTION NAME="O_CANVAS_INSCRICAO" SCOPE="CONSTRUCTOR" VERSION="1">
+      <RETURN TYPE="CONSTRUCTOR FUNCTION SELF AS RESULT"/>
+      <SUMMARY END_COLUMN="60" END_LINE="56" LINES="1" START_COLUMN="26" START_LINE="56"/>
+    </FUNCTION>
+    <PROCEDURE NAME="SET_DEFAULT_ATTRIBUTE" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_INSCRICAO"/>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="81" END_LINE="58" LINES="1" START_COLUMN="22" START_LINE="58"/>
+    </PROCEDURE>
+    <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Criar InscriÃ§Ã£o</p>
+ <p>Cria uma inscriÃ§Ã£o individual e retorna a entidade inscriÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id             </td><td>integer</td><td> (requerido) ID do usuÃ¡rio a ser inscrito.</td><tr>
+             <tr><td>type                </td><td>string </td><td>(requerido) Tipo de InscriÃ§Ã£o.]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Criar InscriÃ§Ã£o</p>
+ <p>Cria uma inscriÃ§Ã£o individual e retorna a entidade inscriÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id             </td><td>integer</td><td> (requerido) ID do usuÃ¡rio a ser inscrito.</td><tr>
+             <tr><td>type                </td><td>string </td><td>(requerido) Tipo de InscriÃ§Ã£o. Os valores possÃ­veis: StudentEnrollment, TeacherEnrollment, TaEnrollment, ObserverEnrollment, DesignerEnrollment</td><tr>
+             <tr><td>role_id             </td><td>integer</td><td> (opcional) Identificador do role personalizado atribuÃ­do a um usuÃ¡rio.</td><tr>
+             <tr><td>sis_section_id 1*   </td><td>string </td><td>(requerido) ID interno do sistema acadÃªmico atribuÃ­do Ã  seÃ§Ã£o.</td><tr>
+             <tr><td>state               </td><td>string </td><td>(requerido) Estado da inscriÃ§Ã£o. Valores possÃ­veis: active, invited, inactive</td><tr>
+             <tr><td>limit_interaction   </td><td>boolean</td><td> (requerido) true: Limita a interaÃ§Ã£o somente entre os participantes da seÃ§Ã£o.</td><tr>
+             <tr><td>send_notification   </td><td>boolean</td><td> (opcional) Indicador se deve enviar notificaÃ§Ãµes ao usuÃ¡rio.</td><tr>
+             <tr><td>group_id            </td><td>integer</td><td> (opcional) Identificador do grupo ao qual deseja inscrever.<br>Se nÃ£o utiliza o group_id poderÃ¡ nÃ£o ser enviado como parte do body ou estar presente e vazio.<br>Para utilizar o group_id terÃ¡ que atribuir ao parÃ¢metro type o valor StudentEnrollment.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "enrollment": {
+                 "user_id": 55,
+                 "type": "StudentEnrollment",
+                 "role_id": 12,
+                 "state": "active",
+                 "limit_interaction": true
+                 "send_notification": false,
+                 "group_id": 1,
+             }
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/enrollments"
+     </code>
+ </p>
+
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_INSCRICAO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_SECTION_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*.]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[json inscrioes a ser inserido.]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_section_id    1*.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_json              json inscrioes a ser inserido.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg               log.]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="136" END_LINE="109" LINES="1" START_COLUMN="21" START_LINE="109"/>
+    </FUNCTION>
+    <FUNCTION NAME="DELETAR" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Excluir, concluir ou desativar uma InscriÃ§Ã£o</p>
+ <p>Dependendo da aÃ§Ã£o especificada, o serviÃ§o pode concluir, inativar ou excluir uma inscriÃ§Ã£o</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*</td><td>string  </td><td>(requerido) ID interno do SIS que referencia o cursos onde se encontra e inscriÃ§Ã£o.</td></tr>
+             <tr><td>enrollment_id 2*</td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td></tr>
+             <tr><td>action        3*</td><td>string  </td><td>(requerido) Tarefa a realizar: conclude, delete ou deactivate</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>?task=<action>"
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>"
+         -d task=<action>
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Excluir, concluir ou desativar uma InscriÃ§Ã£o</p>
+ <p>Dependendo da aÃ§Ã£o especificada, o serviÃ§o pode concluir, inativar ou excluir uma inscriÃ§Ã£o</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*</td><td>string  </td><td>(requerido) ID interno do SIS que referencia o cursos onde se encontra e inscriÃ§Ã£o.</td></tr>
+             <tr><td>enrollment_id 2*</td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td></tr>
+             <tr><td>action        3*</td><td>string  </td><td>(requerido) Tarefa a realizar: conclude, delete ou deactivate</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>?task=<action>"
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>"
+         -d task=<action>
+     </code>
+ </p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_INSCRICAO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_ENROLLMENT_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[2*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_ACTION" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[3*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_course_id     1*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_enrollment_id     2*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_action            3*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg               log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="164" END_LINE="148" LINES="1" START_COLUMN="21" START_LINE="148"/>
+    </FUNCTION>
+    <FUNCTION NAME="REATIVAR" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Reativar uma inscriÃ§Ã£o</p>
+ <p>Reativa uma inscriÃ§Ã£o desativada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id </td><td>string  </td><td>(requerido) ID interno do SIS que referencia o curso onde se encontra a inscriÃ§Ã£o.</td><tr>
+             <tr><td>enrollment_id </td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>/reactivate"
+         -d '{}'
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Reativar uma inscriÃ§Ã£o</p>
+ <p>Reativa uma inscriÃ§Ã£o desativada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id </td><td>string  </td><td>(requerido) ID interno do SIS que referencia o curso onde se encontra a inscriÃ§Ã£o.</td><tr>
+             <tr><td>enrollment_id </td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>/reactivate"
+         -d '{}'
+     </code>
+ </p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_INSCRICAO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_ENROLLMENT_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[2*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_course_id     1*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_enrollment_id     2*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg               log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="146" END_LINE="182" LINES="1" START_COLUMN="21" START_LINE="182"/>
+    </FUNCTION>
+    <SUMMARY END_COLUMN="11" END_LINE="183" LINES="183" START_COLUMN="24" START_LINE="1"/>
   </OBJECT_TYPE>
   <OBJECT_TYPE NAME="O_CANVAS_PERIODO_ACADEMICO" SCHEMA="">
     <SUPERTYPE NAME="O_CANVAS">
       <RETURN TYPE="O_CANVAS"/>
     </SUPERTYPE>
     <COMMENT><![CDATA[ <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type principal do canvas</p>
- <p> Este objeto representa a entidade PerÃ­odo Academico (Enrollments) </p>
+ <p> Este objeto representa a entidade PerÃ­odo Academico (Terms) </p>
  <strong>Examplo:</strong>
  <pre>
  declare
@@ -1135,382 +1720,17 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <RETURN TYPE="CONSTRUCTOR FUNCTION SELF AS RESULT"/>
       <SUMMARY END_COLUMN="68" END_LINE="62" LINES="1" START_COLUMN="26" START_LINE="62"/>
     </FUNCTION>
-    <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Criar um PerÃ­odo AcadÃªmico</p>
- <p>Criar uma nova perÃ­odos acadÃªmicos ou ciclos acadÃªmicos.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr>
-                 <td>name</td>
-                 <td>string</td>
-                 <td>(requerido) Nome completo.</td>
-             </tr>
-             <tr>
-                 <td>sis_term_id</td>
-                 <td>string</td>
-                 <td>(requerido) PerÃ­odo acadÃªmico identificador dentro do sistema.</td>
-             </tr>
-             <tr>
-                 <td>start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>student_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>student_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>teacher_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>teacher_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>assistant_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>assistant_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>designer_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>designer_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>account_id</td>
-                 <td>integer</td>
-                 <td>(opcional) ID da conta de onde pretende para criar o perÃ­odo acadÃªmico.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Criar um PerÃ­odo AcadÃªmico</p>
- <p>Criar uma nova perÃ­odos acadÃªmicos ou ciclos acadÃªmicos.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr>
-                 <td>name</td>
-                 <td>string</td>
-                 <td>(requerido) Nome completo.</td>
-             </tr>
-             <tr>
-                 <td>sis_term_id</td>
-                 <td>string</td>
-                 <td>(requerido) PerÃ­odo acadÃªmico identificador dentro do sistema.</td>
-             </tr>
-             <tr>
-                 <td>start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>student_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>student_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>teacher_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>teacher_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>assistant_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>assistant_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>designer_start_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>designer_end_at</td>
-                 <td>date</td>
-                 <td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td>
-             </tr>
-             <tr>
-                 <td>account_id</td>
-                 <td>integer</td>
-                 <td>(opcional) ID da conta de onde pretende para criar o perÃ­odo acadÃªmico. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumido.</td>
-             </tr>
-         </tbody>
-     </table>
- <p>
- <p>
-     <code>
-         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d
-         '{
-             "term": {
-                 "account_id": "1",
-                 "sis_term_id": "Sp2014",
-                 "name": "Spring 2014",
-                 "start_at": "2016-01-10T18:48:00Z",
-                 "end_at": "2017-01-10T18:48:00Z",
-                 "student_start_at": "2017-07-12T03:00:00Z",
-                 "student_end_at": "2017-07-12T03:00:00Z",
-                 "teacher_start_at": "2017-07-12T03:00:00Z",
-                 "teacher_end_at": "2017-07-23T02:59:59Z",
-                 "assistant_start_at": "2017-07-23T02:59:59Z",
-                 "assistant_end_at": "2017-07-23T02:59:59Z",
-                 "designer_start_at": "2017-07-11T03:00:00Z",
-                 "designer_end_at": "2017-07-16T02:59:59Z"
-             }
-         }' "https://<apim host and port>/<university>/api/lms/v1/terms"
-     </code>
- </p>
-]]></COMMENT>
+    <PROCEDURE NAME="SET_DEFAULT_ATTRIBUTE" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_PERIODO_ACADEMICO"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[json a ser enviado.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
-        <COMMENT><![CDATA[log.]]></COMMENT>
-      </ARGUMENT>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </RETURN>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_json  json a ser enviado.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </TAG>
-      <SUMMARY END_COLUMN="118" END_LINE="175" LINES="1" START_COLUMN="21" START_LINE="175"/>
-    </FUNCTION>
-    <FUNCTION NAME="ATUALIZAR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Atualizar PerÃ­odo AcadÃªmico</p>
- <p>Atualiza os dados de um perÃ­odo acadÃªmico.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>name                </td><td>string      </td><td>(requerido) Nome completo.</td></tr>
-             <tr><td>old_sis_term_id     </td><td>string      </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>sis_term_id         </td><td>string      </td><td>(opcional) Novo ID interno del sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>student_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>student_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>teacher_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>teacher_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>assistant_start_at  </td><td>datetime    </td><td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>assistant_end_at    </td><td>datetime    </td><td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>designer_start_at   </td><td>datetime    </td><td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>designer_end_at     </td><td>datetime    </td><td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>account_id          </td><td>integer     </td><td>(opcional) ID da conta de onde pretende para atualizar o perÃ­odo acadÃªmico.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Atualizar PerÃ­odo AcadÃªmico</p>
- <p>Atualiza os dados de um perÃ­odo acadÃªmico.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>name                </td><td>string      </td><td>(requerido) Nome completo.</td></tr>
-             <tr><td>old_sis_term_id     </td><td>string      </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>sis_term_id         </td><td>string      </td><td>(opcional) Novo ID interno del sistema acadÃªmico (SIS) atribuÃ­do ao perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>start_at            </td><td>datetime    </td><td>(opcional) Data de inÃ­cio do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>end_at              </td><td>datetime    </td><td>(opcional) Data de fim do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>student_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>student_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os estudantes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>teacher_start_at    </td><td>datetime    </td><td>(opcional) Data de inicio para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>teacher_end_at      </td><td>datetime    </td><td>(opcional) Data de fim para os professores no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>assistant_start_at  </td><td>datetime    </td><td>(opcional) Data de inicio para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>assistant_end_at    </td><td>datetime    </td><td>(opcional) Data de fim para os professores assistentes no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>designer_start_at   </td><td>datetime    </td><td>(opcional) Data de inicio para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>designer_end_at     </td><td>datetime    </td><td>(opcional) Data de fim para os designers no nÃ­vel do perÃ­odo acadÃªmico.</td></tr>
-             <tr><td>account_id          </td><td>integer     </td><td>(opcional) ID da conta de onde pretende para atualizar o perÃ­odo acadÃªmico. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumido.</td></tr>
-         </tbody>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d
-         '{
-             "term": {
-                 "account_id": "1",
-                 "sis_term_id": "Sp2014",
-                 "name": "Spring 2014",
-                 "start_at": "2016-01-10T18:48:00Z",
-                 "end_at": "2017-01-10T18:48:00Z",
-                 "student_start_at": "2017-07-12T03:00:00Z",
-                 "student_end_at": "2017-07-12T03:00:00Z",
-                 "teacher_start_at": "2017-07-12T03:00:00Z",
-                 "teacher_end_at": "2017-07-23T02:59:59Z",
-                 "assistant_start_at": "2017-07-23T02:59:59Z",
-                 "assistant_end_at": "2017-07-23T02:59:59Z",
-                 "designer_start_at": "2017-07-11T03:00:00Z",
-                 "designer_end_at": "2017-07-16T02:59:59Z"
-             }
-         }' "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<old_sis_term_id>"
-     </code>
- </p>
-]]></COMMENT>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="89" END_LINE="65" LINES="1" START_COLUMN="22" START_LINE="65"/>
+    </PROCEDURE>
+    <FUNCTION INHERITANCE="OVERRIDING" NAME="INSERIR_EM_LOTE" SCOPE="MEMBER" VERSION="1">
       <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_PERIODO_ACADEMICO"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[json a ser enviado.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
-        <COMMENT><![CDATA[log.]]></COMMENT>
-      </ARGUMENT>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </RETURN>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_json              json a ser enviado.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[r_msg               log.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_old_sis_term_id   term_id a ser atualizado.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </TAG>
-      <SUMMARY END_COLUMN="118" END_LINE="236" LINES="1" START_COLUMN="21" START_LINE="236"/>
-    </FUNCTION>
-    <FUNCTION NAME="DELETAR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Excluir um PerÃ­odo AcadÃªmico.</p>
- <p>Exclui dados de um perÃ­odo acadÃªmico.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>account_id*1    </td><td>integer </td><td>(requerido) ID da conta em que o perÃ­odo acadÃªmico estÃ¡ criado.</td></tr>
-             <tr><td>sis_term_id*2   </td><td>string  </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) designado para o perÃ­odo acadÃªmico.</td></tr>
-         </tbody>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
-         "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<sis_term_id>?account_id=<account_id>"
-     </code>
- </p>
-]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Excluir um PerÃ­odo AcadÃªmico.</p>
- <p>Exclui dados de um perÃ­odo acadÃªmico.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>account_id*1    </td><td>integer </td><td>(requerido) ID da conta em que o perÃ­odo acadÃªmico estÃ¡ criado.</td></tr>
-             <tr><td>sis_term_id*2   </td><td>string  </td><td>(requerido) ID interno do sistema acadÃªmico (SIS) designado para o perÃ­odo acadÃªmico.</td></tr>
-         </tbody>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
-         "https://<apim host and port>/<university>/api/lms/v1/terms/sis_term_id:<sis_term_id>?account_id=<account_id>"
-     </code>
- </p>
-]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_PERIODO_ACADEMICO"/>
-      <ARGUMENT MODE="IN" NAME="P_SIS_TERM_ID" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[*1]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="IN" NAME="P_ACCOUNT_ID" TYPE="NUMBER">
-        <COMMENT><![CDATA[*2]]></COMMENT>
-      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="CLOB"/>
       <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </RETURN>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_sis_term_id   *1]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_account_id    *2]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </TAG>
-      <SUMMARY END_COLUMN="146" END_LINE="268" LINES="1" START_COLUMN="21" START_LINE="268"/>
+      <RETURN TYPE="OVERRIDING MEMBER FUNCTION PLJSON"/>
+      <SUMMARY END_COLUMN="131" END_LINE="68" LINES="1" START_COLUMN="32" START_LINE="68"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_ALL" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Listar PerÃ­odos AcadÃªmicos</p>
@@ -1552,36 +1772,31 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  </p>
 ]]></COMMENT>
       <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_PERIODO_ACADEMICO"/>
-      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_ACCOUNT_ID" TYPE="NUMBER">
-        <COMMENT><![CDATA[*1]]></COMMENT>
+      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_ACCOUNT_ID" TYPE="NUMBER"/>
+      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_INCLUDE" TYPE="VARCHAR2"/>
+      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_STATE" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
       </ARGUMENT>
-      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_INCLUDE" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[*3]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_STATE" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[*2]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="OUT" NAME="R_LOG" TYPE="CLOB"/>
       <RETURN TYPE="MEMBER FUNCTION PLJSON_LIST">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.
+member function inserir  (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_json varchar2, r_msg out clob) return pljson,]]></COMMENT>
       </RETURN>
       <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_account_id    *1]]></COMMENT>
+        <COMMENT><![CDATA[p_json  json a ser enviado.]]></COMMENT>
       </TAG>
       <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_include       *3]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_state         *2]]></COMMENT>
+        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
       </TAG>
       <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.
+member function inserir  (SELF IN OUT NOCOPY o_canvas_periodo_academico, p_json varchar2, r_msg out clob) return pljson,]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="199" END_LINE="303" LINES="1" START_COLUMN="21" START_LINE="303"/>
+      <SUMMARY END_COLUMN="199" END_LINE="308" LINES="1" START_COLUMN="21" START_LINE="308"/>
     </FUNCTION>
-    <SUMMARY END_COLUMN="1" END_LINE="305" LINES="305" START_COLUMN="24" START_LINE="1"/>
+    <SUMMARY END_COLUMN="1" END_LINE="310" LINES="310" START_COLUMN="24" START_LINE="1"/>
   </OBJECT_TYPE>
-  <OBJECT_TYPE NAME="O_CANVAS_SECOES" SCHEMA="">
+  <OBJECT_TYPE NAME="O_CANVAS_SECAO" SCHEMA="">
     <SUPERTYPE NAME="O_CANVAS">
       <RETURN TYPE="O_CANVAS"/>
     </SUPERTYPE>
@@ -1590,7 +1805,7 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
  <strong>Examplo:</strong>
  <pre>
  declare
-   mycanvas o_canvas := o_canvas_secoes;
+   mycanvas o_canvas := o_canvas_secao;
    secaoInserido pljson;
    w_msg clob;
  begin
@@ -1614,119 +1829,263 @@ courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=
       <COMMENT>
       </COMMENT>
     </TAG>
-    <FUNCTION NAME="O_CANVAS_SECOES" SCOPE="CONSTRUCTOR" VERSION="1">
+    <FUNCTION NAME="O_CANVAS_SECAO" SCOPE="CONSTRUCTOR" VERSION="1">
       <RETURN TYPE="CONSTRUCTOR FUNCTION SELF AS RESULT"/>
-      <SUMMARY END_COLUMN="57" END_LINE="56" LINES="1" START_COLUMN="26" START_LINE="56"/>
+      <SUMMARY END_COLUMN="56" END_LINE="56" LINES="1" START_COLUMN="26" START_LINE="56"/>
     </FUNCTION>
-    <FUNCTION NAME="INSERIR_SECOES" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="CLOB"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="114" END_LINE="58" LINES="1" START_COLUMN="21" START_LINE="58"/>
-    </FUNCTION>
+    <PROCEDURE NAME="SET_DEFAULT_ATTRIBUTE" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECAO"/>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="77" END_LINE="59" LINES="1" START_COLUMN="22" START_LINE="59"/>
+    </PROCEDURE>
     <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="114" END_LINE="59" LINES="1" START_COLUMN="21" START_LINE="59"/>
-    </FUNCTION>
-    <FUNCTION NAME="ATUALIZAR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="114" END_LINE="60" LINES="1" START_COLUMN="21" START_LINE="60"/>
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Criar uma seÃ§Ã£o</p>
+ <p>Cria uma seÃ§Ã£o individual e retorna a entidade seÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id       </td><td>string   </td><td>CÃ³digo do curso no sistema acadÃªmico.</td></tr>
+             <tr><td>name                </td><td>string   </td><td>Nome da seÃ§Ã£o.</td></tr>
+             <tr><td>sis_section_id      </td><td>string   </td><td>CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime </td><td>(opcional) Data de inÃ­cio da seÃ§Ã£o</td></tr>
+             <tr><td>end_at              </td><td>datetime </td><td>(opcional) Data de fim da seÃ§Ã£o</td></tr>
+             <tr><td>restrict_to_dates   </td><td>boolean  </td><td>(opcional) Restringe as inscriÃ§Ãµes as datas de inicio e fim da seÃ§Ã£o.]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Criar uma seÃ§Ã£o</p>
+ <p>Cria uma seÃ§Ã£o individual e retorna a entidade seÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id       </td><td>string   </td><td>CÃ³digo do curso no sistema acadÃªmico.</td></tr>
+             <tr><td>name                </td><td>string   </td><td>Nome da seÃ§Ã£o.</td></tr>
+             <tr><td>sis_section_id      </td><td>string   </td><td>CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.</td></tr>
+             <tr><td>start_at            </td><td>datetime </td><td>(opcional) Data de inÃ­cio da seÃ§Ã£o</td></tr>
+             <tr><td>end_at              </td><td>datetime </td><td>(opcional) Data de fim da seÃ§Ã£o</td></tr>
+             <tr><td>restrict_to_dates   </td><td>boolean  </td><td>(opcional) Restringe as inscriÃ§Ãµes as datas de inicio e fim da seÃ§Ã£o. <br>Se este parÃ¢metro nÃ£o vier definido, assumirÃ¡ o valor padrÃ£o false. Se vier definido como true, serÃ¡ necessÃ¡rio definir as datas de inÃ­cio e fim da seÃ§Ã£o.</td></tr>
+             <tr><td>isolate_section     </td><td>boolean  </td><td>Indicador para permitir o isolamento de seÃ§Ãµes. <br>Para ser definido como true, tem que existir um Conjunto de Grupos chamado <code>GRUPO SECAO</code> criado no curso.</td></tr>
+         </tbody>
+     </table>
+ </p>
+<p>
+<code>
+curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+-d '{
+"course_section":
+{
+"name":"Nombre de la secciÃ³n",
+"end_at":"2017-01-07T02:59:00Z",
+"start_at":"2016-01-06T03:00:00Z",
+"sis_section_id":"30952006",
+"isolate_section": true,
+"restrict_to_dates": true
+}
+}'
+"https://<apim host and port>/<university>/api/lms/v1/
+courses/sis_course_id:<sis_course_id>/sections"
+</code>
+</p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECAO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_COURSE_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[2* json (seÃ§Ã£o) a ser inserido]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_course_id 1*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_json          2* json (seÃ§Ã£o) a ser inserido]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg           log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="131" END_LINE="110" LINES="1" START_COLUMN="21" START_LINE="110"/>
     </FUNCTION>
     <FUNCTION NAME="DELETAR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Excluir uma SeÃ§Ã£o</p>
+ <p>Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?group_id=<group_id>"
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Excluir uma SeÃ§Ã£o</p>
+ <p>Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?group_id=<group_id>"
+     </code>
+ </p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECAO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_SECTION_ID" TYPE="VARCHAR2"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_GROUP_ID" TYPE="NUMBER"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="157" END_LINE="61" LINES="1" START_COLUMN="21" START_LINE="61"/>
-    </FUNCTION>
-    <FUNCTION NAME="LIBERAR_ELIMINAR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN" NAME="P_SIS_SECTION_ID" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="88" END_LINE="62" LINES="1" START_COLUMN="21" START_LINE="62"/>
-    </FUNCTION>
-    <SUMMARY END_COLUMN="1" END_LINE="65" LINES="65" START_COLUMN="24" START_LINE="1"/>
-  </OBJECT_TYPE>
-  <OBJECT_BODY NAME="O_CANVAS_SECOES" SCHEMA="">
-    <FUNCTION NAME="O_CANVAS_SECOES" SCOPE="CONSTRUCTOR" VERSION="1">
-      <RETURN TYPE="CONSTRUCTOR FUNCTION SELF AS RESULT"/>
-      <SUMMARY END_COLUMN="8" END_LINE="9" LINES="6" START_COLUMN="26" START_LINE="4"/>
-    </FUNCTION>
-    <FUNCTION NAME="INSERIR_SECOES" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="CLOB"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="216" END_LINE="11" LINES="1" START_COLUMN="21" START_LINE="11"/>
-    </FUNCTION>
-    <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="216" END_LINE="12" LINES="1" START_COLUMN="21" START_LINE="12"/>
-    </FUNCTION>
-    <FUNCTION NAME="ATUALIZAR" SCOPE="MEMBER" VERSION="1">
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
-      <SUMMARY END_COLUMN="216" END_LINE="13" LINES="1" START_COLUMN="21" START_LINE="13"/>
-    </FUNCTION>
-    <FUNCTION NAME="DELETAR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[Excluir uma SeÃ§Ã£o
-Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[Excluir uma SeÃ§Ã£o
-Exclui uma seÃ§Ã£o e opcionalmente o grupo associado se trabalhar com isolamento de seÃ§Ãµes.
-curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
-"https://<apim host and port>/<university>/api/lms/v1/sections/sis_section_id:<sis_section_id>?group_id=<group_id>"
-]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECOES"/>
-      <ARGUMENT MODE="IN" NAME="P_SIS_SECTION_ID" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[(requerido) CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.]]></COMMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
       </ARGUMENT>
-      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_GROUP_ID" TYPE="NUMBER">
-        <COMMENT><![CDATA[(opcional) Ã‰ o group_id do grupo associado a seÃ§Ã£o se trabalhar com isolamento de seÃ§Ãµes.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o para cada seÃ§Ã£o.
+member function inserir_secoes  (SELF IN OUT NOCOPY o_canvas_secao, p_json clob    , r_msg out clob) return pljson,]]></COMMENT>
+      </RETURN>
       <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_sis_section_id    (requerido) CÃ³digo da seÃ§Ã£o no sistema acadÃªmico.]]></COMMENT>
+        <COMMENT><![CDATA[p_json  lista de json a ser enviado.]]></COMMENT>
       </TAG>
       <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_group_id          (opcional) Ã‰ o group_id do grupo associado a seÃ§Ã£o se trabalhar com isolamento de seÃ§Ãµes.]]></COMMENT>
+        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="8" END_LINE="36" LINES="11" START_COLUMN="21" START_LINE="26"/>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o para cada seÃ§Ã£o.
+member function inserir_secoes  (SELF IN OUT NOCOPY o_canvas_secao, p_json clob    , r_msg out clob) return pljson,]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="156" END_LINE="254" LINES="1" START_COLUMN="21" START_LINE="254"/>
     </FUNCTION>
     <FUNCTION NAME="LIBERAR_ELIMINAR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[Liberar e eliminar uma SeÃ§Ã£o
-Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[Liberar e eliminar uma SeÃ§Ã£o
-Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.
-curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
-"https://<apim host and port>/<university>/api/lms/v1/sections/sis_section_id:<sis_section_id>/release"
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Liberar e eliminar uma SeÃ§Ã£o</p>
+ <p>Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/release"
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Liberar e eliminar uma SeÃ§Ã£o</p>
+ <p>Liberar o SIS_ID de uma seÃ§Ã£o e eliminÃ¡-la em seguida.</p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/release"
+     </code>
+ </p>
 ]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECAO"/>
       <ARGUMENT MODE="IN" NAME="P_SIS_SECTION_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) CÃ³digo do sistema acadÃªmico para a seÃ§Ã£o a ser eliminada.]]></COMMENT>
       </ARGUMENT>
       <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB"/>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON"/>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON">
+        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o;]]></COMMENT>
+      </RETURN>
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[p_sis_section_id    (requerido) CÃ³digo do sistema acadÃªmico para a seÃ§Ã£o a ser eliminada.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="8" END_LINE="52" LINES="6" START_COLUMN="21" START_LINE="47"/>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o;]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="123" END_LINE="271" LINES="1" START_COLUMN="21" START_LINE="271"/>
     </FUNCTION>
-    <SUMMARY END_COLUMN="4" END_LINE="55" LINES="55" START_COLUMN="29" START_LINE="1"/>
-  </OBJECT_BODY>
-  <OBJECT_TYPE NAME="O_CANVAS_USUARIOS" SCHEMA="">
+    <FUNCTION NAME="FIND_BY_ID" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Obter detalhes de uma SeÃ§Ã£o</p>
+ <p>Os detalhes de uma seÃ§Ã£o especÃ­fica indicada no parÃ¢metro de consulta sÃ£o obtidos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_section_id 1*</td><td>string  </td><td>ID interno do sistema acadÃªmico (SIS) atribuÃ­do para a seÃ§Ã£o.</td></tr>
+             <tr><td>include        2*</td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o seja adicionada do nÃºmero de alunos do estado: active e invited.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?include=<include>"
+     </code>
+ </p>
+]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Obter detalhes de uma SeÃ§Ã£o</p>
+ <p>Os detalhes de uma seÃ§Ã£o especÃ­fica indicada no parÃ¢metro de consulta sÃ£o obtidos.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_section_id 1*</td><td>string  </td><td>ID interno do sistema acadÃªmico (SIS) atribuÃ­do para a seÃ§Ã£o.</td></tr>
+             <tr><td>include        2*</td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o seja adicionada do nÃºmero de alunos do estado: active e invited.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>?include=<include>"
+     </code>
+ </p>
+]]></COMMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_SECAO"/>
+      <ARGUMENT MODE="IN" NAME="P_SIS_SECTION_ID" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[1*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_INCLUDE" TYPE="VARCHAR2">
+        <COMMENT><![CDATA[2*]]></COMMENT>
+      </ARGUMENT>
+      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
+        <COMMENT><![CDATA[log.]]></COMMENT>
+      </ARGUMENT>
+      <RETURN TYPE="MEMBER FUNCTION PLJSON_LIST">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </RETURN>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_sis_section_id    1*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[p_include           2*]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@PARAM">
+        <COMMENT><![CDATA[r_msg               log.]]></COMMENT>
+      </TAG>
+      <TAG TYPE="@RETURN">
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+      </TAG>
+      <SUMMARY END_COLUMN="150" END_LINE="304" LINES="1" START_COLUMN="21" START_LINE="304"/>
+    </FUNCTION>
+    <SUMMARY END_COLUMN="1" END_LINE="307" LINES="307" START_COLUMN="24" START_LINE="1"/>
+  </OBJECT_TYPE>
+  <OBJECT_TYPE NAME="O_CANVAS_USUARIO" SCHEMA="">
     <SUPERTYPE NAME="O_CANVAS">
       <RETURN TYPE="O_CANVAS"/>
     </SUPERTYPE>
@@ -1735,26 +2094,21 @@ curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application
  <strong>Exemplo:</strong>
  <pre>
  declare
-   mycanvas o_canvas := o_canvas_usuarios;
+   mycanvas o_canvas := o_canvas_usuario;
    usuarioInserido pljson;
    w_msg clob;
  begin
    cursoInserido := mycanvas.inserir(
    '{
-       "course":
-       {
-           "account_id" : 1,
-           "name":"Nombre del Curso",
-           "code" : "C001",
-           "end_at":"2017-01-07T02:59:00Z",
-           "start_at":"2016-01-06T03:00:00Z",
-           "restrict_to_dates": false,
-           "sis_master_id":"30952006",
-           "sis_term_id" : "term",
-           "sis_course_id" :"30952006"
-       },
-       "publish": true,
-       "import_content": true
+       "user": {
+           "full_name": "Juan Perez",
+           "short_name" : "Juan",
+           "sortable_name" : "Juan Perez",
+           "email": "juan.perez@noreply.com"
+           "login": "juan.perez",
+           "password" : "this is the password",
+           "sis_user_id": "sis00001"
+       }
    }', w_msg);
    usuarioInserido.print;
  end;
@@ -1764,78 +2118,31 @@ curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application
       <COMMENT>
       </COMMENT>
     </TAG>
-    <FUNCTION NAME="O_CANVAS_USUARIOS" SCOPE="CONSTRUCTOR" VERSION="1">
+    <FUNCTION NAME="O_CANVAS_USUARIO" SCOPE="CONSTRUCTOR" VERSION="1">
       <RETURN TYPE="CONSTRUCTOR FUNCTION SELF AS RESULT"/>
-      <SUMMARY END_COLUMN="59" END_LINE="59" LINES="1" START_COLUMN="26" START_LINE="59"/>
+      <SUMMARY END_COLUMN="58" END_LINE="55" LINES="1" START_COLUMN="26" START_LINE="55"/>
     </FUNCTION>
-    <FUNCTION NAME="INSERIR_USUARIOS" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Criar UsuÃ¡rios</p>
- <p>Criar um grupo de usuÃ¡rios e nÃ£o retorna informaÃ§Ãµes dentro do corpo da resposta.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Criar UsuÃ¡rios</p>
- <p>Criar um grupo de usuÃ¡rios e nÃ£o retorna informaÃ§Ãµes dentro do corpo da resposta. CriaÃ§Ã£o Ã© diferido e os valores resultantes podem ser consumida pela fila correspondente ou de retorno de chamada.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>full_name           </td><td>string</td><td>Nome completo.</td></tr>
-             <tr><td>short_name          </td><td>string</td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
-             <tr><td>sortable_name       </td><td>string</td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
-             <tr><td>email               </td><td>string</td><td>EndereÃ§o de e-mail.</td></tr>
-             <tr><td>login               </td><td>string</td><td>(requerido) Identificador de entrada.</td></tr>
-             <tr><td>password            </td><td>string</td><td>Senha.</td></tr>
-             <tr><td>sis_user_id         </td><td>string</td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
-             <tr><td>auth_provider_id    </td><td>string</td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
-         </tbody>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d '[
-                 {
-                     "user": {
-                         "full_name": "Juan Perez",
-                         "short_name" : "Juan",
-                         "sortable_name" : "Juan Perez",
-                         "email": "juan.perez@noreply.com",
-                         "login": "juan.perez",
-                         "password" : "this is the password",
-                         "sis_user_id": "sis00001",
-                         "auth_provider_id": ""
-                     }
-                 },
-                 {
-                     "user": {
-                         "full_name": "Juan Martinez",
-                         "short_name" : "Juan",
-                         "sortable_name" : "Juan Martinez",
-                         "email": "juan.martinez@noreply.com",
-                         "login": "juan.martinez",
-                         "password" : "this is the password",
-                         "sis_user_id": "sis00002",
-                         "auth_provider_id": ""
-                     }
-                 }
-         ]'
-         "https://<apim host and port>/<university>/api/lms/v1/users/create"
-     </code>
- </p>
+    <PROCEDURE NAME="SET_DEFAULT_ATTRIBUTE" SCOPE="MEMBER" VERSION="1">
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIO"/>
+      <RETURN TYPE="MEMBER PROCEDURE"/>
+      <SUMMARY END_COLUMN="79" END_LINE="58" LINES="1" START_COLUMN="22" START_LINE="58"/>
+    </PROCEDURE>
+    <FUNCTION NAME="UNIR" SCOPE="MEMBER" VERSION="1">
+      <COMMENT_FIRST_LINE><![CDATA[ <p>Unir um usuÃ¡rio com outro.</p>
+ <p>Unificar dois usuÃ¡rios em um sÃ³.]]></COMMENT_FIRST_LINE>
+      <COMMENT><![CDATA[ <p>Unir um usuÃ¡rio com outro.</p>
+ <p>Unificar dois usuÃ¡rios em um sÃ³. Remove usuÃ¡rio identificado pelo from_user_id e mover todos os dados para o usuÃ¡rio identificado por to_user_id.</p>
+ <p>users/<from_user_id>/merge_into/<to_user_id></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIOS"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="CLOB">
-        <COMMENT><![CDATA[json a ser enviado;]]></COMMENT>
-      </ARGUMENT>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIO"/>
+      <ARGUMENT MODE="IN" NAME="P_FROM_USER_ID" TYPE="VARCHAR2"/>
+      <ARGUMENT MODE="IN" NAME="P_TO_USER_ID" TYPE="VARCHAR2"/>
       <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
         <COMMENT><![CDATA[log.]]></COMMENT>
       </ARGUMENT>
       <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.
+member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuario, p_json clob    , r_msg out clob) return pljson,]]></COMMENT>
       </RETURN>
       <TAG TYPE="@PARAM">
         <COMMENT><![CDATA[p_json  json a ser enviado;]]></COMMENT>
@@ -1844,223 +2151,10 @@ curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application
         <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
       </TAG>
       <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
+        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.
+member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuario, p_json clob    , r_msg out clob) return pljson,]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="116" END_LINE="124" LINES="1" START_COLUMN="21" START_LINE="124"/>
-    </FUNCTION>
-    <FUNCTION NAME="INSERIR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Criar um usuÃ¡rio</p>
- <p>Criar um usuÃ¡rio individual e retorna a entidade de usuÃ¡rio criada.</p>
- <p>
-     <table>
-         <thead>
-         <tr>
-             <td>Campo</td>
-             <td>Tipo</td>
-             <td>ComentÃ¡rios</td>
-         </tr>
-             <tr><td>full_name           </td><td>string  </td><td>Nome completo.</td></tr>
-             <tr><td>short_name          </td><td>string  </td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
-             <tr><td>sortable_name       </td><td>string  </td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
-             <tr><td>email               </td><td>string  </td><td>EndereÃ§o de e-mail.</td></tr>
-             <tr><td>login               </td><td>string  </td><td>(requerido) Identificador de entrada.</td></tr>
-             <tr><td>password            </td><td>string  </td><td>Senha.</td></tr>
-             <tr><td>sis_user_id         </td><td>string  </td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
-             <tr><td>auth_provider_id    </td><td>string  </td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
-         </thead>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d '{
-             "user": {
-                 "full_name": "Juan Perez",
-                 "short_name" : "Juan",
-                 "sortable_name" : "Juan Perez",
-                 "email": "juan.perez@noreply.com",
-                 "login": "juan.perez",
-                 "password" : "this is the password",
-                 "sis_user_id": "sis00001",
-                 "auth_provider_id": ""
-             }
-         }'
-         "https://<apim host and port>/<university>/api/lms/v1/users"
-     </code>
- </p>
-]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Criar um usuÃ¡rio</p>
- <p>Criar um usuÃ¡rio individual e retorna a entidade de usuÃ¡rio criada.</p>
- <p>
-     <table>
-         <thead>
-         <tr>
-             <td>Campo</td>
-             <td>Tipo</td>
-             <td>ComentÃ¡rios</td>
-         </tr>
-             <tr><td>full_name           </td><td>string  </td><td>Nome completo.</td></tr>
-             <tr><td>short_name          </td><td>string  </td><td>Nome serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
-             <tr><td>sortable_name       </td><td>string  </td><td>Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
-             <tr><td>email               </td><td>string  </td><td>EndereÃ§o de e-mail.</td></tr>
-             <tr><td>login               </td><td>string  </td><td>(requerido) Identificador de entrada.</td></tr>
-             <tr><td>password            </td><td>string  </td><td>Senha.</td></tr>
-             <tr><td>sis_user_id         </td><td>string  </td><td>Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
-             <tr><td>auth_provider_id    </td><td>string  </td><td>(opcional) Provedor de autenticaÃ§Ã£o associado ao login.</td></tr>
-         </thead>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d '{
-             "user": {
-                 "full_name": "Juan Perez",
-                 "short_name" : "Juan",
-                 "sortable_name" : "Juan Perez",
-                 "email": "juan.perez@noreply.com",
-                 "login": "juan.perez",
-                 "password" : "this is the password",
-                 "sis_user_id": "sis00001",
-                 "auth_provider_id": ""
-             }
-         }'
-         "https://<apim host and port>/<university>/api/lms/v1/users"
-     </code>
- </p>
-]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIOS"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[json a ser inserido.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
-        <COMMENT><![CDATA[log.]]></COMMENT>
-      </ARGUMENT>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o.]]></COMMENT>
-      </RETURN>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_json  json a ser inserido.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o.]]></COMMENT>
-      </TAG>
-      <SUMMARY END_COLUMN="116" END_LINE="174" LINES="1" START_COLUMN="21" START_LINE="174"/>
-    </FUNCTION>
-    <FUNCTION NAME="ATUALIZAR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Atualizar UsuÃ¡rio</p>
- <p>Atualiza os dados do usuÃ¡rio.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>user_id         </td><td>string  </td><td>(requerido) ID identificador do usuÃ¡rio no LMS.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Atualizar UsuÃ¡rio</p>
- <p>Atualiza os dados do usuÃ¡rio.</p>
- <p>
-     <table>
-         <thead>
-             <tr>
-                 <td>Campo</td>
-                 <td>Tipo</td>
-                 <td>ComentÃ¡rios</td>
-             </tr>
-         </thead>
-         <tbody>
-             <tr><td>user_id         </td><td>string  </td><td>(requerido) ID identificador do usuÃ¡rio no LMS. (CANVAS_ID)</td></tr>
-             <tr><td>full_name       </td><td>string  </td><td>(opcional) Nome completo.</td></tr>
-             <tr><td>short_name      </td><td>string  </td><td>(opcional) O nome que serÃ¡ exibido em fÃ³runs, mensagens e ComentÃ¡rios.</td></tr>
-             <tr><td>sortable_name   </td><td>string  </td><td>(opcional) Nome para a funÃ§Ã£o de classificaÃ§Ã£o.</td></tr>
-             <tr><td>email           </td><td>string  </td><td>(opcional) EndereÃ§o de e-mail.</td></tr>
-             <tr><td>login           </td><td>string  </td><td>Identificador de entreda. (Requerido se vocÃª precisa para atualizar senha ou sis_user_id)</td></tr>
-             <tr><td>password        </td><td>string  </td><td>(opcional) Senha.</td></tr>
-             <tr><td>sis_user_id     </td><td>string  </td><td>(opcional) Identificador do usuÃ¡rio dentro do sistema acadÃªmico.</td></tr>
-         </tbody>
-     </table>
- </p>
- <p>
-     <code>
-         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
-         -d
-         '{
-             "user": {
-                 "full_name": "Juan Perez",
-                 "short_name" : "Juan",
-                 "sortable_name" : "Juan Perez",
-                 "email": "juan.perez@noreply.com"
-                 "login": "juan.perez",
-                 "password" : "this is the password",
-                 "sis_user_id": "sis00001"
-             }
-         }'
-         "https://<apim host and port>/<university>/api/lms/v1/users/<user_id>"
-     </code>
- </p>
-]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIOS"/>
-      <ARGUMENT MODE="IN" NAME="P_JSON" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[json a ser inserido.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="IN" NAME="P_USER_ID" TYPE="VARCHAR2"/>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
-        <COMMENT><![CDATA[log.]]></COMMENT>
-      </ARGUMENT>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o.]]></COMMENT>
-      </RETURN>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_json  json a ser inserido.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[r_msg   log.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[reposta da requisiÃ§Ã£o.]]></COMMENT>
-      </TAG>
-      <SUMMARY END_COLUMN="136" END_LINE="226" LINES="1" START_COLUMN="21" START_LINE="226"/>
-    </FUNCTION>
-    <FUNCTION NAME="UNIR" SCOPE="MEMBER" VERSION="1">
-      <COMMENT_FIRST_LINE><![CDATA[ <p>Unir um usuÃ¡rio com outro.</p>
- <p>Unificar dois usuÃ¡rios em um sÃ³.]]></COMMENT_FIRST_LINE>
-      <COMMENT><![CDATA[ <p>Unir um usuÃ¡rio com outro.</p>
- <p>Unificar dois usuÃ¡rios em um sÃ³. Remove usuÃ¡rio identificado pelo from_user_id e mover todos os dados para o usuÃ¡rio identificado por to_user_id.</p>
- <p>users/<from_user_id>/merge_into/<to_user_id></p>
-]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIOS"/>
-      <ARGUMENT MODE="IN" NAME="P_FROM_USER_ID" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[(requerido) ID do usuÃ¡rio a ser excluÃ­do.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="IN" NAME="P_TO_USER_ID" TYPE="VARCHAR2">
-        <COMMENT><![CDATA[(requerido) ID do usuÃ¡rio que conterÃ¡ os dados e login de ambos usuÃ¡rios.]]></COMMENT>
-      </ARGUMENT>
-      <ARGUMENT MODE="OUT" NAME="R_MSG" TYPE="CLOB">
-        <COMMENT><![CDATA[(requerido) log.]]></COMMENT>
-      </ARGUMENT>
-      <RETURN TYPE="MEMBER FUNCTION PLJSON">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </RETURN>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_from_user_id  (requerido) ID do usuÃ¡rio a ser excluÃ­do.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[p_to_user_id    (requerido) ID do usuÃ¡rio que conterÃ¡ os dados e login de ambos usuÃ¡rios.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@PARAM">
-        <COMMENT><![CDATA[r_msg           (requerido) log.]]></COMMENT>
-      </TAG>
-      <TAG TYPE="@RETURN">
-        <COMMENT><![CDATA[resposta da requisiÃ§Ã£o.]]></COMMENT>
-      </TAG>
-      <SUMMARY END_COLUMN="147" END_LINE="241" LINES="1" START_COLUMN="21" START_LINE="241"/>
+      <SUMMARY END_COLUMN="146" END_LINE="238" LINES="1" START_COLUMN="21" START_LINE="238"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_PROGRESS_BY_ID" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[ <p>Obter o progresso de um usuÃ¡rio em um curso.</p>
@@ -2071,7 +2165,7 @@ curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application
  <p>Devolve a informaÃ§Ã£o relativa ao progresso de um usuÃ¡rio em um curso determinado.</p>
  <p>users/<user_id>/progress?sis_course_id=<sis_course_id></p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIO"/>
       <ARGUMENT MODE="IN" NAME="USER_ID" TYPE="VARCHAR2">
         <COMMENT><![CDATA[(requerido) ID identificador do usuario no LMS. (canvas_id)]]></COMMENT>
       </ARGUMENT>
@@ -2096,7 +2190,7 @@ curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[resposta.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="144" END_LINE="256" LINES="1" START_COLUMN="21" START_LINE="256"/>
+      <SUMMARY END_COLUMN="143" END_LINE="252" LINES="1" START_COLUMN="21" START_LINE="252"/>
     </FUNCTION>
     <FUNCTION NAME="FIND_ALL" SCOPE="MEMBER" VERSION="1">
       <COMMENT_FIRST_LINE><![CDATA[<p>Listar UsuÃ¡rios</p>
@@ -2126,7 +2220,7 @@ users?account_id=<account_id>&search_term=<search_term>"
 </code>
 </p>
 ]]></COMMENT>
-      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIOS"/>
+      <ARGUMENT MODE="IN OUT NOCOPY" NAME="SELF" TYPE="O_CANVAS_USUARIO"/>
       <ARGUMENT DEFAULT="NULL" MODE="IN" NAME="P_ACCOUNT_ID" TYPE="NUMBER">
         <COMMENT><![CDATA[1*]]></COMMENT>
       </ARGUMENT>
@@ -2151,16 +2245,16 @@ users?account_id=<account_id>&search_term=<search_term>"
       <TAG TYPE="@RETURN">
         <COMMENT><![CDATA[reposta da requisiÃ§Ã£o de busca.]]></COMMENT>
       </TAG>
-      <SUMMARY END_COLUMN="173" END_LINE="291" LINES="1" START_COLUMN="21" START_LINE="291"/>
+      <SUMMARY END_COLUMN="172" END_LINE="287" LINES="1" START_COLUMN="21" START_LINE="287"/>
     </FUNCTION>
-    <SUMMARY END_COLUMN="1" END_LINE="293" LINES="293" START_COLUMN="24" START_LINE="1"/>
+    <SUMMARY END_COLUMN="1" END_LINE="289" LINES="289" START_COLUMN="24" START_LINE="1"/>
   </OBJECT_TYPE>
   <GENERATOR>
     <OBJECTS>
-      <PROCESSED COUNT="6"/>
+      <PROCESSED COUNT="7"/>
       <SKIPPED COUNT="0"/>
     </OBJECTS>
-    <CREATED DATE="24/08/18" TIME="09:44"/>
+    <CREATED DATE="24/08/18" TIME="18:24"/>
     <SETTINGS DEFAULT_KEYWORDS_CASE="UPPER" DEFAULT_NAMES_CASE="UPPER" IGNORE_INFORMAL_COMMENTS="TRUE" INPUT_ENCODING="Cp1252" KEYWORDS_TO_DEFAULT_CASE="TRUE" KEYWORDS_TO_LOWER_CASE="FALSE" KEYWORDS_TO_UPPER_CASE="FALSE" NAMES_TO_DEFAULT_CASE="TRUE" NAMES_TO_LOWER_CASE="FALSE" NAMES_TO_UPPER_CASE="FALSE" SHOW_SKIPPED_PACKAGES="TRUE" VERBOSE="FALSE"/>
   </GENERATOR>
 </APPLICATION>

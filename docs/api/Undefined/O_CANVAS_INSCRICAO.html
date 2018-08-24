@@ -1,0 +1,496 @@
+<HTML xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exslt="http://exslt.org/common">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>PL/JSON</TITLE>
+<LINK TITLE="Style" HREF="../stylesheet.css" TYPE="text/css" REL="stylesheet">
+<!--
+        sameCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesLowerCase=FALSE
+        namesUpperCase=FALSE
+        namesDefaultCase=TRUE
+        defaultNamesCase=UPPER
+        namesFromCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesToCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-->
+</HEAD>
+<BODY BGCOLOR="white">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+<H2>
+<FONT SIZE="-1"></FONT>
+<BR>Subtype&nbsp;O_CANVAS_INSCRICAO</H2> <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type Inscricao</p>
+ <p> Este objeto representa a entidade inscriÃ§Ã£o (Enrollments) </p>
+ <strong>Exemplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas_inscricao;
+   w_msg clob;
+ begin
+   mycanvas.o_canvas.inserir(
+   '{
+       "enrollment": {
+           "user_id": 55,
+           "type": "StudentEnrollment",
+           "role_id": 12,
+           "state": "active",
+           "limit_interaction": true
+           "send_notification": false,
+           "group_id": 1,
+       }
+   }', w_msg);
+   mycanvas.print;
+ end;
+ </pre>
+<P></P>
+<DL></DL>
+<HR>
+<P></P>
+<A NAME="field_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Field Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=O_CANVAS
+       localTypeName=
+       schema=
+       fieldType=O_CANVAS
+       synonymsFile=,,--><!--Object Type in same schema--><A href="O_CANVAS.html">O_CANVAS</A></CODE></FONT></TD><TD><CODE>SUPERTYPE</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="type_summary"></A><A NAME="method_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="DELETAR"></A><TD><CODE><B><A HREF="#DELETAR(O_CANVAS_INSCRICAO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)">DELETAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO, P_SIS_COURSE_ID IN VARCHAR2, P_ENROLLMENT_ID IN VARCHAR2, P_ACTION IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Excluir, concluir ou desativar uma InscriÃ§Ã£o</p>
+ <p>Dependendo da aÃ§Ã£o especificada, o serviÃ§o pode concluir, inativar ou excluir uma inscriÃ§Ã£o</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*</td><td>string  </td><td>(requerido) ID interno do SIS que referencia o cursos onde se encontra e inscriÃ§Ã£o.</td></tr>
+             <tr><td>enrollment_id 2*</td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td></tr>
+             <tr><td>action        3*</td><td>string  </td><td>(requerido) Tarefa a realizar: conclude, delete ou deactivate</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>?task=<action>"
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>"
+         -d task=<action>
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="INSERIR"></A><TD><CODE><B><A HREF="#INSERIR(O_CANVAS_INSCRICAO,VARCHAR2,VARCHAR2,CLOB)">INSERIR</A></B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO, P_SIS_SECTION_ID IN VARCHAR2, P_JSON IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Criar InscriÃ§Ã£o</p>
+ <p>Cria uma inscriÃ§Ã£o individual e retorna a entidade inscriÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id             </td><td>integer</td><td> (requerido) ID do usuÃ¡rio a ser inscrito.</td><tr>
+             <tr><td>type                </td><td>string </td><td>(requerido) Tipo de InscriÃ§Ã£o.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#O_CANVAS_INSCRICAO">O_CANVAS_INSCRICAO</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="REATIVAR"></A><TD><CODE><B><A HREF="#REATIVAR(O_CANVAS_INSCRICAO,VARCHAR2,VARCHAR2,CLOB)">REATIVAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO, P_SIS_COURSE_ID IN VARCHAR2, P_ENROLLMENT_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Reativar uma inscriÃ§Ã£o</p>
+ <p>Reativa uma inscriÃ§Ã£o desativada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id </td><td>string  </td><td>(requerido) ID interno do SIS que referencia o curso onde se encontra a inscriÃ§Ã£o.</td><tr>
+             <tr><td>enrollment_id </td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>/reactivate"
+         -d '{}'
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_DEFAULT_ATTRIBUTE"></A><TD><CODE><B><A HREF="#SET_DEFAULT_ATTRIBUTE(O_CANVAS_INSCRICAO)">SET_DEFAULT_ATTRIBUTE</A></B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="trigger_summary"></A><A NAME="field_detail"></A><A NAME="type_detail"></A><A NAME="method_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="DELETAR(O_CANVAS_INSCRICAO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>DELETAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>DELETAR</B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO, <BR>                                      P_SIS_COURSE_ID IN VARCHAR2, <BR>                                      P_ENROLLMENT_ID IN VARCHAR2, <BR>                                      P_ACTION IN VARCHAR2, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Excluir, concluir ou desativar uma InscriÃ§Ã£o</p>
+ <p>Dependendo da aÃ§Ã£o especificada, o serviÃ§o pode concluir, inativar ou excluir uma inscriÃ§Ã£o</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*</td><td>string  </td><td>(requerido) ID interno do SIS que referencia o cursos onde se encontra e inscriÃ§Ã£o.</td></tr>
+             <tr><td>enrollment_id 2*</td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td></tr>
+             <tr><td>action        3*</td><td>string  </td><td>(requerido) Tarefa a realizar: conclude, delete ou deactivate</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>?task=<action>"
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>"
+         -d task=<action>
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_ENROLLMENT_ID</CODE> -
+              2*</DD>
+<DD>
+<CODE>P_ACTION</CODE> -
+              3*</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="INSERIR(O_CANVAS_INSCRICAO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>INSERIR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>INSERIR</B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO, <BR>                                      P_SIS_SECTION_ID IN VARCHAR2, <BR>                                      P_JSON IN VARCHAR2, <BR>                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Criar InscriÃ§Ã£o</p>
+ <p>Cria uma inscriÃ§Ã£o individual e retorna a entidade inscriÃ§Ã£o criada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>user_id             </td><td>integer</td><td> (requerido) ID do usuÃ¡rio a ser inscrito.</td><tr>
+             <tr><td>type                </td><td>string </td><td>(requerido) Tipo de InscriÃ§Ã£o. Os valores possÃ­veis: StudentEnrollment, TeacherEnrollment, TaEnrollment, ObserverEnrollment, DesignerEnrollment</td><tr>
+             <tr><td>role_id             </td><td>integer</td><td> (opcional) Identificador do role personalizado atribuÃ­do a um usuÃ¡rio.</td><tr>
+             <tr><td>sis_section_id 1*   </td><td>string </td><td>(requerido) ID interno do sistema acadÃªmico atribuÃ­do Ã  seÃ§Ã£o.</td><tr>
+             <tr><td>state               </td><td>string </td><td>(requerido) Estado da inscriÃ§Ã£o. Valores possÃ­veis: active, invited, inactive</td><tr>
+             <tr><td>limit_interaction   </td><td>boolean</td><td> (requerido) true: Limita a interaÃ§Ã£o somente entre os participantes da seÃ§Ã£o.</td><tr>
+             <tr><td>send_notification   </td><td>boolean</td><td> (opcional) Indicador se deve enviar notificaÃ§Ãµes ao usuÃ¡rio.</td><tr>
+             <tr><td>group_id            </td><td>integer</td><td> (opcional) Identificador do grupo ao qual deseja inscrever.<br>Se nÃ£o utiliza o group_id poderÃ¡ nÃ£o ser enviado como parte do body ou estar presente e vazio.<br>Para utilizar o group_id terÃ¡ que atribuir ao parÃ¢metro type o valor StudentEnrollment.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X POST -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "enrollment": {
+                 "user_id": 55,
+                 "type": "StudentEnrollment",
+                 "role_id": 12,
+                 "state": "active",
+                 "limit_interaction": true
+                 "send_notification": false,
+                 "group_id": 1,
+             }
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         sections/sis_section_id:<sis_section_id>/enrollments"
+     </code>
+ </p>
+
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_SECTION_ID</CODE> -
+              1*.</DD>
+<DD>
+<CODE>P_JSON</CODE> -
+              json inscrioes a ser inserido.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS_INSCRICAO"></A>
+<H3>O_CANVAS_INSCRICAO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS_INSCRICAO</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="REATIVAR(O_CANVAS_INSCRICAO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>REATIVAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>REATIVAR</B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO, <BR>                                       P_SIS_COURSE_ID IN VARCHAR2, <BR>                                       P_ENROLLMENT_ID IN VARCHAR2, <BR>                                       R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Reativar uma inscriÃ§Ã£o</p>
+ <p>Reativa uma inscriÃ§Ã£o desativada.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id </td><td>string  </td><td>(requerido) ID interno do SIS que referencia o curso onde se encontra a inscriÃ§Ã£o.</td><tr>
+             <tr><td>enrollment_id </td><td>integer </td><td>(requerido) ID do sistema LMS que identifica a inscriÃ§Ã£o.</td><tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/enrollments/<enrollment_id>/reactivate"
+         -d '{}'
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_ENROLLMENT_ID</CODE> -
+              2*</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_DEFAULT_ATTRIBUTE(O_CANVAS_INSCRICAO)"></A>
+<H3>SET_DEFAULT_ATTRIBUTE</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_DEFAULT_ATTRIBUTE</B>(SELF IN OUT NOCOPY O_CANVAS_INSCRICAO)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="trigger_detail"></A>
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+</BODY>
+</HTML>

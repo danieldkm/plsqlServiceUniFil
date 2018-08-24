@@ -36,16 +36,11 @@ create or replace type body o_canvas_curso is
         self.set_entidade('courses');
         self.set_metodo('/sis_course_id:');
 
-        tmp := self.get_variables;
-        if tmp.exist('entidade') then
-            tmp.remove('entidade');
-        end if;
-        tmp.put('entidade', self.get_entidade);
-
-        if tmp.exist('metodo') then
-            tmp.remove('metodo');
-        end if;
-        tmp.put('metodo', self.get_metodo);
+        tmp := pljson('{}');
+        tmp.put('entidade', self.entidade);
+        tmp.put('script', self.script);
+        tmp.put('show_log', self.show_log);
+        self.set_variables(tmp);
     end;
 
     /*

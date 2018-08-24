@@ -1,0 +1,1340 @@
+<HTML xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exslt="http://exslt.org/common">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>PL/JSON</TITLE>
+<LINK TITLE="Style" HREF="../stylesheet.css" TYPE="text/css" REL="stylesheet">
+<!--
+        sameCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesLowerCase=FALSE
+        namesUpperCase=FALSE
+        namesDefaultCase=TRUE
+        defaultNamesCase=UPPER
+        namesFromCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        namesToCase=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-->
+</HEAD>
+<BODY BGCOLOR="white">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+<H2>
+<FONT SIZE="-1"></FONT>
+<BR>Subtype&nbsp;O_CANVAS_CURSO</H2> <p>Este pacote define o <em>PL/JSON</em>'s representa o objeto type do curso</p>
+ <p> Este objeto representa a entidade Curso (Course) </p>
+ <strong>Exemplo:</strong>
+ <pre>
+ declare
+   mycanvas o_canvas := o_canvas_curso;
+   cursoInserido pljson;
+   w_msg clob;
+ begin
+   cursoInserido := mycanvas.inserir(
+   '{
+       "course":
+       {
+           "account_id" : 1,
+           "name":"Nombre del Curso",
+           "code" : "C001",
+           "end_at":"2017-01-07T02:59:00Z",
+           "start_at":"2016-01-06T03:00:00Z",
+           "restrict_to_dates": false,
+           "sis_master_id":"30952006",
+           "sis_term_id" : "term",
+           "sis_course_id" :"30952006"
+       },
+       "publish": true,
+       "import_content": true
+   }', w_msg);
+   cursoInserido.print;
+ end;
+ </pre>
+<P></P>
+<DL></DL>
+<HR>
+<P></P>
+<A NAME="field_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Field Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=O_CANVAS
+       localTypeName=
+       schema=
+       fieldType=O_CANVAS
+       synonymsFile=,,--><!--Object Type in same schema--><A href="O_CANVAS.html">O_CANVAS</A></CODE></FONT></TD><TD><CODE>SUPERTYPE</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="type_summary"></A><A NAME="method_summary"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="ATUALIZAR_CONFIGURACOES"></A><TD><CODE><B><A HREF="#ATUALIZAR_CONFIGURACOES(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">ATUALIZAR_CONFIGURACOES</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_JSON IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Atualizar as configuraÃ§Ãµes do Curso</p>
+ <p>Atualiza algumas configuraÃ§Ãµes de um curso.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*                    </td><td>string  </td><td>Identificador do curso.</td></tr>
+             <tr><td>allow_student_discussion_topics     </td><td>boolean </td><td>Permitir que os alunos criem temas de discussÃ£o.</td></tr>
+             <tr><td>allow_student_forum_attachments     </td><td>boolean </td><td>Permitir que os alunos anexem arquivos Ã s discussÃµes.</td></tr>
+             <tr><td>allow_student_discussion_editing    </td><td>boolean </td><td>Permitir aos alunos editar ou excluir suas prÃ³prias mensagens de discussÃ£o.</td></tr>
+             <tr><td>allow_student_organized_groups      </td><td>boolean </td><td>Permita que os alunos organizem seus prÃ³prios grupos.</td></tr>
+             <tr><td>hide_final_grades                   </td><td>boolean </td><td>Ocultar os totais no resumo das notas dos alunos.</td></tr>
+             <tr><td>hide_distribution_graphs            </td><td>boolean </td><td>Ocultar grÃ¡ficos de distribuiÃ§Ã£o de notas de alunos.</td></tr>
+             <tr><td>lock_all_announcements              </td><td>boolean </td><td>Desativar ComentÃ¡rios em anÃºncios.</td></tr>
+             <tr><td>restrict_student_past_view          </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos apÃ³s a data de tÃ©rmino.</td></tr>
+             <tr><td>restrict_student_future_view        </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos antes da data de inÃ­cio.</td></tr>
+             <tr><td>show_announcements_on_home_page     </td><td>boolean </td><td>Mostrar os anÃºncios mais recentes na pÃ¡gina inicial do curso (se houver um Wiki, por padrÃ£o ele tem cinco anÃºncios, configurÃ¡veis atravÃ©s de home_page_announcement_limit).</td></tr>
+             <tr><td>home_page_announcement_limit        </td><td>integer </td><td>Limitar o nÃºmero de anÃºncios na pÃ¡gina inicial, se estiver habilitado atravÃ©s de show_announcements_on_home_page.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "allow_student_discussion_topics" : false,
+             "allow_student_forum_attachments" : false,
+             "allow_student_discussion_editing" : false,
+             "allow_student_organized_groups" : false,
+             "hide_final_grades" : false,
+             "hide_distribution_graphs" : false,
+             "lock_all_announcements" : false,
+             "restrict_student_past_view" : false,
+             "restrict_student_future_view" : false,
+             "show_announcements_on_home_page" : false,
+             "home_page_announcement_limit" : 100
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/settings"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="CONCLUIR"></A><TD><CODE><B><A HREF="#CONCLUIR(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">CONCLUIR</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_ACTION IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Concluir um curso</p>
+ <p>Concluir ou excluir um curso existente.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>Identificador do curso.</td>
+             </tr>
+             <tr>
+                 <td>action 2*</td>
+                 <td>string</td>
+                 <td>Valores permitidos: delete ou conclude.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>" -d event=<action>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>?event=<action>"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="CONTROLLER"></A><TD><CODE><B><A HREF="#CONTROLLER(VARCHAR2,BOOLEAN,BOOLEAN,CLOB)">CONTROLLER</A></B>(P_SQL IN VARCHAR2, IS_BATCH IN BOOLEAN, P_VERIFY_ID IN BOOLEAN, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Foi criado esse controle pois o controle padrÃ£o
+ (controle_save_request) nÃ£o atende a estrutura do curso.</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="CREATE_GROUP"></A><TD><CODE><B><A HREF="#CREATE_GROUP(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">CREATE_GROUP</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_JSON IN VARCHAR2, P_SIS_COURSE_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Criar um conjunto de grupos.</p>
+ <p>Criar um novo conjunto de grupos.</p>
+ <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
+ <p>
+     <code>
+         {
+             "name" : "GRUPO SECCION", --(requerido) Nome do conjunto de grupos.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=OVERRIDING MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=OVERRIDING MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->OVERRIDING MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="DELETAR"></A><TD><CODE><B><A HREF="#DELETAR(O_CANVAS_CURSO,VARCHAR2,CLOB)">DELETAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=7 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_ALL"></A><TD><CODE><B><A HREF="#FIND_ALL(O_CANVAS_CURSO,NUMBER,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)">FIND_ALL</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_ACCOUNT_ID IN NUMBER DEFAULT NULL, P_STATE IN VARCHAR2 DEFAULT NULL, P_SEARCH_TERM IN VARCHAR2 DEFAULT NULL, P_INCLUDE IN VARCHAR2 DEFAULT NULL, P_SIS_TERM_ID IN VARCHAR2 DEFAULT NULL, R_LOG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar Cursos</p>
+ <p>Lista todos os cursos criados anteriormente dentro da conta.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_ASSIGNMENTS_BY_ID"></A><TD><CODE><B><A HREF="#FIND_ASSIGNMENTS_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,BOOLEAN,CLOB)">FIND_ASSIGNMENTS_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_SEARCH_TERM IN VARCHAR2 DEFAULT NULL, P_ONLY_GRADABLE_ASSIGNMENTS IN BOOLEAN DEFAULT FALSE, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar atividades de um curso.</p>
+ <p>Listar as atividades e tarefas de um curso.</p>
+ <p>courses/<sis_course_id>/assignments?search_term=<search_term>&only_gradable_assignments=<only_gradable_assignments></p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BLUEPRINT_ASSOCIATE_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BLUEPRINT_ASSOCIATE_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">FIND_BLUEPRINT_ASSOCIATE_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Obter informaÃ§Ã£o do curso associado.</p>
+ <p>ProvÃª informaÃ§Ã£o sobre os cursos associados a um curso modelo.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/associated_courses</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BLUEPRINT_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BLUEPRINT_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">FIND_BLUEPRINT_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Obter informaÃ§Ã£o do Curso Modelo.</p>
+ <p>ProvÃª a informaÃ§Ã£o sobre o curso modelo especificado.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id></p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BLUEPRINT_MIGRATE_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BLUEPRINT_MIGRATE_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">FIND_BLUEPRINT_MIGRATE_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Lista de modelos de migraÃ§Ã£o.</p>
+ <p>Mostra uma lista paginada de migraÃ§Ãµes para o modelo.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BP_MIGRATION_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BP_MIGRATION_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)">FIND_BP_MIGRATION_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', P_MIGRATION_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Mostrar migraÃ§Ã£o de um curso modelo.</p>
+ <p>Mostra o estado de uma migraÃ§Ã£o.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id></p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BP_MIGRATION_DETAIL_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BP_MIGRATION_DETAIL_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)">FIND_BP_MIGRATION_DETAIL_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', P_MIGRATION_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Obter detalhes de uma migraÃ§Ã£o.</p>
+ <p>Mostra as alteraÃ§Ãµes que foram propagadas numa migraÃ§Ã£o de um curso modelo.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id>/details</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_BP_SUBSCRIPTION_BY_ID"></A><TD><CODE><B><A HREF="#FIND_BP_SUBSCRIPTION_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">FIND_BP_SUBSCRIPTION_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_SUBSCRIPTION_ID IN VARCHAR2 DEFAULT 'default', R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar importaÃ§Ãµes de um curso modelo.</p>
+ <p>Mostra uma lista de migraÃ§Ãµes de um curso modelo importadas em um curso associado.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/subscription_id:<subscription_id>/migrate</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=5 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_ENROLLMENTS_BY_ID"></A><TD><CODE><B><A HREF="#FIND_ENROLLMENTS_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)">FIND_ENROLLMENTS_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_ROLE IN VARCHAR2 DEFAULT NULL, P_STATE IN VARCHAR2 DEFAULT NULL, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar inscriÃ§Ãµes em um Curso.</p>
+ <p>Lista todas as inscriÃ§Ãµes previamente criadas dentro de um curso.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_GROUP_BY_ID"></A><TD><CODE><B><A HREF="#FIND_GROUP_BY_ID(O_CANVAS_CURSO,VARCHAR2,CLOB)">FIND_GROUP_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar conjuntos de grupos de um curso.</p>
+ <p>Devolve uma lista de conjuntos de grupos de um curso.</p>
+ <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=4 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="FIND_SECTIONS_BY_ID"></A><TD><CODE><B><A HREF="#FIND_SECTIONS_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)">FIND_SECTIONS_BY_ID</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, P_INCLUDE IN VARCHAR2 DEFAULT NULL, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Listar seÃ§Ãµes em um Curso.</p>
+ <p>Lista todas as seÃ§Ãµes previamente criadas dentro de um curso.</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=3 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="LIBERAR_ELIMINAR"></A><TD><CODE><B><A HREF="#LIBERAR_ELIMINAR(O_CANVAS_CURSO,VARCHAR2,CLOB)">LIBERAR_ELIMINAR</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, P_SIS_COURSE_ID IN VARCHAR2, R_MSG OUT CLOB)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <p>Liberar e eliminar um curso</p>
+ <p>Liberar o SIS_ID de um curso e depois excluÃ­-lo.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>(requerido) Identificador do curso.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/release"
+     </code>
+ </p>
+</TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=0 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><TD><CODE><B><A HREF="#O_CANVAS_CURSO">O_CANVAS_CURSO</A></B>()</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+<TR CLASS="TableRowColor">
+<TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;<!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE</CODE></FONT></TD>
+<!-- 
+		siblingCount=0 
+		argumentCount=1 
+		predecessorCount=0 
+		siblingNoArgumentCount=0--><A NAME="SET_DEFAULT_ATTRIBUTE"></A><TD><CODE><B><A HREF="#SET_DEFAULT_ATTRIBUTE(O_CANVAS_CURSO)">SET_DEFAULT_ATTRIBUTE</A></B>(SELF IN OUT NOCOPY O_CANVAS_CURSO)</CODE>
+<BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </TD>
+</TR>
+</TABLE>
+<P></P>
+<A NAME="trigger_summary"></A><A NAME="field_detail"></A><A NAME="type_detail"></A><A NAME="method_detail"></A>
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1">
+<TR CLASS="TableHeadingColor">
+<TD COLSPAN="1"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="ATUALIZAR_CONFIGURACOES(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>ATUALIZAR_CONFIGURACOES</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>ATUALIZAR_CONFIGURACOES</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                      P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                      P_JSON IN VARCHAR2, <BR>                                                      R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Atualizar as configuraÃ§Ãµes do Curso</p>
+ <p>Atualiza algumas configuraÃ§Ãµes de um curso.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>sis_course_id 1*                    </td><td>string  </td><td>Identificador do curso.</td></tr>
+             <tr><td>allow_student_discussion_topics     </td><td>boolean </td><td>Permitir que os alunos criem temas de discussÃ£o.</td></tr>
+             <tr><td>allow_student_forum_attachments     </td><td>boolean </td><td>Permitir que os alunos anexem arquivos Ã s discussÃµes.</td></tr>
+             <tr><td>allow_student_discussion_editing    </td><td>boolean </td><td>Permitir aos alunos editar ou excluir suas prÃ³prias mensagens de discussÃ£o.</td></tr>
+             <tr><td>allow_student_organized_groups      </td><td>boolean </td><td>Permita que os alunos organizem seus prÃ³prios grupos.</td></tr>
+             <tr><td>hide_final_grades                   </td><td>boolean </td><td>Ocultar os totais no resumo das notas dos alunos.</td></tr>
+             <tr><td>hide_distribution_graphs            </td><td>boolean </td><td>Ocultar grÃ¡ficos de distribuiÃ§Ã£o de notas de alunos.</td></tr>
+             <tr><td>lock_all_announcements              </td><td>boolean </td><td>Desativar ComentÃ¡rios em anÃºncios.</td></tr>
+             <tr><td>restrict_student_past_view          </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos apÃ³s a data de tÃ©rmino.</td></tr>
+             <tr><td>restrict_student_future_view        </td><td>boolean </td><td>Restringir os alunos de acessarem os cursos antes da data de inÃ­cio.</td></tr>
+             <tr><td>show_announcements_on_home_page     </td><td>boolean </td><td>Mostrar os anÃºncios mais recentes na pÃ¡gina inicial do curso (se houver um Wiki, por padrÃ£o ele tem cinco anÃºncios, configurÃ¡veis atravÃ©s de home_page_announcement_limit).</td></tr>
+             <tr><td>home_page_announcement_limit        </td><td>integer </td><td>Limitar o nÃºmero de anÃºncios na pÃ¡gina inicial, se estiver habilitado atravÃ©s de show_announcements_on_home_page.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X PUT -H "Authorization: Bearer <Bearer>" -H "Content-Type: application/json"
+         -d '{
+             "allow_student_discussion_topics" : false,
+             "allow_student_forum_attachments" : false,
+             "allow_student_discussion_editing" : false,
+             "allow_student_organized_groups" : false,
+             "hide_final_grades" : false,
+             "hide_distribution_graphs" : false,
+             "lock_all_announcements" : false,
+             "restrict_student_past_view" : false,
+             "restrict_student_future_view" : false,
+             "show_announcements_on_home_page" : false,
+             "home_page_announcement_limit" : 100
+         }'
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/settings"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_JSON</CODE> -
+              json com as configuraÃ§Ã£oes</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="CONCLUIR(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>CONCLUIR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>CONCLUIR</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                       P_SIS_COURSE_ID IN VARCHAR2, <BR>                                       P_ACTION IN VARCHAR2, <BR>                                       R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Concluir um curso</p>
+ <p>Concluir ou excluir um curso existente.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>Identificador do curso.</td>
+             </tr>
+             <tr>
+                 <td>action 2*</td>
+                 <td>string</td>
+                 <td>Valores permitidos: delete ou conclude.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>" -d event=<action>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>?event=<action>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>P_ACTION</CODE> -
+              2*</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>reposta da requisiÃ§Ã£o</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="CONTROLLER(VARCHAR2,BOOLEAN,BOOLEAN,CLOB)"></A>
+<H3>CONTROLLER</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>CONTROLLER</B>(P_SQL IN VARCHAR2, <BR>                                   IS_BATCH IN BOOLEAN, <BR>                                   P_VERIFY_ID IN BOOLEAN, <BR>                                   R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Foi criado esse controle pois o controle padrÃ£o
+ (controle_save_request) nÃ£o atende a estrutura do curso.</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SQL</CODE> -
+              select a ser enviado.</DD>
+<DD>
+<CODE>IS_BATCH</CODE> -
+              em lote.</DD>
+<DD>
+<CODE>P_VERIFY_ID</CODE> -
+              verifica se o id ja existe no canvas.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              <b>retorna</b> o log.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="CREATE_GROUP(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>CREATE_GROUP</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>CREATE_GROUP</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                           P_JSON IN VARCHAR2, <BR>                                           P_SIS_COURSE_ID IN VARCHAR2, <BR>                                           R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Criar um conjunto de grupos.</p>
+ <p>Criar um novo conjunto de grupos.</p>
+ <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
+ <p>
+     <code>
+         {
+             "name" : "GRUPO SECCION", --(requerido) Nome do conjunto de grupos.
+             "create_group_count" : 4, --Quantidade mÃ¡xima de usuÃ¡rios por grupo. Se Ã© null, nÃ£o existe um limite.
+             "group_limit": null       --Quantidade de grupos para criar. NÃ£o Ã© mapeado se nÃ£o Ã© enviado ou enviado como null.
+         }'
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_JSON</CODE> -
+              (requerido) json do grupo.</DD>
+<DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="DELETAR(O_CANVAS_CURSO,VARCHAR2,CLOB)"></A>
+<H3>DELETAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=OVERRIDING MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=OVERRIDING MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->OVERRIDING MEMBER FUNCTION PLJSON <B>DELETAR</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                 P_ID IN VARCHAR2, <BR>                                                 R_MSG OUT CLOB)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_ALL(O_CANVAS_CURSO,NUMBER,VARCHAR2,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_ALL</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_ALL</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                            P_ACCOUNT_ID IN NUMBER DEFAULT NULL, <BR>                                            P_STATE IN VARCHAR2 DEFAULT NULL, <BR>                                            P_SEARCH_TERM IN VARCHAR2 DEFAULT NULL, <BR>                                            P_INCLUDE IN VARCHAR2 DEFAULT NULL, <BR>                                            P_SIS_TERM_ID IN VARCHAR2 DEFAULT NULL, <BR>                                            R_LOG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar Cursos</p>
+ <p>Lista todos os cursos criados anteriormente dentro da conta. Este serviÃ§o Ã© paginado.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr><td>account_id 1*</td><td>integer </td><td>(opcional) ID de conta / sub-conta onde vocÃª deseja listar os cursos. Se o parÃ¢metro nÃ£o Ã© enviado, por padrÃ£o, a conta root Ã© assumida.</td></tr>
+             <tr><td>state 2*     </td><td>string  </td><td>(opcional) VocÃª pode usar o Estado para filtrar os cursos. Os valores permitidos sÃ£o: created, claimed, available, completed, deleted, all. Se o parÃ¢metro nÃ£o for recebido, tendo em conta todos os estados, exceto deleted.</td></tr>
+             <tr><td>search_term 3*</td><td>string  </td><td>(opcional) SequÃªncia de caracteres ( pelo menos 3), para ser usado como dados de pesquisa padrÃ£o no nome do curso, cÃ³digo do curso ou SIS_ID.</td></tr>
+             <tr><td>include 4*    </td><td>string  </td><td>(opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o iria ser adicionado ao nÃºmero de alunos do estado: active e invited.</td></tr>
+             <tr><td>sis_term_id 5*</td><td>string  </td><td>(opcional) O SIS_ID de um perÃ­odo acadÃªmico pode ser usado para filtrar os cursos. Se o parÃ¢metro nÃ£o for recebido, todos os perÃ­odos sÃ£o considerados.</td></tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X GET -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses?account_id=<account_id>&state=<state>&search_term=<search_term>&include=<include>&sis_term_id=<sis_term_id>"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Returns:
+          <DD>resposta da requisiÃ§Ã£o.
+member function inserir_cursos(SELF IN OUT NOCOPY o_canvas_curso, p_json clob    , r_msg out clob) return pljson,
+member function inserir       (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,
+member function atualizar     (SELF IN OUT NOCOPY o_canvas_curso, p_json varchar2, r_msg out clob) return pljson,</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_ASSIGNMENTS_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,BOOLEAN,CLOB)"></A>
+<H3>FIND_ASSIGNMENTS_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_ASSIGNMENTS_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                          P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                          P_SEARCH_TERM IN VARCHAR2 DEFAULT NULL, <BR>                                                          P_ONLY_GRADABLE_ASSIGNMENTS IN BOOLEAN DEFAULT FALSE, <BR>                                                          R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar atividades de um curso.</p>
+ <p>Listar as atividades e tarefas de um curso.</p>
+ <p>courses/<sis_course_id>/assignments?search_term=<search_term>&only_gradable_assignments=<only_gradable_assignments></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS acadÃªmico que referencia o curso de onde se encontram as atividades.</DD>
+<DD>
+<CODE>P_SEARCH_TERM</CODE> -
+              (opcional) Cadeia de caracteres (pelo menos 3), que serÃ¡ usada como um padrÃ£o de pesquisa nos dados do nome da atividade.</DD>
+<DD>
+<CODE>P_ONLY_GRADABLE_ASSIGNMENTS</CODE> -
+              (opcional) Se for true, determina que a lista deve trazer apenas as atividades qualificÃ¡veis. Por padrÃ£o, o valor Ã© false.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BLUEPRINT_ASSOCIATE_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BLUEPRINT_ASSOCIATE_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BLUEPRINT_ASSOCIATE_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                                  P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                                  P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', <BR>                                                                  R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Obter informaÃ§Ã£o do curso associado.</p>
+ <p>ProvÃª informaÃ§Ã£o sobre os cursos associados a um curso modelo.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/associated_courses</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>P_TEMPLATE_ID</CODE> -
+              (requerido) Atualmente temos somente o modelo default, porÃ©m no futuro pode ser que tenhamos outro conteÃºdo para esse parÃ¢metro.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BLUEPRINT_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BLUEPRINT_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BLUEPRINT_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                        P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                        P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', <BR>                                                        R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Obter informaÃ§Ã£o do Curso Modelo.</p>
+ <p>ProvÃª a informaÃ§Ã£o sobre o curso modelo especificado.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>P_TEMPLATE_ID</CODE> -
+              (requerido) Atualmente temos somente o modelo default, porÃ©m no futuro pode ser que tenhamos outro conteÃºdo para esse parÃ¢metro.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BLUEPRINT_MIGRATE_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BLUEPRINT_MIGRATE_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BLUEPRINT_MIGRATE_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                                P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                                P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', <BR>                                                                R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Lista de modelos de migraÃ§Ã£o.</p>
+ <p>Mostra uma lista paginada de migraÃ§Ãµes para o modelo.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>P_TEMPLATE_ID</CODE> -
+              (requerido) Atualmente temos somente o modelo default, porÃ©m no futuro pode ser que tenhamos outro conteÃºdo para esse parÃ¢metro.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BP_MIGRATION_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BP_MIGRATION_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BP_MIGRATION_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                           P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                           P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', <BR>                                                           P_MIGRATION_ID IN VARCHAR2, <BR>                                                           R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Mostrar migraÃ§Ã£o de um curso modelo.</p>
+ <p>Mostra o estado de uma migraÃ§Ã£o.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>P_TEMPLATE_ID</CODE> -
+              (requerido) Atualmente temos somente o modelo default, porÃ©m no futuro pode ser que tenhamos outro conteÃºdo para esse parÃ¢metro.</DD>
+<DD>
+<CODE>P_MIGRATION_ID</CODE> -
+              (requerido) ID interno da migraÃ§Ã£o.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BP_MIGRATION_DETAIL_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BP_MIGRATION_DETAIL_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BP_MIGRATION_DETAIL_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                                  P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                                  P_TEMPLATE_ID IN VARCHAR2 DEFAULT 'default', <BR>                                                                  P_MIGRATION_ID IN VARCHAR2, <BR>                                                                  R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Obter detalhes de uma migraÃ§Ã£o.</p>
+ <p>Mostra as alteraÃ§Ãµes que foram propagadas numa migraÃ§Ã£o de um curso modelo.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/template_id:<template_id>/migrate/migration_id:<migration_id>/details</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>P_TEMPLATE_ID</CODE> -
+              (requerido) Atualmente temos somente o modelo default, porÃ©m no futuro pode ser que tenhamos outro conteÃºdo para esse parÃ¢metro.</DD>
+<DD>
+<CODE>P_MIGRATION_ID</CODE> -
+              (requerido) ID interno da migraÃ§Ã£o.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_BP_SUBSCRIPTION_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_BP_SUBSCRIPTION_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_BP_SUBSCRIPTION_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                              P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                              P_SUBSCRIPTION_ID IN VARCHAR2 DEFAULT 'default', <BR>                                                              R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar importaÃ§Ãµes de um curso modelo.</p>
+ <p>Mostra uma lista de migraÃ§Ãµes de um curso modelo importadas em um curso associado.</p>
+ <p>courses/sis_course_id:<sis_course_id>/blueprint/subscription_id:<subscription_id>/migrate</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>P_SUBSCRIPTION_ID</CODE> -
+              (requerido) ID interno da subscriÃ§Ã£o do modelo associado do curso. Valor por padrÃ£o Ã© default.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_ENROLLMENTS_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_ENROLLMENTS_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_ENROLLMENTS_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                          P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                          P_ROLE IN VARCHAR2 DEFAULT NULL, <BR>                                                          P_STATE IN VARCHAR2 DEFAULT NULL, <BR>                                                          R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar inscriÃ§Ãµes em um Curso.</p>
+ <p>Lista todas as inscriÃ§Ãµes previamente criadas dentro de um curso. Este serviÃ§o Ã© paginado.</p>
+ <p>courses/sis_course_id:<sis_course_id>/enrollments?role=<role>&state=<state></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao curso.</DD>
+<DD>
+<CODE>P_ROLE</CODE> -
+              (opcional) Nome do role especÃ­fico para o qual deseja para filtrar.</DD>
+<DD>
+<CODE>P_STATE</CODE> -
+              (opcional) Estado das inscriÃ§Ãµes a serem recuperadas. Se este parÃ¢metro for omitido, as inscriÃ§Ãµes no estado active e invited, sÃ£o consideradas. Valores suportados: active, invited, creation_pending, deleted, rejected, completed, inactive.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_GROUP_BY_ID(O_CANVAS_CURSO,VARCHAR2,CLOB)"></A>
+<H3>FIND_GROUP_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_GROUP_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                    P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                    R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar conjuntos de grupos de um curso.</p>
+ <p>Devolve uma lista de conjuntos de grupos de um curso.</p>
+ <p>courses/sis_course_id:<sis_course_id>/group_categories</p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do SIS que referencia o curso modelo.</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              (requerido) log.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="FIND_SECTIONS_BY_ID(O_CANVAS_CURSO,VARCHAR2,VARCHAR2,CLOB)"></A>
+<H3>FIND_SECTIONS_BY_ID</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON_LIST
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON_LIST
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON_LIST <B>FIND_SECTIONS_BY_ID</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                                       P_SIS_COURSE_ID IN VARCHAR2, <BR>                                                       P_INCLUDE IN VARCHAR2 DEFAULT NULL, <BR>                                                       R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Listar seÃ§Ãµes em um Curso.</p>
+ <p>Lista todas as seÃ§Ãµes previamente criadas dentro de um curso. Este serviÃ§o Ã© paginado.</p>
+ <p>courses/sis_course_id:<sis_course_id>/sections?include=<include></p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              (requerido) ID interno do sistema acadÃªmico (SIS) atribuÃ­do ao curso.</DD>
+<DD>
+<CODE>P_INCLUDE</CODE> -
+              (opcional) VocÃª pode usar o valor total_students para que a informaÃ§Ã£o seja adicionada do nÃºmero de alunos do estado: active e invited.</DD>
+</DT>
+<DT>Returns:
+          <DD>lista de json.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="LIBERAR_ELIMINAR(O_CANVAS_CURSO,VARCHAR2,CLOB)"></A>
+<H3>LIBERAR_ELIMINAR</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER FUNCTION PLJSON
+       localTypeName=
+       schema=
+       fieldType=MEMBER FUNCTION PLJSON
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER FUNCTION PLJSON <B>LIBERAR_ELIMINAR</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO, <BR>                                               P_SIS_COURSE_ID IN VARCHAR2, <BR>                                               R_MSG OUT CLOB)</PRE>
+<DL>
+<DD> <p>Liberar e eliminar um curso</p>
+ <p>Liberar o SIS_ID de um curso e depois excluÃ­-lo.</p>
+ <p>
+     <table>
+         <thead>
+             <tr>
+                 <td>Campo</td>
+                 <td>Tipo</td>
+                 <td>ComentÃ¡rios</td>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>sis_course_id 1*</td>
+                 <td>string</td>
+                 <td>(requerido) Identificador do curso.</td>
+             </tr>
+         </tbody>
+     </table>
+ </p>
+ <p>
+     <code>
+         curl -X DELETE -H "Authorization: Bearer <bearer>" -H "Content-Type: application/json"
+         "https://<apim host and port>/<university>/api/lms/v1/
+         courses/sis_course_id:<sis_course_id>/release"
+     </code>
+ </p>
+</DD>
+<DD>
+<DL>
+<DT>Parameters:
+        <DD>
+<CODE>P_SIS_COURSE_ID</CODE> -
+              1*</DD>
+<DD>
+<CODE>R_MSG</CODE> -
+              log.</DD>
+</DT>
+<DT>Returns:
+          <DD>reposta da requisiÃ§Ã£o.</DD>
+</DT>
+</DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="O_CANVAS_CURSO"></A>
+<H3>O_CANVAS_CURSO</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=CONSTRUCTOR FUNCTION SELF AS RESULT
+       localTypeName=
+       schema=
+       fieldType=CONSTRUCTOR FUNCTION SELF AS RESULT
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->CONSTRUCTOR FUNCTION SELF AS RESULT <B>O_CANVAS_CURSO</B>()</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="SET_DEFAULT_ATTRIBUTE(O_CANVAS_CURSO)"></A>
+<H3>SET_DEFAULT_ATTRIBUTE</H3>
+<PRE>public <!--
+       schemaName=
+       typeName=MEMBER PROCEDURE
+       localTypeName=
+       schema=
+       fieldType=MEMBER PROCEDURE
+       synonymsFile=,,--><!--GenerateTypeLink: default reached-->MEMBER PROCEDURE <B>SET_DEFAULT_ATTRIBUTE</B>(SELF IN OUT NOCOPY O_CANVAS_CURSO)</PRE>
+<DL>
+<DD></DD>
+<DD>
+<DL></DL>
+</DD>
+<P></P>
+<DL></DL>
+</DL>
+<HR>
+<A NAME="trigger_detail"></A>
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR>
+<TD CLASS="NavBarRow1" COLSPAN="2">
+<TABLE CELLSPACING="3" CELLPADDING="0" BORDER="0">
+<TR VALIGN="top" ALIGN="center">
+<TD CLASS="NavBarRow1"><A HREF="../summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../index-list.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A> &nbsp;</TD><TD CLASS="NavBarRow1"><A HREF="../generator.html"><FONT CLASS="NavBarFont1"><B>Generator</B></FONT></A> &nbsp;</TD>
+</TR>
+</TABLE>
+</TD><TD rowspan="3" VALIGN="top" ALIGN="right"><EM><b>PL/JSON</b></EM></TD>
+</TR>
+<TR>
+<TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">
+    DETAIL:  <A HREF="#field_detail">FIELD</A> | <A HREF="#type_detail">TYPE</A> | <A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<HR>
+</BODY>
+</HTML>
