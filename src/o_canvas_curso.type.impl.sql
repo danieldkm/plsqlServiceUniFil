@@ -35,7 +35,7 @@ create or replace type body o_canvas_curso is
     begin
         self.set_entidade('courses');
         self.set_metodo('/sis_course_id:');
-
+        self.set_script(self.get_script);
         tmp := pljson('{}');
         tmp.put('entidade', self.entidade);
         tmp.put('script', self.script);
@@ -135,7 +135,7 @@ create or replace type body o_canvas_curso is
         w_param_4     varchar2(100) := 'include=';
         w_param_5     varchar2(100) := 'sis_term_id=';
         retorno       pljson_list;
-
+        w_msg         clob;
         procedure set_parametros(p_parametro varchar2, p_param varchar2) is
         begin
             if p_parametro is not null then
@@ -148,6 +148,7 @@ create or replace type body o_canvas_curso is
         end;
     begin
         self.set_acao('GET');
+        self.set_metodo('');
         if p_account_id is not null then
             w_parametros   := '?' || w_param_1 || p_account_id;
         end if;
@@ -156,15 +157,17 @@ create or replace type body o_canvas_curso is
         set_parametros(p_search_term, w_param_3);
         set_parametros(p_include    , w_param_4);
         set_parametros(p_sis_term_id, w_param_5);
-
+        r_log := r_log || chr(10) || 'w_parametros:' || w_parametros;
         if w_parametros is not null then
             self.set_metodo(w_parametros);
-            retorno := self.find_all(r_log);
+            retorno := self.find_all(w_msg);
+            r_log := r_log || chr(10) || w_msg;
             self.set_default;
             return retorno;
         else   
             self.set_metodo(null);
-            retorno := self.find_by_method(self.get_metodo, 'Find all cursos', false, r_log);
+            retorno := self.find_by_method(self.get_metodo, 'Find all cursos', false, w_msg);
+            r_log := r_log || chr(10) || w_msg;
             self.set_default;
             return retorno;
         end if;
@@ -187,7 +190,8 @@ create or replace type body o_canvas_curso is
         end if;
 
         w_metodo := self.entidade || w_parametros;
-        retorno := self.find_by_method(w_metodo, 'find_section_by_id', r_msg => r_msg);
+        retorno := self.find_by_method(w_metodo, 'find_section_by_id', r_msg => w_log);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
@@ -228,13 +232,14 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'Listar inscrições em um Curso', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -265,12 +270,13 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'find_assignments_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
                     util.plob(w_log, p_debug => true);
                 end if;
@@ -296,14 +302,15 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno :=self.find_by_method(w_metodo, 'find_blueprint_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -327,14 +334,15 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'find_blueprint_associate_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -357,14 +365,15 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'find_blueprint_migrate_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -390,14 +399,15 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno :=self.find_by_method(w_metodo, 'find_blueprint_migration_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -423,14 +433,15 @@ create or replace type body o_canvas_curso is
 
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'find_migration_detail_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -452,14 +463,15 @@ create or replace type body o_canvas_curso is
         
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'find_bp_subscription_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -478,14 +490,15 @@ create or replace type body o_canvas_curso is
                 
         w_metodo := self.entidade || w_parametros;
         retorno := self.find_by_method(w_metodo, 'find_group_by_id', r_msg => r_msg);
+        r_msg := r_msg || chr(10) || w_log;
         self.set_default;
         return retorno;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;

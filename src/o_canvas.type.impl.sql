@@ -57,12 +57,12 @@ create or replace type body o_canvas is
     member function get_entidade return varchar2 is begin return self.entidade; end;
     member function get_script(SELF IN OUT NOCOPY o_canvas)   return varchar2 is 
     begin 
-        --if self.script is null then
-        --    self.script := '/home/oracle/integracaoCanvas';
-        --    return self.script;
-        --else
+        if self.script is null then
+            self.script := '/home/oracle/integracaoCanvas';
             return self.script;
-        --end if;
+        else
+            return self.script;
+        end if;
     end;
     member function get_metodo   return varchar2 is begin return self.metodo;   end;
     member function get_acao     return varchar2 is begin return self.acao;     end;
@@ -100,47 +100,52 @@ create or replace type body o_canvas is
     /* CRUD */
     member function inserir_em_lote(SELF IN OUT NOCOPY o_canvas, p_json clob, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('POST'); 
         self.set_metodo(self.get_metodo || '/create');
         if p_json is not null then
-            retorno := self.call_request(p_json, 'Inserir: '|| self.get_entidade ||'''s', r_msg);
+            retorno := self.call_request(p_json, 'Inserir: '|| self.get_entidade ||'''s', w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return retorno;
         else
             self.set_default; 
-            r_msg := '{"error": "p_json não pode ser nulo"}';
+            r_msg := r_msg || chr(10) || '{"error": "p_json não pode ser nulo"}';
             return null;
         end if;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas.inserir_em_lote' || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas.inserir_em_lote' || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
     member function inserir (SELF IN OUT NOCOPY o_canvas, p_json varchar2, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('POST');
         if p_json is not null then
-            retorno := self.call_request(p_json, 'Inserir: ' || self.get_entidade , r_msg);
+            retorno := self.call_request(p_json, 'Inserir: ' || self.get_entidade , w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return retorno;
         else 
             self.set_default;
-            r_msg := '{"error": "p_json não pode ser nulo"}';
+            r_msg := r_msg || chr(10) || '{"error": "p_json não pode ser nulo"}';
             return null;
         end if;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas.inserir: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas.inserir: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
     member function atualizar (SELF IN OUT NOCOPY o_canvas, p_id varchar2, p_json varchar2, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('PUT');
         if p_id is not null then
@@ -152,39 +157,42 @@ create or replace type body o_canvas is
         end if;
         
         if p_json is not null then
-            retorno := self.call_request(p_json, 'Atualizar: ' || self.get_entidade , r_msg);
+            retorno := self.call_request(p_json, 'Atualizar: ' || self.get_entidade , w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return retorno;
         else
             self.set_default;
-            r_msg := '{"error": "p_json não pode ser nulo"}';
+            r_msg := r_msg || chr(10) || '{"error": "p_json não pode ser nulo"}';
             return null;
         end if;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas.atualizar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas.atualizar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
     member function deletar  (SELF IN OUT NOCOPY o_canvas, p_id varchar2, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('DELETE');
         if p_id is not null then
             self.set_metodo(self.get_metodo || p_id);
-            retorno := self.call_request(null, 'Deletar: ' || self.get_entidade, r_msg);
+            retorno := self.call_request(null, 'Deletar: ' || self.get_entidade, w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return  retorno;
         else
             self.set_default;
-            r_msg := '{"error": "p_id não pode ser nulo"}';
+            r_msg := r_msg || chr(10) || '{"error": "p_id não pode ser nulo"}';
             return null;
         end if;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas.deletar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas.deletar: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
@@ -378,9 +386,9 @@ create or replace type body o_canvas is
         w_paginacao   := 'page=<page>&per_page=50&state%5B%5D=active&state%5B%5D=inactive&state%5B%5D=invited&state%5B%5D=deleted&state%5B%5D=creation_pending&state%5B%5D=rejected&state%5B%5D=complet';
         --w_pljson_list := new pljson_list('[]');
         v_pagina      := 0;
-        w_log         := 'Inicio: find_all';
-        w_log         := w_log || chr(10) || 'Entidade: ' || self.get_entidade;
-
+        r_msg         := 'Inicio: find_all';
+        r_msg         := r_msg || chr(10) || 'Entidade: ' || self.get_entidade;
+        self.set_metodo('');
         if self.get_metodo is not null then
             w_paginacao := self.get_metodo || '&' || w_paginacao;
         else
@@ -393,17 +401,17 @@ create or replace type body o_canvas is
 
             w_metodo := self.entidade || replace(w_paginacao, '<page>', v_pagina);
             
-            w_log := w_log || chr(10) || 'Requisição: ' || w_metodo;
-            w_log := w_log || chr(10) || 'Página: '     || v_pagina;
+            r_msg := r_msg || chr(10) || 'Requisição: ' || w_metodo;
+            r_msg := r_msg || chr(10) || 'Página: '     || to_char(coalesce(v_pagina, '-1'));
 
             self.execute_hostcommand(p_action => 'GET' --Tipo
                                       ,p_method => w_metodo  --Chamada
                                       ,r_json   => w_json    --Resposta
                                       ,r_msg    => w_msg     --Log
                                       );
-            w_log := w_log || chr(10) || w_msg;
-            w_log := w_log || chr(10) || 'Resposta: '     || substr(w_json, 1, 32000);
-            w_log := w_log || chr(10) || '-----------------------------------------------------------------------------------------------'||chr(10);
+            r_msg := r_msg || chr(10) || w_msg;
+            r_msg := r_msg || chr(10) || 'Resposta: '     || substr(w_json, 1, 32000);
+            r_msg := r_msg || chr(10) || '-----------------------------------------------------------------------------------------------'||chr(10);
             
             exit when w_json is null or w_json = '' or w_json = '[]' or w_json = '{}';
             if w_pljson_list is null then
@@ -414,18 +422,18 @@ create or replace type body o_canvas is
             w_json   := null;
         end loop;
     
-        w_log := w_log || chr(10) || 'Retorno: ' || w_pljson_list.to_char;
+        r_msg := r_msg || chr(10) || 'Retorno: ' || w_pljson_list.to_char;
         if self.get_show_log then
-            util.plob(w_log, p_debug => true);
+            util.plob(r_msg, p_debug => true);
         end if;
         self.set_default;
         return w_pljson_list;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return w_pljson_list;
     end;
@@ -437,13 +445,13 @@ create or replace type body o_canvas is
         w_metodo      varchar2(1000);
         w_pljson      pljson;
     begin
-        w_log         := 'Inicio: find_by_id ('||p_id||')';
-        w_log         := w_log || chr(10) || 'Entidade: ' || self.get_entidade;
-        w_log         := w_log || chr(10) || 'Script: ' || self.get_script;
+        r_msg         := 'Inicio: find_by_id ('||p_id||')';
+        r_msg         := r_msg || chr(10) || 'Entidade: ' || self.get_entidade;
+        r_msg         := r_msg || chr(10) || 'Script: ' || self.get_script;
         
         w_metodo := self.get_entidade || self.get_metodo || p_id;
         
-        w_log := w_log || chr(10) || 'Requisição: ' || w_metodo;
+        r_msg := r_msg || chr(10) || 'Requisição: ' || w_metodo;
 
         self.execute_hostcommand(p_action => 'GET'     --Tipo
                                 ,p_method => w_metodo  --Chamada
@@ -451,26 +459,26 @@ create or replace type body o_canvas is
                                 ,r_msg    => w_msg     --Log
                                 );
                                   
-        w_log := w_log || chr(10) || w_msg;
-        w_log := w_log || chr(10) || 'Resposta: '     || substr(w_json, 1, 32000);
-        w_log := w_log || chr(10) || '-----------------------------------------------------------------------------------------------'||chr(10);
+        r_msg := r_msg || chr(10) || w_msg;
+        r_msg := r_msg || chr(10) || 'Resposta: '     || substr(w_json, 1, 32000);
+        r_msg := r_msg || chr(10) || '-----------------------------------------------------------------------------------------------'||chr(10);
 
         if w_json is not null or w_json != '{}' or w_json != '' or w_json != '[]' then
             w_pljson := new pljson(w_json);
         end if;
     
-        w_log := w_log || chr(10) || 'Retorno: ' || w_pljson.to_char;
+        r_msg := r_msg || chr(10) || 'Retorno: ' || w_pljson.to_char;
         if self.get_show_log then
-            util.plob(w_log, p_debug => true);
+            util.plob(r_msg, p_debug => true);
         end if;
         self.set_default;
         return w_pljson;
         exception
             when others then
                 self.set_default;
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return w_pljson;   
     end;

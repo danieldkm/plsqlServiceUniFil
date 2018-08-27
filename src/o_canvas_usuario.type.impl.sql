@@ -35,11 +35,13 @@ create or replace type body o_canvas_usuario is
     begin
         self.set_entidade('users');
         self.set_metodo('/sis_user_id:');
+        self.set_script(self.get_script);
         tmp := pljson('{}');
         tmp.put('entidade', self.entidade);
         tmp.put('script', self.script);
         tmp.put('show_log', self.show_log);
         self.set_variables(tmp);
+
     end;
 
     /*member function inserir_usuarios(SELF IN OUT NOCOPY o_canvas_usuario, p_json clob, r_msg out clob) return pljson is
@@ -97,7 +99,8 @@ create or replace type body o_canvas_usuario is
         w_metodo         varchar2(1000);
         w_parametros     varchar2(1000);
         w_metodo_listar  varchar2(100) := '/progress';
-
+        retorno          pljson_list;
+        w_msg            clob;
     begin
         self.set_acao('GET');
         if user_id is null or p_sis_user_id is null then
@@ -105,13 +108,15 @@ create or replace type body o_canvas_usuario is
         else 
             w_parametros := user_id || '/progress?sis_course_id=' || p_sis_user_id;
             w_metodo := self.entidade || w_parametros;
-            return self.find_by_method(w_metodo, 'find_progress_by_id', r_msg => r_msg);
+            retorno := self.find_by_method(w_metodo, 'find_progress_by_id', r_msg => w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
+            return retorno;
         end if;
         exception
             when others then
-                w_log := w_log || chr(10) || util.get_erro;
+                r_msg := r_msg || chr(10) || util.get_erro;
                 if self.get_show_log then
-                    util.plob(w_log, p_debug => true);
+                    util.plob(r_msg, p_debug => true);
                 end if;
                 return null;
     end;
@@ -120,6 +125,8 @@ create or replace type body o_canvas_usuario is
         w_parametros  varchar2(1000);
         w_param_1     varchar2(100) := 'account_id=';
         w_param_2     varchar2(100) := 'search_term=';
+        w_msg         clob;
+        retorno       pljson_list;
     begin
         self.set_acao('GET');
         if p_account_id is not null then
@@ -136,10 +143,14 @@ create or replace type body o_canvas_usuario is
 
         if w_parametros is not null then
             self.set_metodo(w_parametros);
-            return self.find_all(r_log);
+            retorno := self.find_all(w_msg);
+            r_log := r_log || chr(10) || w_msg;
+            return retorno;
         else   
             self.set_metodo(null);
-            return self.find_by_method(self.get_metodo, 'Find all usarios', false, r_log);
+            retorno := self.find_by_method(self.get_metodo, 'Find all usarios', false, w_msg);
+            r_log := r_log || chr(10) || w_msg;
+            return retorno;
         end if;
         
     end;

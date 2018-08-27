@@ -49,6 +49,7 @@ create or replace type body o_canvas_periodo_academico is
         w_param_2     varchar2(100) := 'include[]=';
         w_param_3     varchar2(100) := 'state=';
         retorno       pljson_list;
+        w_msg clob;
     begin
 
         if p_account_id is not null then
@@ -74,19 +75,21 @@ create or replace type body o_canvas_periodo_academico is
         if w_parametros is not null then
             self.set_metodo(w_parametros);
             --find_by_method(SELF IN OUT NOCOPY o_canvas, p_metodo varchar2, p_ds_chamada varchar2, has_pagination boolean default false, r_msg out clob)
-            retorno := self.find_all(r_msg);
+            retorno := self.find_all(w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return retorno;
         else   
             self.set_metodo(null);
-            retorno := self.find_by_method(self.get_metodo, 'Find all periodos academicos', false, r_msg);
+            retorno := self.find_by_method(self.get_metodo, 'Find all periodos academicos', false, w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return retorno;
         end if;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas_periodo_academico.find_all' || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas_periodo_academico.find_all' || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 end;

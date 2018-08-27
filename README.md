@@ -1,6 +1,6 @@
 # PLSQL Service REST
 
-Integração com Plataforma "EAD" utilizando. 
+Integração com Plataforma "EAD" (CANVAS). 
 Projeto desenvolvido para consumir serviço REST, utilizando a linguagem PL/SQL.
 
 ## Instalação
@@ -21,14 +21,17 @@ declare
   	w_msg clob;
   	respostas pljson_list;
 begin
-	--obj := new o_canvas_usuario;
-	--respostas := obj.find_all(w_msg);
-	--respostas.print;
-
-	obj := new o_canvas_curso;
+	obj := new o_canvas_periodo_academico;
 	respostas := obj.find_all(w_msg);
-	--respostas.print;
-    util.plob(w_msg||'oxi');
+    util.plob('w_msg:'||w_msg);
+	respostas.print;
+
+	/*obj := new o_canvas_curso;
+	respostas := obj.find_all(w_msg);
+    util.p('script:'||obj.get_script);
+    util.plob('w_msg:'||w_msg);
+	respostas.print;*/
+    
 end;
 /
 ```

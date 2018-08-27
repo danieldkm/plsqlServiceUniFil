@@ -50,6 +50,7 @@ create or replace type body o_canvas_inscricao is
     /* Requisições */
     member function inserir (SELF IN OUT NOCOPY o_canvas_inscricao, p_sis_section_id varchar2, p_json varchar2, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('POST');
         if p_sis_section_id is null then
@@ -60,7 +61,8 @@ create or replace type body o_canvas_inscricao is
         if p_json is not null then
             self.set_entidade('sections');
             self.set_metodo(self.get_metodo || 'sis_section_id:'||p_sis_section_id||'/enrollments');
-            retorno := self.call_request(p_json, 'Criar Inscrição' , r_msg);
+            retorno := self.call_request(p_json, 'Criar Inscrição' , w_msg);
+            r_msg := r_msg || chr(10) || w_msg;
             self.set_default;
             return retorno;
         else 
@@ -70,12 +72,13 @@ create or replace type body o_canvas_inscricao is
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas_inscricao.inserir: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas_inscricao.inserir: '|| self.get_entidade || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
     member function deletar  (SELF IN OUT NOCOPY o_canvas_inscricao, p_sis_course_id varchar2, p_enrollment_id varchar2, p_action varchar2, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('DELETE');
         if p_sis_course_id is null or p_enrollment_id is null or p_action is null then
@@ -91,18 +94,20 @@ create or replace type body o_canvas_inscricao is
 
         self.set_entidade('courses');
         self.set_metodo(self.get_metodo || 'sis_course_id:'||p_sis_course_id||'/enrollments/'||p_enrollment_id||'?task='||p_action);
-        retorno := self.call_request(null, 'Excluir, concluir ou desativar uma Inscrição', r_msg);
+        retorno := self.call_request(null, 'Excluir, concluir ou desativar uma Inscrição', w_msg);
+        r_msg := r_msg || chr(10) || w_msg;
         self.set_default;
         return  retorno;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas_inscricao.deletar' || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas_inscricao.deletar' || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 
     member function reativar  (SELF IN OUT NOCOPY o_canvas_inscricao, p_sis_course_id varchar2, p_enrollment_id varchar2, r_msg out clob) return pljson is
         retorno pljson;
+        w_msg clob;
     begin 
         self.set_acao('PUT');
         if p_sis_course_id is null or p_enrollment_id is null then
@@ -117,13 +122,14 @@ create or replace type body o_canvas_inscricao is
         
         self.set_entidade('courses');
         self.set_metodo(self.get_metodo || 'sis_course_id:'||p_sis_course_id||'/enrollments/'||p_enrollment_id||'/reactivate');
-        retorno := self.call_request('{}', 'Reativar uma inscrição', r_msg);
+        retorno := self.call_request('{}', 'Reativar uma inscrição', w_msg);
+        r_msg := r_msg || chr(10) || w_msg;
         self.set_default;
         return retorno;
     exception
         when others then
             self.set_default;
-            r_msg := 'o_canvas_inscricao.reativar ' || CHR(10) || 'Error:' || util.get_erro;
+            r_msg := r_msg || chr(10) || 'o_canvas_inscricao.reativar ' || CHR(10) || 'Error:' || util.get_erro;
             return null;
     end;
 end;
